@@ -6,7 +6,7 @@
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 2fr 1fr;
-      grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
   gap: 10px;
   height: 10vh;
 }
@@ -27,7 +27,7 @@
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 3fr 1fr;
-      grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: 10px;
   height: 75vh;
 }
@@ -51,21 +51,45 @@
 @media (max-width: 767px) {
   .app .header {
     -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
     -ms-grid-rows: (1fr)[3];
-        grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     height: 26vh;
   }
+
   .app .header .weather,
   .app .header .quote-wrapper,
   .app .header .greeting {
     text-align: center;
   }
+
   .app .main .planner-wrapper {
     -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
     -ms-grid-rows: 4fr 1fr;
-        grid-template-rows: 4fr 1fr;
+    grid-template-rows: 4fr 1fr;
   }
 }
+
 /*# sourceMappingURL=style.css.map */
+
+/* todo */
+.important {
+  color: #ee7f80;
+  border-radius: 25px;
+}
+
+#out {
+  color: rgb(13, 14, 13);
+  font-size: 1em;
+}
+
+#lebelForItem {
+  padding: 5%;
+}
+
+li {
+  list-style-type: none;
+  border-radius: 25px;
+
+}
