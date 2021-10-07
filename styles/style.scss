@@ -1,0 +1,68 @@
+.app {
+    padding: 10px;
+
+    .header {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 10px;
+        height: 10vh;
+
+        .quote-wrapper {
+            text-align: center;
+        }
+
+        .weather {
+            text-align: right;
+        }
+    }
+
+    .main {
+        li {
+            cursor: pointer;
+        }
+
+        .planner-wrapper {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 10px;
+            height: 75vh;
+
+            .calendar {
+                padding: 10px;
+            }
+
+            .select {
+                padding: 10px;
+            }
+
+            .btn-outline-primary {
+                width: 100%;
+            }
+        }
+
+        .game {
+            height: 75vh;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .header {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            height: 26vh;
+
+            .weather,
+            .quote-wrapper,
+            .greeting {
+                text-align: center;
+            }
+        }
+
+        .main {
+            .planner-wrapper {
+                grid-template-columns: 1fr;
+                grid-template-rows: 4fr 1fr;
+            }
+        }
+    }
+}

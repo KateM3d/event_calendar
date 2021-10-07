@@ -5,12 +5,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>My planner</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="app">
+    <header class="header mb-4">
+        <div class="greeting">Hello userName!<!-- ПРИВЕТСТВИЕ ПОЛЬЗОВАТЕЛЯ --></div>
+        <div class="quote-wrapper">
+            <figure>
+                <blockquote class="blockquote">
+                    <p class="blockquote__text" style="font-size: 16px;">All truly great thoughts are conceived by walking.<!-- ВАША ЦИТАТА --></p>
+                </blockquote>
+                <figcaption class="blockquote-footer">Friedrich Nietzsche<!-- МЕСТО ДЛЯ АВТОРА --></figcaption>
+            </figure>
+        </div>
+        <div class="weather">Moscow 8C / -2C<!-- ПОГОДА --></div>
+    </header>
 
+    <div class="main">
+        <ul class="nav nav-tabs">
+            <li class="nav-item nav-link planner-link active">PLANNER</li>
+            <li class="nav-item nav-link game-link">GAME</li>
+        </ul>
+
+        <div class="planner-wrapper">
+            <div class="calendar">
+             <!-- МЕСТО ПОД КАЛЕНДАРЬ -->
+            </div>
+
+            <div class="select">
+                <div class="select-wrapper">
+                    <select class="form-select mb-3" aria-label="Default select example"><!-- ВЫПАДАЮЩИЙ СПИСОК -->
+                        <option selected disabled>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <button type="button" class="btn btn-outline-primary">Add</button><!-- КНОПКА ДОБАВИТЬ -->
+                </div>
+            </div>
+        </div>
+
+        <div class="game" hidden>
+            <!-- ЗДЕСЬ БУДЕТ ИГРА -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous">
+    </script>
+
+    <script src="scripts/script2.js"></script>
 </body>
 
 </html>
