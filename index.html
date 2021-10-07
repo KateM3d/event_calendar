@@ -13,16 +13,25 @@
 
 <body class="app">
     <header class="header mb-4">
-        <div class="greeting">Hello userName!<!-- ПРИВЕТСТВИЕ ПОЛЬЗОВАТЕЛЯ --></div>
+        <div class="greeting">Hello userName!
+            <!-- ПРИВЕТСТВИЕ ПОЛЬЗОВАТЕЛЯ -->
+        </div>
         <div class="quote-wrapper">
             <figure>
                 <blockquote class="blockquote">
-                    <p class="blockquote__text" style="font-size: 16px;">All truly great thoughts are conceived by walking.<!-- ВАША ЦИТАТА --></p>
+                    <p class="blockquote__text" style="font-size: 16px;">All truly great thoughts are conceived by
+                        walking.
+                        <!-- ВАША ЦИТАТА -->
+                    </p>
                 </blockquote>
-                <figcaption class="blockquote-footer">Friedrich Nietzsche<!-- МЕСТО ДЛЯ АВТОРА --></figcaption>
+                <figcaption class="blockquote-footer">Friedrich Nietzsche
+                    <!-- МЕСТО ДЛЯ АВТОРА -->
+                </figcaption>
             </figure>
         </div>
-        <div class="weather">Moscow 8C / -2C<!-- ПОГОДА --></div>
+        <div class="weather">Moscow 8C / -2C
+            <!-- ПОГОДА -->
+        </div>
     </header>
 
     <div class="main">
@@ -33,19 +42,17 @@
 
         <div class="planner-wrapper">
             <div class="calendar">
-             <!-- МЕСТО ПОД КАЛЕНДАРЬ -->
+                <!-- МЕСТО ПОД КАЛЕНДАРЬ -->
             </div>
 
             <div class="select">
                 <div class="select-wrapper">
-                    <select class="form-select mb-3" aria-label="Default select example"><!-- ВЫПАДАЮЩИЙ СПИСОК -->
-                        <option selected disabled>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <button type="button" class="btn btn-outline-primary">Add</button><!-- КНОПКА ДОБАВИТЬ -->
+                    <input class="form-control" id="in" type="text" placeholder="note">
+                    <!-- ИНПУТ  -->
+
+                    <button type="button" id="add" class="btn btn-outline-primary">Add</button><!-- КНОПКА ДОБАВИТЬ -->
                 </div>
+                <div id="out"></div>
             </div>
         </div>
 
