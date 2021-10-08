@@ -14,7 +14,6 @@ addButton.addEventListener('click', function () {
 
     let newTodo = {
         todo: addMessage.value,
-        checked: false,
         important: false
     };
 
@@ -26,38 +25,30 @@ addButton.addEventListener('click', function () {
 
 function displayMessages(){
     let displayMessages='';
-
+if(todoList.length===0)todo.innerHTML='';
     todoList.forEach(function(item, i){
 displayMessages += `
 <li>
-<div class="form-check">
-<input type='checkbox' class="form-check-input" id='item_${i}' ${item.chacked ? 'checked' : ''}>
-<lebel id="lebelForItem" for='item_${i}' class="${item.important ? 'important': ''}">${item.todo}</lebel>
-</div></li>
+<div id="lebelForItem" class="${item.important ? 'important': ''}" class="bg-secondary text-white">${item.todo}</div>
+</li>
 `;
 todo.innerHTML=displayMessages;
     });
 }
 
-todo.addEventListener('change',function(event){
-    let idInput=event.target.getAttribute('id');
-let valueLabel=todo.querySelector('[for='+idInput+']').innerHTML;
-
-todoList.forEach(function(item){
-    if(item.todo===valueLabel){
-        item.checked=!item.checked;
-        localStorage.setItem('todo',JSON.stringify(todoList));
-    }
-});
-});
-
 todo.addEventListener('contextmenu',function(event){
     event.preventDefault();
-todoList.forEach(function(item){
+todoList.forEach(function(item,i){
     if(item.todo===event.target.innerHTML){
-        item.important=!item.important;
+        if(event.ctrlKey || event.metaKey){
+            todoList.splice(i,1);
+        } else{
+            item.important=!item.important;
+        }
+       
         displayMessages();
         localStorage.setItem('todo',JSON.stringify(todoList));
     }
 });
 });
+

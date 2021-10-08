@@ -32,17 +32,7 @@
   height: 75vh;
 }
 
-.app .main .planner-wrapper .calendar {
-  padding: 10px;
-}
 
-.app .main .planner-wrapper .select {
-  padding: 10px;
-}
-
-.app .main .planner-wrapper .btn-outline-primary {
-  width: 100%;
-}
 
 .app .main .game {
   height: 75vh;
@@ -74,22 +64,37 @@
 /*# sourceMappingURL=style.css.map */
 
 /* todo */
-.important {
-  color: #ee7f80;
-  border-radius: 25px;
+.todoList li .important {
+  color: #f2f2f2;
+  background: #f5b4b5;
+  border-radius: 3px;
 }
 
 #out {
   color: rgb(13, 14, 13);
   font-size: 1em;
+  width: 200px;
 }
 
-#lebelForItem {
-  padding: 5%;
+#add {
+  margin-top: 5px;
+  width: 200px;
 }
+
 
 li {
   list-style-type: none;
-  border-radius: 25px;
+}
 
+.todoList li {
+  list-style: none;
+  height: 40px;
+  text-align: center;
+  line-height: 45px;
+  margin-top: 8px;
+  background: #f2f2f2;
+  border-radius: 3px;
+  width: 200px;
+  overflow: hidden;
+  text-align: center;
 }
