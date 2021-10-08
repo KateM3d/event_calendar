@@ -44,11 +44,25 @@ todoList.forEach(function(item,i){
             todoList.splice(i,1);
         } else{
             item.important=!item.important;
-        }
-       
+        }   
         displayMessages();
         localStorage.setItem('todo',JSON.stringify(todoList));
     }
 });
 });
 
+// KATE
+
+document.addEventListener("DOMContentLoaded", showQuote = () => {
+    fetch('https://favqs.com/api/qotd')
+        .then(response => response.json())
+        .then(obj => {
+            console.log(obj);
+            document.querySelector('blockquote').innerText = obj.quote.body;
+            document.querySelector('figcaption').innerText = obj.quote.author;
+        })
+        .catch(error => {
+            error = new Error('Failed to fetch');
+            document.querySelector('blockquote').innerText = error.message;
+        });
+})
