@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", showQuote = () => {
         .then(response => response.json())
         .then(obj => {
             console.log(obj);
-            document.querySelector('blockquote').innerText = obj.quote.body;
+            document.querySelector('.blockquote__text').innerText = obj.quote.body;
             document.querySelector('figcaption').innerText = obj.quote.author;
         })
         .catch(error => {
