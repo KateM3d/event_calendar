@@ -66,3 +66,11 @@
         }
     }
 }
+
+.calendar {
+    &_table {
+        .card-body, &_week {
+            padding: 3rem;
+        }
+    }
+}
