@@ -68,9 +68,77 @@
 }
 
 .calendar {
+    &_head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 2rem;
+        font-size: 2vw;
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 1vw;
+        &_prev, &_next {
+            border: none;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            width: 2rem;
+            height: 5rem;
+            &_svg {
+                width: 2rem;
+                height: 5rem;
+            }
+        }
+        &_prev:hover polyline, 
+        &_prev:focus polyline {
+            stroke-width: 3;
+        }
+        &_prev:active polyline {
+            stroke-width: 6;
+            transition: all 100ms ease-in-out;
+        }
+        &_next:hover polyline,
+        &_next:focus polyline {
+            stroke-width: 3;
+        }
+        &_prev:active polyline {
+            stroke-width: 6;
+            transition: all 100ms ease-in-out;
+        }
+        polyline {
+            transition: all 250ms ease-in-out;
+            fill: none; 
+            stroke: black;
+            stroke-width: 1; 
+            stroke-linecap: round; 
+            stroke-linejoin: round; 
+        }
+        &_date {
+            display: flex;
+            &_month {
+                margin-right: 3vw;
+            }
+        }
+    }
     &_table {
-        .card-body, &_week {
-            padding: 3rem;
+        width: 98%;
+        th, td {
+            width: 12vw;
+        }
+        th {
+            text-align: center;
+        }
+        &_day {
+            &_today {
+                border: 4px solid black;
+            }
+            &:hover{
+                box-shadow: 0 0 0 2px white, 0 0 3px 2px rgba(48, 48, 48, 0.651);
+            }
+        }
+        td {
+            height: 8vw;
         }
     }
 }

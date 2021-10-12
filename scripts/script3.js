@@ -5,14 +5,15 @@ let calendar = document.querySelector('.calendar_body'),
 
 let prev = document.createElement('button'),
     next = document.createElement('button'),
+    dateHeading = document.createElement('div'),
     addMonth = document.createElement('div'),
-    monthName,
     addYear = document.createElement('div');
 
     prev.className = `calendar_head_prev`;
     next.className = `calendar_head_next`;
-    addMonth.className = `calendar_head_month`;
-    addYear.className = `calendar_head_year`;
+    dateHeading.className = `calendar_head_date`;
+    addMonth.className = `calendar_head_date_month`;
+    addYear.className = `calendar_head_date_year`;
 
 const getDay = (d) => {
     let day = d.getDay();
@@ -20,78 +21,44 @@ const getDay = (d) => {
     return day - 1;
 }
 
+const createCalendar = (cld, year, month, day) => {
 
-const createDOMCalendar = (month, year) => {
-    
-    addMonth.id = +month;
-
-    switch(month) {
-        case 1: monthName = `Январь`;
-            break;
-        case 2: monthName = `Февраль`;
-            break;
-        case 3: monthName =  `Март`;
-            break;
-        case 4: monthName =  `Апрель`;
-            break;
-        case 5: monthName =  `Май`;
-            break;
-        case 6: monthName = `Июнь`;
-            break;
-        case 7: monthName = `Июль`;
-            break;
-        case 8: monthName = `Август`;
-            break;
-        case 9: monthName = `Сентябрь`;
-            break;
-        case 10: monthName = `Октябрь`;
-            break;
-        case 11: monthName = `Ноябрь`;
-            break;
-        case 12: monthName = `Декабрь`;
-            break;
-    }
-
-    prev.innerHTML = '<';
-    next.innerHTML = '>';
-    addMonth.innerHTML = monthName;
-    addYear.innerHTML = year;
-
-    headingCalendar.appendChild(prev);
-    headingCalendar.appendChild(addMonth);
-    headingCalendar.appendChild(addYear);
-    headingCalendar.appendChild(next);
-    
-    
-}
-
-const createCalendar = (cld, year, month) => {
-
-    let date = new Date(year, month);
-    
-    let table = `
-            <table class="calendar_table card">
-                <tbody>
+    let date = new Date(year, month),
+        months = [
+            'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',
+        ],
+        table = `
+            <table class="calendar_table card table">
+                <thead>
                     <tr>
-                        <th class="card-body calendar_table_week">пн</th>
-                        <th class="card-body calendar_table_week" >вт</th>
-                        <th class="card-body calendar_table_week">ср</th>
-                        <th class="card-body calendar_table_week">чт</th>
-                        <th class="card-body calendar_table_week">пт</th>
-                        <th class="card-body calendar_table_week">сб</th>
-                        <th class="card-body calendar_table_week">вс</th>
+                        <th class="card-body calendar_table_week">mon</th>
+                        <th class="card-body calendar_table_week">tue</th>
+                        <th class="card-body calendar_table_week">wed</th>
+                        <th class="card-body calendar_table_week">thu</th>
+                        <th class="card-body calendar_table_week">fri</th>
+                        <th class="card-body calendar_table_week">sat</th>
+                        <th class="card-body calendar_table_week">sun</th>
                     </tr>
+                </thead>
+                <tbody  class="table-striped">
+                    <tr>
         `;
 
-
-    // пробелы для пустых дней первой недели
+    console.log(date)
+    
+    // пустые ячейки первой недели
     for (let i = 0; i < getDay(date); i++) {
-        table = `${table}<td class="card-body calendar_table_day"></td>`;
+        table = `${table}<td class="card-body"></td>`;
     }
 
     // ячейки календаря
     while(date.getMonth() === month) {
-        table = `${table}<td class="card-body calendar_table_day">${date.getDate()}</td>`;
+
+        if(month === new Date().getMonth() && day === date.getDate())  {
+            table = `${table}<td class="card-body calendar_table_day calendar_table_day_today">${date.getDate()}</td>`;
+        } else {
+            table = `${table}<td class="card-body calendar_table_day">${date.getDate()}</td>`;
+        }
 
         if(getDay(date) % 7 == 6) { // перевод строки с вс
             table = `${table}</tr><tr>`;
@@ -100,7 +67,7 @@ const createCalendar = (cld, year, month) => {
         date.setDate(date.getDate() + 1);
     }
 
-    // пробелы для пустых дней последней недели
+    // пустые ячейки последней недели
     if(getDay(date) != 0) {
         for(let i = getDay(date); i < 7; i++) {
             table = `${table}<td></td>`;
@@ -108,46 +75,84 @@ const createCalendar = (cld, year, month) => {
     }
 
     // закрытие таблицы
-    table = `${table}</td></tbody></table>`;
+    table = `${table}</tr></tbody></table>`;
 
-    createDOMCalendar(month, year);
-    cld.innerHTML = table;
-    btn();
-    
+    prev.innerHTML = `
+        <svg class='calendar_head_prev_svg' viewBox="0 0 50 80" xml:space="preserve">
+            <polyline points="45.63,75.8 0.375,38.087 45.63,0.375 "/>
+        </svg>  
+    `;
+    next.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class='calendar_head_next_svg' viewBox="0 0 50 80" xml:space="preserve">
+            <polyline points="0.375,0.375 45.63,38.087 0.375,75.8"/>
+        </svg>
+    `;
+
+    let getYear = checkMonth(year, month, date);
+    console.log(getYear)
+    console.log(new Date(year-1))
+
+    dateHeading.innerHTML = `
+            <div class="calendar_head_date_month">
+                ${months[month]}
+            </div>
+            <div class="calendar_head_date_year">
+                ${getYear}
+            </div>`;
+
+    cld.innerHTML = table; 
+    headingCalendar.appendChild(prev);
+    headingCalendar.appendChild(dateHeading);
+    headingCalendar.appendChild(next);
+
+    document.querySelector('.calendar_head_date_month').dataset.month = date.getMonth();
+    document.querySelector('.calendar_head_date_year').dataset.year = date.getFullYear();
 }
 
-const btn = () => {
+
+document.addEventListener('DOMContentLoaded', () => {
+
     let prevBtn = document.querySelector('.calendar_head_prev'),
         nextBtn = document.querySelector('.calendar_head_next');
+
+    console.log(`мы тут`);
 
     nextBtn.addEventListener('click', (e) => {
         e.preventDefault();
 
-        createCalendar(
-            // здесь DOM-элемент
-            calendar,
-            // берём год из календаря 
-            document.querySelector('.calendar_head_year').id,
-            // берём месяц из календаря
-            ((+document.querySelector(`.calendar_head_month`).id) + 1)
-        )
+        let month = +document.querySelector(`.calendar_head_date_month`).dataset.month,
+            year = +document.querySelector('.calendar_head_date_year').dataset.year;
 
-        
+        createCalendar(calendar, year, month);
     });
-
+    
     prevBtn.addEventListener('click', (e) => {
-        e.preventDefault();
+            e.preventDefault();
+            let month = +document.querySelector(`.calendar_head_date_month`).dataset.month,
+                year = +document.querySelector('.calendar_head_date_year').dataset.year;
+                console.log(month)
 
-        createCalendar(
-            // здесь DOM-элемент
-            calendar,
-            // берём год из календаря 
-            document.querySelector('.calendar_head_year').id,
-            // берём месяц из календаря
-            ((+document.querySelector(`.calendar_head_month`).id) - 1)
-        )
+            if(month == 1) {
+                month = 11;
+                year = year -1;
+            } else if (month == 0) {
+                month = 10;
+                year = year -1;
+            } else {
+                month = month - 2;
+                console.log(month);
+            }
 
-    })
+            createCalendar(calendar, year, month);
+    
+        });
+})
+
+const checkMonth = (year, month, date) => {
+    if(month == 11) {
+        return new Date(year, month).getFullYear();
+    } else return date.getFullYear()
 }
 
-createCalendar(calendar, new Date().getFullYear(), new Date().getMonth());
+
+createCalendar(calendar, new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
