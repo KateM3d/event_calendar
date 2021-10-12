@@ -29,14 +29,23 @@ if(todoList.length===0)todo.innerHTML='';
     todoList.forEach(function(item, i){
 displayMessages += `
 <li>
-<div id="lebelForItem" class="${item.important ? 'important': ''}" class="bg-secondary text-white">${item.todo}</div>
+<div id="lebelForItem"  class="${item.important ? 'important': ''}" class="bg-secondary text-white"  ondblclick="deleteTask(${i})">${item.todo}</div>
 </li>
 `;
 todo.innerHTML=displayMessages;
     });
 }
 
-todo.addEventListener('contextmenu',function(event){
+function deleteTask(i){
+
+        todoList=JSON.parse(localStorage.getItem('todo'));
+        todoList.splice(i,1);
+        localStorage.setItem('todo',JSON.stringify(todoList));
+        displayMessages();
+    };
+
+
+todo.addEventListener('click',function(event){
     event.preventDefault();
 todoList.forEach(function(item,i){
     if(item.todo===event.target.innerHTML){
@@ -44,11 +53,11 @@ todoList.forEach(function(item,i){
             todoList.splice(i,1);
         } else{
             item.important=!item.important;
-        }
-       
+        }        
         displayMessages();
         localStorage.setItem('todo',JSON.stringify(todoList));
     }
 });
 });
+
 
