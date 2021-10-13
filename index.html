@@ -7,30 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My planner</title>
     <link rel="stylesheet" href="styles/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/todo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 </head>
 
 <body class="app">
     <header class="header mb-4">
-        <div class="greeting">Hello userName!
+        <div class="greeting">
+            <p class="userName">Hello userName!</p>
+            <p class="date"></p>
             <!-- ПРИВЕТСТВИЕ ПОЛЬЗОВАТЕЛЯ -->
         </div>
         <div class="quote-wrapper">
             <figure>
                 <blockquote class="blockquote">
-                    <p class="blockquote__text" style="font-size: 16px;">All truly great thoughts are conceived by
-                        walking.
-                        <!-- ВАША ЦИТАТА -->
-                    </p>
+                    <p class="blockquote__text" style="font-size: 16px;"></p>
                 </blockquote>
-                <figcaption class="blockquote-footer">Friedrich Nietzsche
-                    <!-- МЕСТО ДЛЯ АВТОРА -->
-                </figcaption>
+                <figcaption class="blockquote-footer"></figcaption>
             </figure>
         </div>
-        <div class="weather">Moscow 8C / -2C
-            <!-- ПОГОДА -->
+        <!-- ПОГОДА -->
+        <div>
+            <input type="text" id="input">
+            <button id="inputBtn">Go!</button>
+            <div class="weather"> <span id="temperature"></span><br><span id="city"></span>
+            </div>
         </div>
     </header>
 
@@ -46,12 +47,12 @@
                 <div class="calendar_head"></div>
                 <div class="calendar_body"></div>
             </div>
-
             <div class="select">
                 <div class="select-wrapper" id="container">
                     <input class="form-control" id="in" type="text" placeholder="note">
 
-                    <button type="button" id="add" class="btn btn-outline-primary">Add</button><!-- КНОПКА ДОБАВИТЬ -->
+                    <button type="button" id="add" class="btn btn-outline-primary">Add</button>
+                    <!-- КНОПКА ДОБАВИТЬ -->
                 </div>
                 <ul class="todoList" id="out" class="badge badge-info">
 
@@ -59,21 +60,84 @@
 
             </div>
         </div>
+
+
         <!-- TO DO -->
         <div class="game" hidden>
-            <!-- ЗДЕСЬ БУДЕТ ИГРА -->
+            <div class="game-wrapper">
+                <div class="memory-card">
+                    <img class="front-face" src="images/item01.png" alt="cat">
+                    <img class="back-face" src="images/item07.png" alt="Memory Card">
+                </div>
+
+                <div class="memory-card">
+                    <img class="front-face" src="images/item01.png" alt="cat">
+                    <img class="back-face" src="images/item07.png" alt="Memory Card">
+                </div>
+
+                <div class="memory-card">
+                    <img class="front-face" src="images/item02.png" alt="dog">
+                    <img class="back-face" src="images/item07.png" alt="Memory Card">
+                </div>
+
+                <div class="memory-card">
+                    <img class="front-face" src="images/item02.png" alt="dog">
+                    <img class="back-face" src="images/item07.png" alt="Memory Card">
+                </div>
+
+                <div class="memory-card">
+                    <img class="front-face" src="images/item03.png" alt="car">
+                    <img class="back-face" src="images/item07.png" alt="Memory Card">
+                </div>
+
+                <div class="memory-card">
+                    <img class="front-face" src="images/item03.png" alt="car">
+                    <img class="back-face" src="images/item07.png" alt="Memory Card">
+                </div>
+
+                <div class="memory-card">
+                    <img class="front-face" src="images/item04.png" alt="girl">
+                    <img class="back-face" src="images/item07.png" alt="Memory Card">
+                </div>
+
+                <div class="memory-card">
+                    <img class="front-face" src="images/item04.png" alt="girl">
+                    <img class="back-face" src="images/item07.png" alt="Memory Card">
+                </div>
+
+                <div class="memory-card">
+                    <img class="front-face" src="images/item05.png" alt="fish">
+                    <img class="back-face" src="images/item07.png" alt="Memory Card">
+                </div>
+
+                <div class="memory-card">
+                    <img class="front-face" src="images/item05.png" alt="fish">
+                    <img class="back-face" src="images/item07.png" alt="Memory Card">
+                </div>
+
+                <div class="memory-card">
+                    <img class="front-face" src="images/item06.png" alt="apple">
+                    <img class="back-face" src="images/item07.png" alt="Memory Card">
+                </div>
+
+                <div class="memory-card">
+                    <img class="front-face" src="images/item06.png" alt="apple">
+                    <img class="back-face" src="images/item07.png" alt="Memory Card">
+                </div>
+            </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous">
     </script>
 
-    </script>
 
-    <script src="./scripts/script3.js"></script>
-    <script src="./scripts/script2.js"></script>
+
+    <script src="scripts/script2.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="scripts/dragAndDrop.js"></script>
+    <script src="scripts/date_and_weather.js"></script>
+    <script src="./scripts/calendar.js"></script>
 </body>
 
 </html>

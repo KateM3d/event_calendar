@@ -55,9 +55,9 @@ const createCalendar = (cld, year, month, day) => {
     while(date.getMonth() === month) {
 
         if(month === new Date().getMonth() && day === date.getDate())  {
-            table = `${table}<td class="card-body calendar_table_day calendar_table_day_today">${date.getDate()}</td>`;
+            table = `${table}<td class="card-body calendar_table_day calendar_table_day_today"><button type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="Заголовок всплывающего сообщения" data-bs-content="А вот и потрясающий контент. Это очень интересно. Правильно?">${date.getDate()}</button></td>`;
         } else {
-            table = `${table}<td class="card-body calendar_table_day">${date.getDate()}</td>`;
+            table = `${table}<td class="card-body calendar_table_day"> <button type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="Заголовок всплывающего сообщения" data-bs-content="А вот и потрясающий контент. Это очень интересно. Правильно?">${date.getDate()}</button></td>`;
         }
 
         if(getDay(date) % 7 == 6) { // перевод строки с вс
@@ -107,6 +107,14 @@ const createCalendar = (cld, year, month, day) => {
 
     document.querySelector('.calendar_head_date_month').dataset.month = date.getMonth();
     document.querySelector('.calendar_head_date_year').dataset.year = date.getFullYear();
+
+    let btns = document.querySelectorAll('.calendar_table_day_btn');
+
+    for (let i = 0; i <= btns.length; i++) {
+        new bootstrap.Popover(btns[i]);
+    }
+
+    
 }
 
 
