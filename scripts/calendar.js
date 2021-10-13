@@ -52,17 +52,22 @@ const createCalendar = (cld, year, month, day) => {
     }
 
     // ячейки календаря
+    let i = 0;
     while(date.getMonth() === month) {
 
         if(month === new Date().getMonth() && day === date.getDate())  {
-            table = `${table}<td class="card-body calendar_table_day calendar_table_day_today"><button type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="Заголовок всплывающего сообщения" data-bs-content="А вот и потрясающий контент. Это очень интересно. Правильно?">${date.getDate()}</button></td>`;
+            table = `${table}<td class="card-body calendar_table_day calendar_table_day_today"><button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-">${date.getDate()}</button></td>`;
         } else {
-            table = `${table}<td class="card-body calendar_table_day"> <button type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="Заголовок всплывающего сообщения" data-bs-content="А вот и потрясающий контент. Это очень интересно. Правильно?">${date.getDate()}</button></td>`;
+            table = `${table}<td class="card-body calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-">${date.getDate()}</button></td>`;
         }
+
+        $(function () {
+            $('[data-toggle="popover"]').popover();
+        })
 
         if(getDay(date) % 7 == 6) { // перевод строки с вс
             table = `${table}</tr><tr>`;
-        } 
+        }
 
         date.setDate(date.getDate() + 1);
     }
@@ -108,37 +113,51 @@ const createCalendar = (cld, year, month, day) => {
     document.querySelector('.calendar_head_date_month').dataset.month = date.getMonth();
     document.querySelector('.calendar_head_date_year').dataset.year = date.getFullYear();
 
-    let btns = document.querySelectorAll('.calendar_table_day_btn');
+    let btns = document.querySelectorAll('.calendar_table_day_btn')
 
-    for (let i = 0; i <= btns.length; i++) {
-        new bootstrap.Popover(btns[i]);
-    }
-
-    
+    btns.forEach(btn =>
+        btn.addEventListener('click', (e) => {
+            console.log(e.target.id);
+            for(let i = 0; i < btns.length; i++) {
+                $(btns[i]).popover('update');
+                $(btns[i]).popover('hide');
+                if (+e.target.id === (i + 1)) {
+                    $(btns[(i + 1)]).popover('show');
+                }
+            }
+        })
+    )
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
 
     let prevBtn = document.querySelector('.calendar_head_prev'),
-        nextBtn = document.querySelector('.calendar_head_next');
+        nextBtn = document.querySelector('.calendar_head_next'),
+        btns = document.querySelectorAll('.calendar_table_day_btn');
 
-    console.log(`мы тут`);
 
     nextBtn.addEventListener('click', (e) => {
-        e.preventDefault();
 
         let month = +document.querySelector(`.calendar_head_date_month`).dataset.month,
-            year = +document.querySelector('.calendar_head_date_year').dataset.year;
+            year = +document.querySelector('.calendar_head_date_year').dataset.year,
+            btns = document.querySelectorAll('.calendar_table_day_btn');
 
+        hidePopover(btns);
+        calendar.innerHTML = ``;
+        console.log(`удалили`)
         createCalendar(calendar, year, month);
+        addPopover(btns);
+        onClickClose(calendar, btns);
+        isVisible(calendar);
     });
     
     prevBtn.addEventListener('click', (e) => {
             e.preventDefault();
             let month = +document.querySelector(`.calendar_head_date_month`).dataset.month,
-                year = +document.querySelector('.calendar_head_date_year').dataset.year;
-                console.log(month)
+                year = +document.querySelector('.calendar_head_date_year').dataset.year, 
+            btns = document.querySelectorAll('.calendar_table_day_btn');
+            hidePopover(btns);
 
             if(month == 1) {
                 month = 11;
@@ -148,13 +167,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 year = year -1;
             } else {
                 month = month - 2;
-                console.log(month);
             }
 
             createCalendar(calendar, year, month);
+            $(function () {
+                $('[data-toggle="popover"]').popover();
+                $('[title = "To-do list"]');
+            })
+            onClickClose(calendar, btns);
+            isVisible(calendar);
     
-        });
-})
+    });
+
+    onClickClose(calendar, btns);
+    isVisible(calendar);
+});
 
 const checkMonth = (year, month, date) => {
     if(month == 11) {
@@ -162,5 +189,41 @@ const checkMonth = (year, month, date) => {
     } else return date.getFullYear()
 }
 
+const addPopover = () => {
+    let btns = document.querySelectorAll('.calendar_table_day_btn');
+    btns.forEach(btn =>
+        btn.addEventListener('click', (e) => {
+            for(let i = 0; i < btns.length; i++) {
+                if(e.target !== btns[i].id) {
+                    $(btns[i]).popover('hide');
+                }
+            }
+        })
+    )
+}
 
-createCalendar(calendar, new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+const hidePopover = () => {
+    let btns = document.querySelectorAll('.calendar_table_day_btn');
+    btns.forEach(btn => {
+        $(btns).popover('dispose');
+    })
+}
+
+const onClickClose = (elem, arr) => { // вызвать в момент показа окна, где elem - окно
+    const outsideClickListener = (e) => {
+        if (!elem.contains(e.target) && isVisible(elem)) {  // проверяем, что клик не по элементу и элемент виден
+            console.log(e.target)
+             $(arr).popover('hide');
+             document.removeEventListener('click', outsideClickListener);
+        }
+    };
+    document.addEventListener('click', outsideClickListener);
+}
+
+function isVisible(elem) { //открыто ли условное окно
+   return !!elem && !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length );
+}
+
+createCalendar(calendar, new Date().getFullYear(), new Date().getMonth(), new Date().getDate())
+
+
