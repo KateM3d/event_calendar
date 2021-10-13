@@ -26,36 +26,68 @@ let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard;
 let secondCard;
+let matches = 0;
 
-function flipCard() {
+document.addEventListener("DOMContentLoaded", startGame = () => {
+    document.querySelector('.game-modal').setAttribute('hidden', 'hidden');
+
+    cards.forEach(card => {
+        card.addEventListener('click', flipCard);
+        card.classList.remove('flip');
+        card.removeAttribute('hidden', 'hidden');
+
+        let ramdomPos = Math.floor(Math.random() * cards.length);
+        card.style.order = ramdomPos;
+    })
+
+    matches = 0
+    resetBoard();
+})
+
+const flipCard = event => {
     if (lockBoard) return;
-    if (this === firstCard) return;
+    if (event.target.closest('div') === firstCard) return;
 
-    this.classList.add('flip');
+    event.target.closest('div').classList.add('flip');
 
     if (!hasFlippedCard) {
         hasFlippedCard = true;
-        firstCard = this;
+        firstCard = event.target.closest('div');
         return;
     }
 
-    secondCard = this;
+    secondCard = event.target.closest('div');
 
     checkForMatch();
 }
 
-function checkForMatch() {
-    (firstCard.querySelector('img').alt === secondCard.querySelector('img').alt) ? disableCards(): unflipCards();
+const checkForMatch = () => {
+    if (firstCard.querySelector('img').alt === secondCard.querySelector('img').alt) {
+        matches += 2;
+
+        if (matches === cards.length) {
+            setTimeout(() =>
+                cards.forEach(card =>
+                    card.setAttribute('hidden', 'hidden')), 2000);
+            setTimeout(() =>
+                document.querySelector('.game-modal').removeAttribute('hidden', 'hidden'), 2500);
+
+        } else {
+            disableCards();
+        }
+    } else {
+        unflipCards();
+    }
 }
 
-function disableCards() {
+const disableCards = () => {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
 
     resetBoard();
 }
 
-function unflipCards() {
+const unflipCards = () => {
     lockBoard = true;
 
     setTimeout(() => {
@@ -66,17 +98,9 @@ function unflipCards() {
     }, 1000);
 }
 
-function resetBoard() {
+const resetBoard = () => {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
 }
 
-(function shuffle() {
-    cards.forEach(card => {
-        let ramdomPos = Math.floor(Math.random() * document.querySelectorAll('.memory-card').length);
-        card.style.order = ramdomPos;
-    });
-})()
-
-cards.forEach(card => card.addEventListener('click', flipCard));
-
+document.querySelector('.btn-start-again').addEventListener('click', startGame);
