@@ -1,49 +1,40 @@
 .app {
     padding: 10px;
-
     .header {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
         gap: 10px;
         height: 10vh;
-
         .quote-wrapper {
             text-align: center;
         }
-
         .weather {
             text-align: right;
         }
     }
-
     .main {
         li {
             cursor: pointer;
         }
-
         .planner-wrapper {
             display: grid;
             grid-template-columns: 3fr 1fr;
             gap: 10px;
             height: 75vh;
-
             .calendar,
             .select {
                 padding: 10px;
             }
-
             .btn-outline-primary {
                 width: 100%;
             }
         }
-
         .game {
             height: 75vh;
             display: flex;
             justify-content: center;
             align-items: center;
             perspective: 1000px;
-
             .game-wrapper {
                 width: 640px;
                 height: 60vh;
@@ -51,7 +42,6 @@
                 grid-template-columns: repeat(4, 1fr);
                 grid-template-rows: repeat(3, 1fr);
                 gap: 15px;
-
                 .memory-card {
                     position: relative;
                     box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
@@ -60,12 +50,10 @@
                     transition: transform .5s;
                     cursor: pointer;
                 }
-
                 .memory-card:active {
                     transform: scale(0.97);
                     transition: transform .2s;
                 }
-
                 .front-face,
                 .back-face {
                     width: 100%;
@@ -76,37 +64,31 @@
                     background: #0d6efd;
                     backface-visibility: hidden;
                 }
-
                 .front-face {
                     transform: rotateY(180deg);
                 }
             }
         }
     }
-
     .flip {
         transform: rotateY(180deg);
     }
-
     @media (max-width: 767px) {
         .header {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(3, 1fr);
             height: 26vh;
-
             .weather,
             .quote-wrapper,
             .greeting {
                 text-align: center;
             }
         }
-
         .main {
             .planner-wrapper {
                 grid-template-columns: 1fr;
                 grid-template-rows: 4fr 1fr;
             }
-
             .game-wrapper {
                 width: 100%;
                 height: 100%;
@@ -119,7 +101,6 @@
     }
 }
 
-
 .calendar {
     &_head {
         display: flex;
@@ -130,7 +111,8 @@
         font-weight: 300;
         text-transform: uppercase;
         letter-spacing: 1vw;
-        &_prev, &_next {
+        &_prev,
+        &_next {
             border: none;
             background: transparent;
             border: 0;
@@ -143,7 +125,7 @@
                 height: 3rem;
             }
         }
-        &_prev:hover polyline, 
+        &_prev:hover polyline,
         &_prev:focus polyline {
             stroke-width: 3;
         }
@@ -161,11 +143,11 @@
         }
         polyline {
             transition: all 250ms ease-in-out;
-            fill: none; 
+            fill: none;
             stroke: black;
-            stroke-width: 1; 
-            stroke-linecap: round; 
-            stroke-linejoin: round; 
+            stroke-width: 1;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
         &_date {
             display: flex;
@@ -177,7 +159,8 @@
     }
     &_table {
         width: 98%;
-        th, td {
+        th,
+        td {
             width: 12vw;
         }
         th {
@@ -190,7 +173,7 @@
                     box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(55, 173, 219, 0.212) !important;
                 }
             }
-            &:hover{
+            &:hover {
                 border: 1 solid rgba(0, 0, 0, 0.041);
                 box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(48, 48, 48, 0.185);
             }
@@ -199,7 +182,9 @@
             height: 8vw;
         }
         &_btn {
-            &, &:focus, &:active {
+            &,
+            &:focus,
+            &:active {
                 outline: 0 !important;
             }
         }
@@ -210,7 +195,6 @@
         text-align: start;
         padding-bottom: 5vw;
     }
-
     @media (max-width: 900px) {
         .calendar {
             &_head {
@@ -220,7 +204,6 @@
             }
         }
     }
-
     @media (max-width: 767px) {
         .calendar {
             &_head {
@@ -230,4 +213,12 @@
             }
         }
     }
+}
+
+.hide {
+    display: none;
+}
+
+.hovered {
+    background-color: aqua;
 }
