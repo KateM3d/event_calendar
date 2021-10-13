@@ -6,7 +6,7 @@
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 2fr 1fr;
-      grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
   gap: 10px;
   height: 10vh;
 }
@@ -27,7 +27,7 @@
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 3fr 1fr;
-      grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: 10px;
   height: 75vh;
 }
@@ -47,13 +47,13 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-perspective: 1000px;
-          perspective: 1000px;
+  perspective: 1000px;
 }
 
 .app .main .game .game-wrapper {
@@ -61,20 +61,20 @@
   height: 60vh;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
-  -ms-grid-rows: (1fr)[3];
-      grid-template-rows: repeat(3, 1fr);
+  -ms-grid-columns: (1fr);
+  grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 15px;
 }
 
 .app .main .game .game-wrapper .memory-card {
   position: relative;
   -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-          box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform-style: preserve-3d;
   -webkit-transition: -webkit-transform .5s;
   transition: -webkit-transform .5s;
   transition: transform .5s;
@@ -84,7 +84,7 @@
 
 .app .main .game .game-wrapper .memory-card:active {
   -webkit-transform: scale(0.97);
-          transform: scale(0.97);
+  transform: scale(0.97);
   -webkit-transition: -webkit-transform .2s;
   transition: -webkit-transform .2s;
   transition: transform .2s;
@@ -100,48 +100,52 @@
   border-radius: 5px;
   background: #0d6efd;
   -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .app .main .game .game-wrapper .front-face {
   -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .app .flip {
   -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 @media (max-width: 767px) {
   .app .header {
     -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-    -ms-grid-rows: (1fr)[3];
-        grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    -ms-grid-rows: (1fr);
+    grid-template-rows: repeat(3, 1fr);
     height: 26vh;
   }
+
   .app .header .weather,
   .app .header .quote-wrapper,
   .app .header .greeting {
     text-align: center;
   }
+
   .app .main .planner-wrapper {
     -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
     -ms-grid-rows: 4fr 1fr;
-        grid-template-rows: 4fr 1fr;
+    grid-template-rows: 4fr 1fr;
   }
+
   .app .main .game-wrapper {
     width: 100%;
     height: 100%;
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[4];
-        grid-template-columns: repeat(4, 1fr);
-    -ms-grid-rows: (1fr)[3];
-        grid-template-rows: repeat(3, 1fr);
+    -ms-grid-columns: (1fr);
+    grid-template-columns: repeat(4, 1fr);
+    -ms-grid-rows: (1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: 15px;
   }
 }
+
 /*# sourceMappingURL=style.css.map */
