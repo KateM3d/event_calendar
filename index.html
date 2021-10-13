@@ -8,13 +8,14 @@
     <title>My planner</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/todo.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 </head>
 
 <body class="app">
     <header class="header mb-4">
-        <div class="greeting">Hello userName!
+        <div class="greeting">
+            <p class="userName">Hello userName!</p>
+            <p class="date"></p>
             <!-- ПРИВЕТСТВИЕ ПОЛЬЗОВАТЕЛЯ -->
         </div>
         <div class="quote-wrapper">
@@ -25,8 +26,12 @@
                 <figcaption class="blockquote-footer"></figcaption>
             </figure>
         </div>
-        <div class="weather">Moscow 8C / -2C
-            <!-- ПОГОДА -->
+        <!-- ПОГОДА -->
+        <div>
+            <input type="text" id="input">
+            <button id="inputBtn">Go!</button>
+            <div class="weather"> <span id="temperature"></span><br><span id="city"></span>
+            </div>
         </div>
     </header>
 
@@ -45,7 +50,8 @@
                 <div class="select-wrapper" id="container">
                     <input class="form-control" id="in" type="text" placeholder="note">
 
-                    <button type="button" id="add" class="btn btn-outline-primary">Add</button><!-- КНОПКА ДОБАВИТЬ -->
+                    <button type="button" id="add" class="btn btn-outline-primary">Add</button>
+                    <!-- КНОПКА ДОБАВИТЬ -->
                 </div>
                 <ul class="todoList" id="out" class="badge badge-info">
 
@@ -53,6 +59,8 @@
 
             </div>
         </div>
+
+
         <!-- TO DO -->
         <div class="game" hidden>
             <div class="game-wrapper">
@@ -119,14 +127,15 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous">
     </script>
 
-    </script>
+
 
     <script src="scripts/script2.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="scripts/dragAndDrop.js"></script>
+    <script src="scripts/date_and_weather.js"></script>
 </body>
 
 </html>
