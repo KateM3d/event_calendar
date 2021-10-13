@@ -14,6 +14,7 @@ function getTodaysDate() {
 
 
     showDate.textContent = `${day}, ${todaysDate} ${month} ${year}`;
+
 }
 
 getTodaysDate();
@@ -45,8 +46,9 @@ async function getInfo(data) {
 }
 
 function displayResult(result) {
-    let city = document.querySelector('#city');
+
+    let citySelected = document.querySelector('#city');
     let temperature = document.querySelector('#temperature');
-    city.textContent = `${result.name},${result.sys.country}`;
+    citySelected.textContent = `${result.name},${result.sys.country}`;
     temperature.innerHTML = `${Math.round(result.main.temp)}<span>&#176C</span>`;
 }
