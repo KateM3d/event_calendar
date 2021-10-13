@@ -6,13 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My planner</title>
+    <link rel="shortcut icon"
+        href="https://cdn-icons.flaticon.com/png/512/5580/premium/5580608.png?token=exp=1634064934~hmac=809578b298480ac2906a14cd0d785447"
+        type="image/png">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/todo.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 </head>
 
 <body class="app">
-    <header class="header mb-4">
+
+    <div class="card form-card" hidden>
+        <div class="card-body">
+            <h5 class="text-center">Hello, friend!</h5>
+            <h6 class="text-center">Fill in the fields below to get started</h6>
+
+            <form class="needs-validation" novalidate>
+                <div class=" position-relative">
+                    <label for="validationTooltip01" class="form-label">What is your name?</label>
+                    <input type="text" class="form-control userName" id="validationTooltip01" pattern="[^\s]+" required>
+
+                    <div class="invalid-tooltip">
+                        Please provide your name without any gaps
+                    </div>
+                </div>
+
+                <div class=" position-relative">
+                    <label for="validationTooltip03" class="form-label">Where do you live?</label>
+                    <input type="text" class="form-control userCity" id="validationTooltip03" pattern="[^\s]+" required>
+                    <div class="invalid-tooltip">
+                        Please provide a valid city without any gaps
+                    </div>
+                </div>
+
+                <div class="btn-wrapper ">
+                    <button class="btn btn-primary form-btn" type="submit" onclick="checkform()">Submit </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <header class="header mb-4" hidden>
         <div class="greeting">
             <p class="userName">Hello userName!</p>
             <p class="date"></p>
@@ -35,10 +70,10 @@
         </div>
     </header>
 
-    <div class="main">
+    <div class="main" hidden>
         <ul class="nav nav-tabs">
-            <li class="nav-item nav-link planner-link active">PLANNER</li>
-            <li class="nav-item nav-link game-link">GAME</li>
+            <li class="nav-item nav-link planner-link active text-center">PLANNER</li>
+            <li class="nav-item nav-link game-link text-center">GAME</li>
         </ul>
 
         <div class="planner-wrapper">
@@ -55,7 +90,7 @@
                     <!-- КНОПКА ДОБАВИТЬ -->
                 </div>
                 <ul class="todoList" id="out" class="badge badge-info"></ul>
-              
+
             </div>
         </div>
 
@@ -122,6 +157,13 @@
                     <img class="front-face" src="images/item06.png" alt="apple">
                     <img class="back-face" src="images/item07.png" alt="Memory Card">
                 </div>
+
+                <div class="card text-center game-modal" hidden>
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">You WON!</h5>
+                        <button class="btn btn-primary btn-start-again">Tap here to play again</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -129,9 +171,13 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+    </script>
+
     <script src="scripts/scriptToDo.js"></script>
-    <script src="scripts/script2.js"></script>
-    <script src="./scripts/script.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="./scripts/form&header.js"></script>
     <script src="scripts/dragAndDrop.js"></script>
     <script src="scripts/date_and_weather.js"></script>
     <script src="./scripts/calendar.js"></script>
