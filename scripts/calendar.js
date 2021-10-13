@@ -148,6 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(`удалили`)
         createCalendar(calendar, year, month);
         addPopover(btns);
+        onClickClose(calendar, btns);
+        isVisible(calendar);
     });
     
     prevBtn.addEventListener('click', (e) => {
@@ -172,10 +174,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 $('[data-toggle="popover"]').popover();
                 $('[title = "To-do list"]');
             })
+            onClickClose(calendar, btns);
+            isVisible(calendar);
     
     });
 
-    
+    onClickClose(calendar, btns);
+    isVisible(calendar);
 });
 
 const checkMonth = (year, month, date) => {
@@ -202,6 +207,21 @@ const hidePopover = () => {
     btns.forEach(btn => {
         $(btns).popover('dispose');
     })
+}
+
+const onClickClose = (elem, arr) => { // вызвать в момент показа окна, где elem - окно
+    const outsideClickListener = (e) => {
+        if (!elem.contains(e.target) && isVisible(elem)) {  // проверяем, что клик не по элементу и элемент виден
+            console.log(e.target)
+             $(arr).popover('hide');
+             document.removeEventListener('click', outsideClickListener);
+        }
+    };
+    document.addEventListener('click', outsideClickListener);
+}
+
+function isVisible(elem) { //открыто ли условное окно
+   return !!elem && !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length );
 }
 
 createCalendar(calendar, new Date().getFullYear(), new Date().getMonth(), new Date().getDate())
