@@ -118,7 +118,7 @@ const createCalendar = (cld, year, month, day) => {
             console.log(e.target.id);
             for (let i = 0; i < btns.length; i++) {
                 onClickClose(calendar, btns[i]);
-                isVisible(btns[i]); 
+                isVisible(btns[i]);
                 $(btns[i]).popover('update');
                 $(btns[i]).popover('hide');
                 if (+e.target.id === (i + 1)) {
@@ -130,7 +130,7 @@ const createCalendar = (cld, year, month, day) => {
 
     // drag and drop goes here!!!
     const dragAndDrop = () => {
-        const task = document.querySelector('#labelForItem');
+        const tasks = document.querySelectorAll('#labelForItem');
         // const cells = document.querySelectorAll('.btn-lg');
 
         const dragStart = function() {
@@ -138,6 +138,7 @@ const createCalendar = (cld, year, month, day) => {
                 this.classList.add('hide');
             }, 0);
             console.log('start')
+
         };
         const dragEnd = function() {
             this.classList.remove('hide');
@@ -157,9 +158,12 @@ const createCalendar = (cld, year, month, day) => {
             this.classList.remove('hovered');
         };
         const dragDrop = function() {
-            this.append(task);
-            this.classList.remove('hovered');
 
+            for (let i = 0; i < tasks.length; i++) {
+                this.append(tasks[i]);
+
+                this.classList.remove('hovered');
+            }
         };
 
         btns.forEach((cell) => {
@@ -170,8 +174,12 @@ const createCalendar = (cld, year, month, day) => {
 
         })
 
-        task.addEventListener('dragstart', dragStart);
-        task.addEventListener('dragend', dragEnd);
+        tasks.forEach((task) => {
+            task.addEventListener('dragstart', dragStart);
+            task.addEventListener('dragend', dragEnd);
+
+        })
+
     }
 
     dragAndDrop()
@@ -261,7 +269,7 @@ const onClickClose = (elem, arr) => { // вызвать в момент пока
     document.addEventListener('click', outsideClickListener);
 }
 
-const isVisible = (elem) =>  { //открыто ли условное окно
+const isVisible = (elem) => { //открыто ли условное окно
     return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 }
 
