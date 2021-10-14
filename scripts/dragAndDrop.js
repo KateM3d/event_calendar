@@ -1,40 +1,46 @@
-// function for the dragANdDrop part. Waiting for calendar and complete todo
-
 // const dragAndDrop = () => {
 //     const task = document.querySelector('#labelForItem');
-//     const dateCells = document.querySelector('.card-body');
+//     // const cells = document.querySelectorAll('.btn-lg');
 
-//     const dragStart = () => {
+//     const dragStart = function() {
 //         setTimeout(() => {
 //             this.classList.add('hide');
 //         }, 0);
+//         console.log('start')
 //     };
-//     const dragEnd = () => {
+//     const dragEnd = function() {
 //         this.classList.remove('hide');
 //     };
 
-//     const dragOver = (e) => {
+//     const dragOver = function(e) {
 //         e.preventDefault();
+
 //     };
-//     const dragEnter = () => {
-//         setTimeout(() => {
-//             this.classList.add('hovered');
-//         }, 0);
+//     const dragEnter = function(e) {
+//         e.preventDefault();
+//         console.log('enter')
+//         this.classList.add('hovered');
+
 //     };
-//     const dragLeave = () => {
+//     const dragLeave = function() {
 //         this.classList.remove('hovered');
 //     };
-//     const dragDrop = () => {
+//     const dragDrop = function() {
 //         this.append(task);
 //         this.classList.remove('hovered');
 
 //     };
 
-//     dateCells.forEach((cell) => {
+//     btns.forEach((cell) => {
 //         cell.addEventListener('dragover', dragOver);
 //         cell.addEventListener('dragenter', dragEnter);
 //         cell.addEventListener('dragleave', dragLeave);
 //         cell.addEventListener('drop', dragDrop);
 
 //     })
+
+//     task.addEventListener('dragstart', dragStart);
+//     task.addEventListener('dragend', dragEnd);
 // }
+
+// dragAndDrop()
