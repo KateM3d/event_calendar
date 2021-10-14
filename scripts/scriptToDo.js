@@ -32,7 +32,7 @@ function displayMessages() {
     todoList.forEach(function(item, i) {
         displayMessages += `
 <li>
-<div id="labelForItem"  class="${item.important ? 'important': ''}" class="bg-secondary text-white"  ondblclick="deleteTask(${i})">${item.todo}</div>
+<div id="labelForItem" draggable='true' class="${item.important ? 'important': ''}" class="bg-secondary text-white"  ondblclick="deleteTask(${i})">${item.todo}</div>
 </li>
 `;
         todo.innerHTML = displayMessages;
@@ -63,49 +63,3 @@ todo.addEventListener('click', function(event) {
         }
     });
 });
-
-
-
-const dragAndDrop = function() {
-    const task = document.querySelector('#labelForItem');
-    const dateCells = document.querySelector('.card-body');
-
-    const dragStart = function() {
-        setTimeout(() => {
-            this.classList.add('hide');
-        }, 0);
-    };
-    const dragEnd = function() {
-        this.classList.remove('hide');
-    };
-
-    const dragOver = function(e) {
-        e.preventDefault();
-    };
-    const dragEnter = function() {
-        setTimeout(() => {
-            this.classList.add('hovered');
-        }, 0);
-    };
-    const dragLeave = function() {
-        this.classList.remove('hovered');
-    };
-    const dragDrop = function() {
-        this.append(task);
-        this.classList.remove('hovered');
-
-    };
-
-    dateCells.forEach((cell) => {
-        cell.addEventListener('dragover', dragOver);
-        cell.addEventListener('dragenter', dragEnter);
-        cell.addEventListener('dragleave', dragLeave);
-        cell.addEventListener('drop', dragDrop);
-
-    })
-
-    task.addEventListener('dragstart', dragStart);
-    task.addEventListener('dragend', dragEnd);
-}
-
-dragAndDrop()
