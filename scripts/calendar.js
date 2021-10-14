@@ -94,8 +94,6 @@ const createCalendar = (cld, year, month, day) => {
     `;
 
     let getYear = checkMonth(year, month, date);
-    console.log(getYear)
-    console.log(new Date(year - 1))
 
     dateHeading.innerHTML = `
             <div class="calendar_head_date_month">
@@ -119,6 +117,8 @@ const createCalendar = (cld, year, month, day) => {
         btn.addEventListener('click', (e) => {
             console.log(e.target.id);
             for (let i = 0; i < btns.length; i++) {
+                onClickClose(calendar, btns[i]);
+                isVisible(btns[i]); 
                 $(btns[i]).popover('update');
                 $(btns[i]).popover('hide');
                 if (+e.target.id === (i + 1)) {
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btns = document.querySelectorAll('.calendar_table_day_btn');
 
 
-    nextBtn.addEventListener('click', (e) => {
+    nextBtn.addEventListener('click', () => {
 
         let month = +document.querySelector(`.calendar_head_date_month`).dataset.month,
             year = +document.querySelector('.calendar_head_date_year').dataset.year,
@@ -203,15 +203,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         hidePopover(btns);
         calendar.innerHTML = ``;
-        console.log(`удалили`)
-        createCalendar(calendar, year, month);
+        createCalendar(calendar, year, month, new Date().getDate());
         addPopover(btns);
-        onClickClose(calendar, btns);
-        isVisible(calendar);
     });
 
-    prevBtn.addEventListener('click', (e) => {
-        e.preventDefault();
+    prevBtn.addEventListener('click', () => {
         let month = +document.querySelector(`.calendar_head_date_month`).dataset.month,
             year = +document.querySelector('.calendar_head_date_year').dataset.year,
             btns = document.querySelectorAll('.calendar_table_day_btn');
@@ -227,18 +223,13 @@ document.addEventListener('DOMContentLoaded', () => {
             month = month - 2;
         }
 
-        createCalendar(calendar, year, month);
+        createCalendar(calendar, year, month, new Date().getDate());
         $(function() {
             $('[data-toggle="popover"]').popover();
             $('[title = "To-do list"]');
         })
-        onClickClose(calendar, btns);
-        isVisible(calendar);
 
     });
-
-    onClickClose(calendar, btns);
-    isVisible(calendar);
 });
 
 const checkMonth = (year, month, date) => {
@@ -267,7 +258,7 @@ const hidePopover = () => {
     })
 }
 
-const onClickClose = (elem, arr) => { // вызвать в момент показа окна, где elem - окно
+const onClickClose = (elem, arr) => { // вызвать в момент показа списка заметок, где elem - заметки
     const outsideClickListener = (e) => {
         if (!elem.contains(e.target) && isVisible(elem)) { // проверяем, что клик не по элементу и элемент виден
             console.log(e.target)
@@ -278,7 +269,7 @@ const onClickClose = (elem, arr) => { // вызвать в момент пока
     document.addEventListener('click', outsideClickListener);
 }
 
-function isVisible(elem) { //открыто ли условное окно
+const isVisible = (elem) =>  { //открыто ли условное окно
     return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 }
 
