@@ -21,7 +21,7 @@ addButton.addEventListener('click', function() {
 
     todoList.push(newTodo);
     displayMessages();
-    for (let i in  todoList){
+    for (let i in todoList) {
         localStorage.setItem(`todo${i}`, JSON.stringify(todoList[i]));
     }
 
@@ -43,13 +43,13 @@ function displayMessages() {
 
 }
 
-function deleteTask(i) {
+// function deleteTask(i) {
 
-    todoList = JSON.parse(localStorage.getItem(`todo${i}`));
-    todoList.splice(i, 1);
-    localStorage.setItem(`todo${i}`, JSON.stringify(todoList[i]));
-    displayMessages();
-};
+//     todoList = JSON.parse(localStorage.getItem(`todo${i}`));
+//     todoList.splice(i, 1);
+//     localStorage.setItem(`todo${i}`, JSON.stringify(todoList[i]));
+//     displayMessages();
+// };
 
 
 todo.addEventListener('click', function(event) {
