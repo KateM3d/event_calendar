@@ -15,12 +15,12 @@
 <body class="app">
 
     <div class="card form-card" hidden>
-        <div class="card-body">
-            <h5 class="text-center">Hello, friend!</h5>
-            <h6 class="text-center">Fill in the fields below to get started</h6>
+        <div class="card-body popup">
+            <h5 class="text-center popup_greeting">Hello, friend!</h5>
+            <h6 class="text-center popup_text">Fill in the fields below to get started</h6>
 
-            <form class="needs-validation" novalidate>
-                <div class=" position-relative">
+            <form class="needs-validation popup_form" novalidate>
+                <div class=" position-relative popup_form_name">
                     <label for="validationTooltip01" class="form-label">What is your name?</label>
                     <input type="text" class="form-control userName" id="validationTooltip01" pattern="[^\s]+" required>
 
@@ -45,52 +45,62 @@
     </div>
 
     <header class="header mb-4" hidden>
-        <div>
-            <p class="greeting"></p>
 
-            <p class="date"></p>
+
+        <div class="user">
+            <p class="greeting user_greeting"></p>
+
+            <p class="date user_date"></p>
 
             <!-- ПРИВЕТСТВИЕ ПОЛЬЗОВАТЕЛЯ -->
         </div>
         <div class="quote-wrapper">
             <figure>
-                <blockquote class="blockquote">
-                    <p class="blockquote__text" style="font-size: 16px;"></p>
+                <blockquote class="blockquote quote-wrapper_blockquote">
+                    <p class="blockquote__text"></p>
                 </blockquote>
-                <figcaption class="blockquote-footer"></figcaption>
+                <figcaption class="blockquote-footer quote-wrapper_author"></figcaption>
             </figure>
         </div>
         <!-- ПОГОДА -->
         <div>
-            <p class='par'>Whould you like to check the weather in other cities?</p>
-            <input type="text" id="input">
-            <button id="inputBtn">Go!</button>
-            <div class="weather"> <span id="temperature"></span><br><span id="city"></span>
+            <div class="logo">
+                <img class="logo_img" src="./images/logo.svg">
+            </div>
+            <div class="chooseCity">
+                <p class='par chooseCity_par'>Check the weather in other cities:</p>
+                <div class="choose_par_form">
+                    <input type="text" id="input" class="chooseCity_par_form_input">
+                    <button id="inputBtn" class="chooseCity_par_form_btn">Go!</button>
+                <div class="weather">
+                </div>
+                 <span class="weather_result" id="temperature"></span><br><span class="weather_result" id="city"></span>
+                </div>
             </div>
         </div>
     </header>
 
     <div class="main" hidden>
-        <ul class="nav nav-tabs">
-            <li class="nav-item nav-link planner-link active text-center">PLANNER</li>
-            <li class="nav-item nav-link counter-link text-center">COUNTER</li>
-            <li class="nav-item nav-link game-link text-center">GAME</li>
+        <ul class="nav nav-tabs main_menu">
+            <li class="nav-item nav-link planner-link active text-center main_menu_li">PLANNER</li>
+            <li class="nav-item nav-link counter-link text-center main_menu_li">COUNTER</li>
+            <li class="nav-item nav-link game-link text-center main_menu_li">GAME</li>
         </ul>
 
-        <div class="planner-wrapper">
-            <div class="calendar">
+        <div class="planner-wrapper main_planner">
+            <div class="calendar main_planner_calendar">
                 <!-- МЕСТО ПОД КАЛЕНДАРЬ -->
                 <div class="calendar_head"></div>
                 <div class="calendar_body"></div>
             </div>
-            <div class="select">
-                <div class="select-wrapper" id="container">
-                    <input class="form-control" id="in" type="text" placeholder="note">
+            <div class="select main_planner_notions">
+                <div class="select-wrapper main_planner_notions_form" id="container">
+                    <input class="form-control main_planner_notions_form_input" id="in" type="text" placeholder="note">
 
-                    <button type="button" id="add" class="btn btn-outline-primary">Add</button>
+                    <button type="button" id="add" class="btn btn-outline-primary main_planner_notions_form_btn">Add</button>
                     <!-- КНОПКА ДОБАВИТЬ -->
                 </div>
-                <ul class="todoList" id="out" class="badge badge-info"></ul>
+                <ul class="todoList main_planner_notions_note" id="out" class="badge badge-info"></ul>
 
             </div>
         </div>
