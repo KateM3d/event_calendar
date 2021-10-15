@@ -1,22 +1,27 @@
-const showGame = () => {
-    document.querySelector('.planner-link').classList.remove('active');
-    document.querySelector('.planner-wrapper').setAttribute('hidden', 'hidden');
+const showContent = (event) => {
 
-    document.querySelector('.game-link').classList.add('active');
-    document.querySelector('.game').removeAttribute('hidden');
+    for (let li of document.querySelector('.nav').querySelectorAll('li')) {
+        li.classList.remove('active');
+    }
+
+    event.target.classList.add('active');
+
+    for (let i = 1; i < document.querySelector('.main').children.length; i++) {
+        document.querySelector('.main').children[i].setAttribute('hidden', 'hidden');
+    }
+
+    for (let i = 0; i < document.querySelector('.nav').querySelectorAll('li').length; i++) {
+        if (document.querySelector('.nav').querySelectorAll('li')[i] == event.target) {
+            document.querySelector('.main').children[i + 1].removeAttribute('hidden');
+
+            break;
+        }
+    }
 }
 
-const showPlanner = () => {
-    document.querySelector('.game-link').classList.remove('active');
-    document.querySelector('.game').setAttribute('hidden', 'hidden');
-
-    document.querySelector('.planner-link').classList.add('active');
-    document.querySelector('.planner-wrapper').removeAttribute('hidden');
+for (let li of document.querySelector('.nav').querySelectorAll('li')) {
+    li.addEventListener('click', showContent);
 }
-
-document.querySelector('.game-link').onclick = showGame;
-document.querySelector('.planner-link').onclick = showPlanner;
-
 
 // game
 
