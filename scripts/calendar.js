@@ -131,7 +131,7 @@ const createCalendar = (cld, year, month, day) => {
     // drag and drop goes here!!!
     function dragAndDrop() {
 
-        const tasks = document.querySelectorAll('#labelForItem');
+        const tasks = document.querySelectorAll('#liLabel');
 
 
 
