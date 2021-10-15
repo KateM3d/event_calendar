@@ -58,7 +58,7 @@ const createCalendar = (cld, year, month, day) => {
         if (month === new Date().getMonth() && day === date.getDate()) {
             table = `${table}<td class="card-body calendar_table_day calendar_table_day_today"><button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-">${date.getDate()}</button></td>`;
         } else {
-            table = `${table}<td class="card-body calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-">${date.getDate()}</button></td>`;
+            table = `${table}<td class="card-body calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-" >${date.getDate()}</button></td>`;
         }
 
         $(function() {
@@ -115,7 +115,6 @@ const createCalendar = (cld, year, month, day) => {
 
     btns.forEach(btn =>
         btn.addEventListener('click', (e) => {
-            console.log(e.target.id);
             for (let i = 0; i < btns.length; i++) {
                 onClickClose(calendar, btns[i]);
                 isVisible(btns[i]);
@@ -126,6 +125,14 @@ const createCalendar = (cld, year, month, day) => {
                 }
             }
         })
+    )
+
+    document.querySelectorAll(".calendar_table_day_btn").forEach(
+        day => {
+            day.addEventListener('click', (e) => {
+                e.preventDefault();
+            })
+        }
     )
 
     // drag and drop goes here!!!
