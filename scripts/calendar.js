@@ -138,31 +138,38 @@ const createCalendar = (cld, year, month, day) => {
                 this.classList.add('hide');
             }, 0);
             console.log('start')
+            console.log('start ' + tasks)
 
         };
         const dragEnd = function() {
             this.classList.remove('hide');
+            console.log('end ' + tasks)
         };
 
         const dragOver = function(e) {
             e.preventDefault();
+            console.log('over ' + tasks)
 
         };
         const dragEnter = function(e) {
             e.preventDefault();
             console.log('enter')
             this.classList.add('hovered');
+            console.log('enter ' + tasks)
 
         };
         const dragLeave = function() {
             this.classList.remove('hovered');
+            console.log('leave ' + tasks)
         };
         const dragDrop = function() {
+            console.log('drop ' + tasks)
 
             for (let i = 0; i < tasks.length; i++) {
                 this.append(tasks[i]);
 
                 this.classList.remove('hovered');
+                this.classList.remove('li');
             }
         };
 
