@@ -59,6 +59,49 @@
   width: 100%;
 }
 
+.app .main .counter-wrapper {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 75vh;
+}
+
+.app .main .counter-wrapper .counter-header {
+  position: absolute;
+  top: 30px;
+}
+
+.app .main .counter-wrapper .counter-body {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (5vw)[4];
+      grid-template-columns: repeat(4, 5vw);
+  -ms-grid-rows: (11vh)[2];
+      grid-template-rows: repeat(2, 11vh);
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
+}
+
+.app .main .counter-wrapper .counter-body .alert-danger,
+.app .main .counter-wrapper .counter-body .alert-primary {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .app .main .game {
   height: 75vh;
   display: -webkit-box;

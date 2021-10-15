@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', checkUserInfo = () => {
 
 const showGreeting = () => {
     let greeting = getGreeting();
-    name = name ?? localStorage.getItem('userName');
+    userName = userName ?? localStorage.getItem('userName');
 
-    document.querySelector('.greeting').textContent = `${greeting}, ${name}!`;
+    document.querySelector('.greeting').textContent = `${greeting}, ${userName}!`;
 }
 
 const getGreeting = () => {
@@ -31,7 +31,7 @@ const getGreeting = () => {
 }
 
 const updateLocal = () => {
-    localStorage.setItem('userName', name);
+    localStorage.setItem('userName', userName);
 }
 
 const showForm = () => {
@@ -40,10 +40,10 @@ const showForm = () => {
     document.querySelector('.card').removeAttribute('hidden', 'hidden');
 }
 
-let name;
+let userName;
 let city;
 
-const checkform = () => {
+const checkForm = () => {
     'use strict'
 
     var forms = document.querySelectorAll('.needs-validation')
@@ -60,16 +60,13 @@ const checkform = () => {
                 event.preventDefault();
                 event.stopPropagation();
 
-                name = document.getElementById('validationTooltip01').value;
-                name = name[0].toUpperCase() + name.slice(1).toLowerCase();
+                userName = document.getElementById('validationTooltip01').value;
+                userName = userName[0].toUpperCase() + userName.slice(1).toLowerCase();
                 city = document.getElementById('validationTooltip03').value;
-                console.log(name);
-                console.log(city);
-
 
                 form.classList.add('was-validated');
                 showInterface();
-                showQuote();
+                showQuote(); 
                 showGreeting();
                 updateLocal();
             }, false)
@@ -82,7 +79,7 @@ const showInterface = () => {
     document.querySelector('.main').removeAttribute('hidden', 'hidden');
 }
 
-showQuote = () => {
+const showQuote = () => {
     fetch('https://favqs.com/api/qotd')
         .then(response => response.json())
         .then(obj => {
@@ -95,3 +92,5 @@ showQuote = () => {
             document.querySelector('blockquote').innerText = error.message;
         });
 }
+
+document.querySelector('.form-btn').addEventListener('click', checkForm)
