@@ -132,6 +132,30 @@ header {
 .app .main .planner-wrapper .btn-outline-primary {
   width: 100%;
 }
+.app .main .counter-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+}
+.app .main .counter-wrapper .counter-header {
+  position: absolute;
+  top: 30px;
+}
+.app .main .counter-wrapper .counter-body {
+  display: grid;
+  grid-template-columns: repeat(4, 5vw);
+  grid-template-rows: repeat(2, 11vh);
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+.app .main .counter-wrapper .counter-body .alert-danger,
+.app .main .counter-wrapper .counter-body .alert-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .app .main .game {
   height: 75vh;
   display: flex;
