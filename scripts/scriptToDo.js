@@ -14,7 +14,10 @@ if (localStorage.getItem('todo0')) {
     displayMessages();
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 15f60c6cfbbe79f42716b5b6e0557988f4f7ce0b
 addButton.addEventListener('click', function() {
     if (!addMessage.value) return;
 
