@@ -1,5 +1,21 @@
+$ultimateGray: #939597;
+$illuminating: #f5df4d;
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+    letter-spacing: 0.02vw;
+}
+
+header {
+    border-radius: 0 0 20px 20px;
+    box-shadow:  20px 20px 60px #bebebe,
+                -20px -20px 60px #ffffff;
+}
+
 .app {
-    padding: 10px;
+    // padding: 10px;
     .form-card {
         width: 25vw;
         .userName,
@@ -15,13 +31,100 @@
         }
     }
     .header {
+        background-color: $ultimateGray;
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: 1.2fr 1.5fr 1.2fr;
         gap: 10px;
-        height: 10vh;
+        padding: 3vw 1.5vw;
+        // height: 10vh;
+        .user{
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 0.1vw;
+            &_greeting {
+                color: $illuminating;
+                font-size: 1.5vw;
+                font-weight: 300;
+            }
+            &_date {
+                font-weight: 300;
+                margin-top: -0.5vw;
+                margin-left: 0.15vw;
+            }
+        }
         .quote-wrapper {
             text-align: center;
+            border-radius: 20px;
+            background: #939597;
+            box-shadow:  26px 26px 47px #868889,
+                        -26px -26px 47px #a0a2a5;
+            height: 12vw;
+            font-weight: 300;
+            > figure {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 1vw 4vw;
+            }
+            &_blockquote {
+                padding-bottom: 0.2vw;;
+            }
+            &_author {
+                border-top: 1px solid rgba(128, 128, 128, 0.507);
+                padding-top: 0.2vw;
+            }
         }
+        .logo {
+            margin-left: 5.3vw;
+            width: 22vw;
+            &_img {
+                width: 100%;
+            }
+        }
+        .chooseCity {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            margin-right: 2.6vw;
+            margin-top: 2.2vw;
+            font-weight: 300;
+            &_par {
+                &_form {
+                    &_input {
+                        padding: 0.17vw 1vw;
+                        margin-right: -3vw;
+                        border: none;
+                        border-radius: 4px;
+                        outline: none;
+                        &:focus, &:active {
+                            outline: none;
+                            border: none;
+                        }
+                    }
+                    &_btn {
+                        padding: 0.2vw 1vw;
+                        border: none;
+                        border-radius: 0 4px 4px 0;
+                        background-color: $illuminating;
+                        color: $ultimateGray;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: 0.06vw;
+                        &_:focus, &_:active {
+                            outline: none;
+                        } 
+                        &:hover {
+                            box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.18);
+                        }
+                    }
+                }
+            }
+        }
+        
         .weather {
             text-align: right;
         }
@@ -198,6 +301,10 @@
         width: 98%;
         th,
         td {
+            text-transform: uppercase;
+            font-size: 1.2vw;
+            font-weight: 400;
+            letter-spacing: 0.4vw;
             width: 12vw;
         }
         th {

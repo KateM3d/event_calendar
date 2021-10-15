@@ -1,115 +1,165 @@
-.app {
-  padding: 10px;
+body, html {
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
+  letter-spacing: 0.02vw;
+}
+
+header {
+  border-radius: 0 0 20px 20px;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
 }
 
 .app .form-card {
   width: 25vw;
 }
-
 .app .form-card .userName,
 .app .form-card .userCity {
   margin-bottom: 30px;
 }
-
 .app .form-card .btn-wrapper {
   margin-top: 45px;
   margin-bottom: 15px;
 }
-
 .app .form-card .form-btn {
   width: 100%;
 }
-
 .app .header {
-  display: -ms-grid;
+  background-color: #939597;
   display: grid;
-  -ms-grid-columns: 1fr 2fr 1fr;
-      grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1.2fr 1.5fr 1.2fr;
   gap: 10px;
-  height: 10vh;
+  padding: 3vw 1.5vw;
 }
-
+.app .header .user {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1vw;
+}
+.app .header .user_greeting {
+  color: #f5df4d;
+  font-size: 1.5vw;
+  font-weight: 300;
+}
+.app .header .user_date {
+  font-weight: 300;
+  margin-top: -0.5vw;
+  margin-left: 0.15vw;
+}
 .app .header .quote-wrapper {
   text-align: center;
+  border-radius: 20px;
+  background: #939597;
+  box-shadow: 26px 26px 47px #868889, -26px -26px 47px #a0a2a5;
+  height: 12vw;
+  font-weight: 300;
 }
-
+.app .header .quote-wrapper > figure {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1vw 4vw;
+}
+.app .header .quote-wrapper_blockquote {
+  padding-bottom: 0.2vw;
+}
+.app .header .quote-wrapper_author {
+  border-top: 1px solid rgba(128, 128, 128, 0.507);
+  padding-top: 0.2vw;
+}
+.app .header .logo {
+  margin-left: 5.3vw;
+  width: 22vw;
+}
+.app .header .logo_img {
+  width: 100%;
+}
+.app .header .chooseCity {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin-right: 2.6vw;
+  margin-top: 2.2vw;
+  font-weight: 300;
+}
+.app .header .chooseCity_par_form_input {
+  padding: 0.17vw 1vw;
+  margin-right: -3vw;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+.app .header .chooseCity_par_form_input:focus, .app .header .chooseCity_par_form_input:active {
+  outline: none;
+  border: none;
+}
+.app .header .chooseCity_par_form_btn {
+  padding: 0.2vw 1vw;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  background-color: #f5df4d;
+  color: #939597;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06vw;
+}
+.app .header .chooseCity_par_form_btn_:focus, .app .header .chooseCity_par_form_btn_:active {
+  outline: none;
+}
+.app .header .chooseCity_par_form_btn:hover {
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.18);
+}
 .app .header .weather {
   text-align: right;
 }
-
 .app .main li {
   cursor: pointer;
 }
-
 .app .main .planner-wrapper {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 3fr 1fr;
-      grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: 10px;
   height: 75vh;
 }
-
 .app .main .planner-wrapper .calendar,
 .app .main .planner-wrapper .select {
   padding: 10px;
 }
-
 .app .main .planner-wrapper .btn-outline-primary {
   width: 100%;
 }
-
 .app .main .game {
   height: 75vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
 }
-
 .app .main .game .game-wrapper {
   position: relative;
   width: 640px;
   height: 60vh;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
-  -ms-grid-rows: (1fr)[3];
-      grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 15px;
 }
-
 .app .main .game .game-wrapper .memory-card {
   position: relative;
-  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-          box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
   cursor: pointer;
 }
-
 .app .main .game .game-wrapper .memory-card:active {
-  -webkit-transform: scale(0.97);
-          transform: scale(0.97);
-  -webkit-transition: -webkit-transform .2s;
-  transition: -webkit-transform .2s;
-  transition: transform .2s;
-  transition: transform .2s, -webkit-transform .2s;
+  transform: scale(0.97);
+  transition: transform 0.2s;
 }
-
 .app .main .game .game-wrapper .front-face,
 .app .main .game .game-wrapper .back-face {
   width: 100%;
@@ -121,52 +171,41 @@
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
-
 .app .main .game .game-wrapper .front-face {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
-
 .app .main .game .game-wrapper .game-modal {
   position: absolute;
   top: 50%;
   left: 50%;
   margin-right: -50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 18rem;
 }
-
 .app .flip {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
-
 @media (max-width: 767px) {
   .app .form-card {
     width: 100%;
   }
   .app .form-card .userName,
-  .app .form-card .userCity {
+.app .form-card .userCity {
     margin-bottom: 45px;
   }
   .app .header {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-    -ms-grid-rows: (1fr)[3];
-        grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
     height: 26vh;
   }
   .app .header .weather,
-  .app .header .quote-wrapper,
-  .app .header .greeting {
+.app .header .quote-wrapper,
+.app .header .greeting {
     text-align: center;
   }
   .app .main .planner-wrapper {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-    -ms-grid-rows: 4fr 1fr;
-        grid-template-rows: 4fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4fr 1fr;
   }
   .app .main .game {
     padding-top: 10px;
@@ -174,37 +213,27 @@
   .app .main .game .game-wrapper {
     width: 100%;
     height: 100%;
-    display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[4];
-        grid-template-columns: repeat(4, 1fr);
-    -ms-grid-rows: (1fr)[3];
-        grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: 15px;
   }
   .app .main .game .game-wrapper .front-face,
-  .app .main .game .game-wrapper .back-face {
+.app .main .game .game-wrapper .back-face {
     padding: 3px;
   }
 }
 
 .calendar_head {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   padding: 1.5rem 2rem;
   font-size: 1.5vw;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 1vw;
 }
-
 .calendar_head_prev, .calendar_head_next {
   border: none;
   background: transparent;
@@ -214,36 +243,25 @@
   width: 2rem;
   height: 2.2rem;
 }
-
 .calendar_head_prev_svg, .calendar_head_next_svg {
   width: 2rem;
   height: 3rem;
 }
-
-.calendar_head_prev:hover polyline,
-.calendar_head_prev:focus polyline {
+.calendar_head_prev:hover polyline, .calendar_head_prev:focus polyline {
   stroke-width: 3;
 }
-
 .calendar_head_prev:active polyline {
   stroke-width: 6;
-  -webkit-transition: all 100ms ease-in-out;
   transition: all 100ms ease-in-out;
 }
-
-.calendar_head_next:hover polyline,
-.calendar_head_next:focus polyline {
+.calendar_head_next:hover polyline, .calendar_head_next:focus polyline {
   stroke-width: 3;
 }
-
 .calendar_head_prev:active polyline {
   stroke-width: 6;
-  -webkit-transition: all 100ms ease-in-out;
   transition: all 100ms ease-in-out;
 }
-
 .calendar_head polyline {
-  -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
   fill: none;
   stroke: black;
@@ -251,68 +269,54 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-
 .calendar_head_date {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   font-size: 2vw;
 }
-
 .calendar_head_date_month {
   margin-right: 3vw;
 }
-
 .calendar_table {
   width: 98%;
 }
-
 .calendar_table th,
 .calendar_table td {
+  text-transform: uppercase;
+  font-size: 1.2vw;
+  font-weight: 400;
+  letter-spacing: 0.4vw;
   width: 12vw;
 }
-
 .calendar_table th {
   text-align: center;
 }
-
 .calendar_table_day_today {
-  -webkit-box-shadow: 0px 0px 13px 5px rgba(55, 173, 219, 0.212) inset !important;
-          box-shadow: 0px 0px 13px 5px rgba(55, 173, 219, 0.212) inset !important;
+  box-shadow: 0px 0px 13px 5px rgba(55, 173, 219, 0.212) inset !important;
 }
-
 .calendar_table_day_today:hover {
-  -webkit-box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(55, 173, 219, 0.212) !important;
-          box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(55, 173, 219, 0.212) !important;
+  box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(55, 173, 219, 0.212) !important;
 }
-
 .calendar_table_day:hover {
   border: 1 solid rgba(0, 0, 0, 0.041);
-  -webkit-box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(48, 48, 48, 0.185);
-          box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(48, 48, 48, 0.185);
+  box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(48, 48, 48, 0.185);
 }
-
 .calendar_table td {
   height: 8vw;
 }
-
 .calendar_table_btn, .calendar_table_btn:focus, .calendar_table_btn:active {
   outline: 0 !important;
 }
-
 .calendar .btn-lg {
   width: 100%;
   height: 100%;
   text-align: start;
   padding-bottom: 5vw;
 }
-
 @media (max-width: 900px) {
   .calendar .calendar_head_date {
     font-size: 2.5vw;
   }
 }
-
 @media (max-width: 767px) {
   .calendar .calendar_head_date {
     font-size: 3.5vw;
@@ -325,5 +329,4 @@
 
 .hovered {
   background-color: aqua;
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

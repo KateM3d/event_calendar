@@ -45,27 +45,37 @@
     </div>
 
     <header class="header mb-4" hidden>
-        <div>
-            <p class="greeting"></p>
 
-            <p class="date"></p>
+
+        <div class="user">
+            <p class="greeting user_greeting"></p>
+
+            <p class="date user_date"></p>
 
             <!-- ПРИВЕТСТВИЕ ПОЛЬЗОВАТЕЛЯ -->
         </div>
         <div class="quote-wrapper">
             <figure>
-                <blockquote class="blockquote">
+                <blockquote class="blockquote quote-wrapper_blockquote">
                     <p class="blockquote__text" style="font-size: 16px;"></p>
                 </blockquote>
-                <figcaption class="blockquote-footer"></figcaption>
+                <figcaption class="blockquote-footer quote-wrapper_author"></figcaption>
             </figure>
         </div>
         <!-- ПОГОДА -->
         <div>
-            <p class='par'>Whould you like to check the weather in other cities?</p>
-            <input type="text" id="input">
-            <button id="inputBtn">Go!</button>
-            <div class="weather"> <span id="temperature"></span><br><span id="city"></span>
+            <div class="logo">
+                <img class="logo_img" src="./images/logo.svg">
+            </div>
+            <div class="chooseCity">
+                <p class='par chooseCity_par'>Check the weather in other cities:</p>
+                <div class="choose_par_form">
+                    <input type="text" id="input" class="chooseCity_par_form_input">
+                    <button id="inputBtn" class="chooseCity_par_form_btn">Go!</button>
+                <div class="weather">
+                </div>
+                 <span id="temperature"></span><br><span id="city"></span>
+                </div>
             </div>
         </div>
     </header>
