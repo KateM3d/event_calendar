@@ -14,22 +14,22 @@
     padding: 0;
 }
 
-#in {
+/* #in {
     width: 200px;
     margin-top: 10px;
     margin-bottom: 5px;
-}
+} */
 
-#add {
+/* #add {
     width: 200px;
-}
+} */
 
-li {
+/* li {
     list-style-type: none;
-    width: 200px;
-}
+    width: 200px; */
+/* } */
 
-.todoList li {
+/* .todoList li {
     list-style: none;
     height: 40px;
     text-align: center;
@@ -39,4 +39,4 @@ li {
     border-radius: 3px;
     overflow: hidden;
     text-align: center;
-}
+} */

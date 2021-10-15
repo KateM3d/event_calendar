@@ -58,7 +58,7 @@ const createCalendar = (cld, year, month, day) => {
         if (month === new Date().getMonth() && day === date.getDate()) {
             table = `${table}<td class="card-body calendar_table_day calendar_table_day_today"><button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-">${date.getDate()}</button></td>`;
         } else {
-            table = `${table}<td class="card-body calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-">${date.getDate()}</button></td>`;
+            table = `${table}<td class="card-body calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-" >${date.getDate()}</button></td>`;
         }
 
         $(function() {
@@ -115,7 +115,6 @@ const createCalendar = (cld, year, month, day) => {
 
     btns.forEach(btn =>
         btn.addEventListener('click', (e) => {
-            console.log(e.target.id);
             for (let i = 0; i < btns.length; i++) {
                 onClickClose(calendar, btns[i]);
                 isVisible(btns[i]);
@@ -128,57 +127,105 @@ const createCalendar = (cld, year, month, day) => {
         })
     )
 
+    document.querySelectorAll(".calendar_table_day_btn").forEach(
+        day => {
+            day.addEventListener('click', (e) => {
+                e.preventDefault();
+            })
+        }
+    )
+
     // drag and drop goes here!!!
-    const dragAndDrop = () => {
+    function dragAndDrop() {
+
         const tasks = document.querySelectorAll('#labelForItem');
-        // const cells = document.querySelectorAll('.btn-lg');
 
-        const dragStart = function() {
-            setTimeout(() => {
-                this.classList.add('hide');
-            }, 0);
-            console.log('start')
 
-        };
-        const dragEnd = function() {
-            this.classList.remove('hide');
-        };
 
-        const dragOver = function(e) {
-            e.preventDefault();
-
-        };
-        const dragEnter = function(e) {
-            e.preventDefault();
-            console.log('enter')
-            this.classList.add('hovered');
-
-        };
-        const dragLeave = function() {
-            this.classList.remove('hovered');
-        };
-        const dragDrop = function() {
-
-            for (let i = 0; i < tasks.length; i++) {
-                this.append(tasks[i]);
-
-                this.classList.remove('hovered');
-            }
-        };
-
-        btns.forEach((cell) => {
-            cell.addEventListener('dragover', dragOver);
-            cell.addEventListener('dragenter', dragEnter);
-            cell.addEventListener('dragleave', dragLeave);
-            cell.addEventListener('drop', dragDrop);
+        btns.forEach(btn => {
+            btn.ondragover = allowDrop;
+            btn.ondrop = drop;
 
         })
 
-        tasks.forEach((task) => {
-            task.addEventListener('dragstart', dragStart);
-            task.addEventListener('dragend', dragEnd);
 
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        tasks.forEach(task => {
+            task.ondragstart = drag;
         })
+
+        function drag(event) {
+            event.dataTransfer.setData('id', event.target.id);
+        }
+
+
+        function drop(event) {
+            let itemId = event.dataTransfer.getData('id');
+            console.log(itemId)
+            event.target.append(document.getElementById(itemId))
+
+        }
+
+
+
+        // console.log(tasks)
+        // const dragStart = function() {
+        //     setTimeout(() => {
+        //         this.classList.add('hide');
+        //     }, 0);
+        //     console.log('start')
+
+
+        // };
+        // const dragEnd = function() {
+        //     this.classList.remove('hide');
+        //     console.log('end ')
+        // };
+
+        // const dragOver = function(e) {
+        //     e.preventDefault();
+        //     console.log('over ')
+
+
+        // };
+        // const dragEnter = function(e) {
+        //     e.preventDefault();
+        //     console.log('enter')
+        //     this.classList.add('hovered');
+        //     console.log('enter ')
+
+        // };
+        // const dragLeave = function() {
+        //     this.classList.remove('hovered');
+        //     console.log('leave ')
+        // };
+        // const dragDrop = function() {
+        //     console.log('drop ')
+
+        //     for (let i = 0; i < tasks.length; i++) {
+        //         this.append(tasks[i]);
+
+        //         this.classList.remove('hovered');
+        //         this.classList.remove('li');
+        //     }
+        // };
+
+        // btns.forEach((cell) => {
+        //     cell.addEventListener('dragover', dragOver);
+        //     cell.addEventListener('dragenter', dragEnter);
+        //     cell.addEventListener('dragleave', dragLeave);
+        //     cell.addEventListener('drop', dragDrop);
+
+        // })
+
+        // tasks.map((task) => {
+        //     task.addEventListener('dragstart', dragStart);
+        //     task.addEventListener('dragend', dragEnd);
+
+        // })
 
     }
 
@@ -261,7 +308,7 @@ const hidePopover = () => {
 const onClickClose = (elem, arr) => { // вызвать в момент показа списка заметок, где elem - заметки
     const outsideClickListener = (e) => {
         if (!elem.contains(e.target) && isVisible(elem)) { // проверяем, что клик не по элементу и элемент виден
-            console.log(e.target)
+
             $(arr).popover('hide');
             document.removeEventListener('click', outsideClickListener);
         }

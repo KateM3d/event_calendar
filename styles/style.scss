@@ -1,78 +1,264 @@
-.app {
-    padding: 10px;
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Raleway:wght@200;300;400;500;600;700&display=swap');
 
+$fontHeading: 'Gruppo', cursive;
+$fontText: 'Raleway', sans-serif;
+$ultimateGray: #939597;
+$illuminating: #fde910;
+$lightGray: #e6e7e2bd;
+$dirtyWhite: #F0F1EC;
+$darkGray: rgb(44, 44, 44);;
+
+body, html {
+    font-family: $fontText !important;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+    letter-spacing: 0.02vw;
+    font-size: 1vw;
+}
+
+header {
+    border-radius: 0 0 20px 20px;
+    box-shadow:  20px 20px 60px #bebebe,
+                -20px -20px 60px #ffffff;
+}
+
+.app {
+    // padding: 10px;
     .form-card {
         width: 25vw;
-
         .userName,
         .userCity {
             margin-bottom: 30px;
         }
-
         .btn-wrapper {
             margin-top: 45px;
             margin-bottom: 15px;
         }
-
         .form-btn {
             width: 100%;
         }
     }
-
     .header {
+        background-color: $ultimateGray;
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: 1.2fr 1.5fr 1.2fr;
         gap: 10px;
-        height: 10vh;
-
+        padding: 3vw 1.5vw;
+        // height: 10vh;
+        .user{
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            justify-content: start;
+            text-transform: uppercase;
+            &_greeting {
+                font-family: $fontHeading;
+                color: $illuminating;
+                font-size: 2.8vw;
+                letter-spacing: 0.2vw;
+                font-weight: 300;
+                line-height: 3vw;
+            }
+            &_date {
+                font-weight: 300;
+                margin-top: -0.5vw;
+                margin-left: 0.15vw;
+                line-height: 3vw;
+            }
+        }
         .quote-wrapper {
             text-align: center;
-        }
-
-        .weather {
-            text-align: right;
-        }
-    }
-
-    .main {
-        li {
-            cursor: pointer;
-        }
-
-        .planner-wrapper {
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 10px;
-            height: 75vh;
-
-            .calendar,
-            .select {
-                padding: 10px;
+            border-radius: 20px;
+            background: $lightGray;
+            box-shadow:  26px 26px 47px #868889,
+                        -26px -26px 47px #a0a2a5;
+            height: 12vw;
+            font-weight: 300;
+            font-size: 1vw;
+            > figure {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 1vw 4vw;
             }
-
-            .btn-outline-primary {
+            &_blockquote {
+                padding-bottom: 0.2vw;
+                font-size: 1vw;
+            }
+            &_author {
+                border-top: 1px solid rgba(128, 128, 128, 0.507);
+                padding-top: 0.2vw;
+            }
+        }
+        .logo {
+            margin-left: 5.3vw;
+            margin-top: 0.8vw;
+            width: 22vw;
+            &_img {
                 width: 100%;
             }
         }
+        .chooseCity {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            margin-right: 2.6vw;
+            margin-top: 2.2vw;
+            font-weight: 300;
+            letter-spacing: 0.1vw;
+            &_par {
+                &_form {
+                    &_input {
+                        font-weight: 300;
+                        padding: 0.2vw 1vw;
+                        margin-right: -3vw;
+                        border: none;
+                        border-radius: 4px;
+                        outline: none;
+                        background-color: $lightGray;
+                        &:focus, &:active {
+                            outline: none;
+                            border: none;
+                        }
+                    }
+                    &_btn {
+                        font-weight: 600;
+                        padding: 0.2vw 1vw;
+                        border: none;
+                        border-radius: 0 4px 4px 0;
+                        background-color: $illuminating;
+                        color: $ultimateGray;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: 0.06vw;
+                        &_:focus, &_:active {
+                            outline: none;
+                        } 
+                        &:hover {
+                            box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.18);
+                        }
+                    }
+                }
+            }
+        }
+        
+        .weather {
+            text-align: right;
+            &_result {
+                font-family: $fontHeading;
+                font-size: 1.2vw;
+                margin-right: 0.5vw;
+            }
+        }
+    }
+    .main {
+        margin-top: -4.14vw;
+        background-color: $dirtyWhite;
+        &_menu {
+            background-color: $ultimateGray;
+            padding: 0 2.5vw;
+            margin-bottom: 2vw;
+            &_li {
+                color: $lightGray;
+                letter-spacing: 0.2vw;
+                &:active, &:focus {
+                    background-color: $lightGray;
+                }
+            }
+        }
 
+        // изменение стилей bootstrap на пунктах меню
+        .nav-link.active {
+            background-color: $lightGray;
+            font-weight: 400;
+            border: none;
+        }
+        .nav-link:hover {
+            color: $darkGray;
+        }
+
+        &_planner {
+            padding: 0 4vw 3vw 4vw;
+            &_notions {
+                margin-top: 6vw;
+                width: 23vw;
+                &_form {
+                    width: 23vw;
+                    &_input {
+                        width: 100%;
+                        padding: 0.5vw;
+                    }
+                    &_btn {
+                        width: 100%;
+                        padding: 0.5vw;
+                        margin: 0.6vw 0 1.8vw 0;
+                        text-transform: uppercase;
+                        font-weight: 900;
+                        letter-spacing: 0.1vw;
+                        background-color: $ultimateGray;
+                        border: none;
+                        color: $darkGray;
+                        &:hover {
+                            background-color: $illuminating;
+                            color: $darkGray;
+                            box-shadow: 0px 0px 20px 4px rgba(228, 214, 17, 0.589) inset;
+                        }
+                    }
+                }
+            }
+        }
+
+        .form-control.active, 
+        .form-control:focus {
+            outline: none;
+            box-shadow: none;
+            border: 2px solid $illuminating;
+        }
+        
+        .todoList li {
+            list-style-type: none;
+            background-color: $lightGray;
+            padding: 1vw 2vw;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.5vw;
+            border-radius: 4px;
+            margin-bottom: 0.8vw;
+            //overflow: hidden;
+        }
+        .planner-wrapper {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2vw
+            //height: 75vh;
+
+            // .calendar,
+            // .select {
+            //     padding: 10px;
+            // }
+
+            // .btn-outline-primary {
+            //     width: 100%;
+            // }
+        }
         .counter-wrapper {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 75vh;
-
             .counter-header {
                 position: absolute;
                 top: 30px;
             }
-
             .counter-body {
                 display: grid;
                 grid-template-columns: repeat(4, 5vw);
                 grid-template-rows: repeat(2, 11vh);
                 column-gap: 20px;
-
                 .alert-danger,
                 .alert-primary {
                     display: flex;
@@ -81,14 +267,12 @@
                 }
             }
         }
-
         .game {
             height: 75vh;
             display: flex;
             justify-content: center;
             align-items: center;
             perspective: 1000px;
-
             .game-wrapper {
                 position: relative;
                 width: 640px;
@@ -97,7 +281,6 @@
                 grid-template-columns: repeat(4, 1fr);
                 grid-template-rows: repeat(3, 1fr);
                 gap: 15px;
-
                 .memory-card {
                     position: relative;
                     box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
@@ -106,12 +289,10 @@
                     transition: transform .5s;
                     cursor: pointer;
                 }
-
                 .memory-card:active {
                     transform: scale(0.97);
                     transition: transform .2s;
                 }
-
                 .front-face,
                 .back-face {
                     width: 100%;
@@ -122,11 +303,9 @@
                     background: #0d6efd;
                     backface-visibility: hidden;
                 }
-
                 .front-face {
                     transform: rotateY(180deg);
                 }
-
                 .game-modal {
                     position: absolute;
                     top: 50%;
@@ -138,42 +317,34 @@
             }
         }
     }
-
     .flip {
         transform: rotateY(180deg);
     }
-
     @media (max-width: 767px) {
         .form-card {
             width: 100%;
-
             .userName,
             .userCity {
                 margin-bottom: 45px;
             }
         }
-
         .header {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(3, 1fr);
             height: 26vh;
-
             .weather,
             .quote-wrapper,
             .greeting {
                 text-align: center;
             }
         }
-
         .main {
             .planner-wrapper {
                 grid-template-columns: 1fr;
                 grid-template-rows: 4fr 1fr;
             }
-
             .game {
                 padding-top: 10px;
-
                 .game-wrapper {
                     width: 100%;
                     height: 100%;
@@ -181,7 +352,6 @@
                     grid-template-columns: repeat(4, 1fr);
                     grid-template-rows: repeat(3, 1fr);
                     gap: 15px;
-
                     .front-face,
                     .back-face {
                         padding: 3px;
@@ -202,7 +372,6 @@
         font-weight: 300;
         text-transform: uppercase;
         letter-spacing: 1vw;
-
         &_prev,
         &_next {
             border: none;
@@ -212,99 +381,108 @@
             cursor: pointer;
             width: 2rem;
             height: 2.2rem;
-
             &_svg {
                 width: 2rem;
                 height: 3rem;
             }
         }
-
         &_prev:hover polyline,
         &_prev:focus polyline {
             stroke-width: 3;
+            stroke: $illuminating;
         }
-
         &_prev:active polyline {
             stroke-width: 6;
             transition: all 100ms ease-in-out;
+            stroke: $illuminating;
         }
-
         &_next:hover polyline,
         &_next:focus polyline {
             stroke-width: 3;
+            stroke: $illuminating;
         }
-
         &_prev:active polyline {
             stroke-width: 6;
             transition: all 100ms ease-in-out;
+            stroke: $illuminating;
         }
-
         polyline {
             transition: all 250ms ease-in-out;
             fill: none;
-            stroke: black;
+            stroke: $ultimateGray;
             stroke-width: 1;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-
         &_date {
             display: flex;
             font-size: 2vw;
-
             &_month {
                 margin-right: 3vw;
             }
         }
     }
-
     &_table {
         width: 98%;
-
+        &> thead {background-color: $lightGray}
+        &> tbody {background-color: $lightGray};
         th,
         td {
+            text-transform: uppercase;
+            font-size: 1.2vw;
+            font-weight: 400;
+            letter-spacing: 0.4vw;
             width: 12vw;
         }
-
         th {
             text-align: center;
         }
-
         &_day {
             &_today {
-                box-shadow: 0px 0px 13px 5px rgba(55, 173, 219, 0.212) inset !important;
+                box-shadow: 0px 0px 20px 3px $illuminating
+                inset !important;
 
                 &:hover {
-                    box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(55, 173, 219, 0.212) !important;
+                    box-shadow: 0 0 0 1px white, 0 0 10px 3px $illuminating !important;
                 }
             }
-
             &:hover {
                 border: 1 solid rgba(0, 0, 0, 0.041);
                 box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(48, 48, 48, 0.185);
             }
         }
-
         td {
             height: 8vw;
         }
-
-        &_btn {
-
-            &,
-            &:focus,
-            &:active {
-                outline: 0 !important;
-            }
+        .btn-lg {
+            width: 100%;
+            height: 100%;
+            text-align: start;
+            padding-bottom: 5vw;
+            background-color: none;
+            border: none;
+        }
+    
+        .btn.active,
+        .btn:focus,
+        .btn-lg.active,
+        .btn-lg:focus {
+            outline: 0;
+            box-shadow: none;
+            border: none;
+            border-color: none;
+        }
+    
+        .btn::-moz-focus-inner, 
+        .btn-lg::-moz-focus-inner {
+            border: none;
+            outline: none;
+            box-shadow: none;
+            border: none;
         }
     }
 
-    .btn-lg {
-        width: 100%;
-        height: 100%;
-        text-align: start;
-        padding-bottom: 5vw;
-    }
+    
 
     @media (max-width: 900px) {
         .calendar {
@@ -315,7 +493,6 @@
             }
         }
     }
-
     @media (max-width: 767px) {
         .calendar {
             &_head {
