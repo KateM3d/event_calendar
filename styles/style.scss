@@ -28,22 +28,18 @@ header {
     // padding: 10px;
     .form-card {
         width: 25vw;
-
         .userName,
         .userCity {
             margin-bottom: 30px;
         }
-
         .btn-wrapper {
             margin-top: 45px;
             margin-bottom: 15px;
         }
-
         .form-btn {
             width: 100%;
         }
     }
-
     .header {
         background-color: $ultimateGray;
         display: grid;
@@ -158,7 +154,6 @@ header {
             }
         }
     }
-
     .main {
         margin-top: -4.14vw;
         background-color: $dirtyWhite;
@@ -233,7 +228,6 @@ header {
             border-radius: 4px;
             //overflow: hidden;
         }
-
         .planner-wrapper {
             display: grid;
             grid-template-columns: 3fr 1fr;
@@ -249,25 +243,21 @@ header {
             //     width: 100%;
             // }
         }
-
         .counter-wrapper {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 75vh;
-
             .counter-header {
                 position: absolute;
                 top: 30px;
             }
-
             .counter-body {
                 display: grid;
                 grid-template-columns: repeat(4, 5vw);
                 grid-template-rows: repeat(2, 11vh);
                 column-gap: 20px;
-
                 .alert-danger,
                 .alert-primary {
                     display: flex;
@@ -276,14 +266,12 @@ header {
                 }
             }
         }
-
         .game {
             height: 75vh;
             display: flex;
             justify-content: center;
             align-items: center;
             perspective: 1000px;
-
             .game-wrapper {
                 position: relative;
                 width: 640px;
@@ -292,7 +280,6 @@ header {
                 grid-template-columns: repeat(4, 1fr);
                 grid-template-rows: repeat(3, 1fr);
                 gap: 15px;
-
                 .memory-card {
                     position: relative;
                     box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
@@ -301,12 +288,10 @@ header {
                     transition: transform .5s;
                     cursor: pointer;
                 }
-
                 .memory-card:active {
                     transform: scale(0.97);
                     transition: transform .2s;
                 }
-
                 .front-face,
                 .back-face {
                     width: 100%;
@@ -317,11 +302,9 @@ header {
                     background: #0d6efd;
                     backface-visibility: hidden;
                 }
-
                 .front-face {
                     transform: rotateY(180deg);
                 }
-
                 .game-modal {
                     position: absolute;
                     top: 50%;
@@ -333,42 +316,34 @@ header {
             }
         }
     }
-
     .flip {
         transform: rotateY(180deg);
     }
-
     @media (max-width: 767px) {
         .form-card {
             width: 100%;
-
             .userName,
             .userCity {
                 margin-bottom: 45px;
             }
         }
-
         .header {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(3, 1fr);
             height: 26vh;
-
             .weather,
             .quote-wrapper,
             .greeting {
                 text-align: center;
             }
         }
-
         .main {
             .planner-wrapper {
                 grid-template-columns: 1fr;
                 grid-template-rows: 4fr 1fr;
             }
-
             .game {
                 padding-top: 10px;
-
                 .game-wrapper {
                     width: 100%;
                     height: 100%;
@@ -376,7 +351,6 @@ header {
                     grid-template-columns: repeat(4, 1fr);
                     grid-template-rows: repeat(3, 1fr);
                     gap: 15px;
-
                     .front-face,
                     .back-face {
                         padding: 3px;
@@ -397,7 +371,6 @@ header {
         font-weight: 300;
         text-transform: uppercase;
         letter-spacing: 1vw;
-
         &_prev,
         &_next {
             border: none;
@@ -407,37 +380,31 @@ header {
             cursor: pointer;
             width: 2rem;
             height: 2.2rem;
-
             &_svg {
                 width: 2rem;
                 height: 3rem;
             }
         }
-
         &_prev:hover polyline,
         &_prev:focus polyline {
             stroke-width: 3;
             stroke: $illuminating;
         }
-
         &_prev:active polyline {
             stroke-width: 6;
             transition: all 100ms ease-in-out;
             stroke: $illuminating;
         }
-
         &_next:hover polyline,
         &_next:focus polyline {
             stroke-width: 3;
             stroke: $illuminating;
         }
-
         &_prev:active polyline {
             stroke-width: 6;
             transition: all 100ms ease-in-out;
             stroke: $illuminating;
         }
-
         polyline {
             transition: all 250ms ease-in-out;
             fill: none;
@@ -446,17 +413,14 @@ header {
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-
         &_date {
             display: flex;
             font-size: 2vw;
-
             &_month {
                 margin-right: 3vw;
             }
         }
     }
-
     &_table {
         width: 98%;
         &> thead {background-color: $lightGray}
@@ -469,11 +433,9 @@ header {
             letter-spacing: 0.4vw;
             width: 12vw;
         }
-
         th {
             text-align: center;
         }
-
         &_day {
             &_today {
                 box-shadow: 0px 0px 20px 3px $illuminating
@@ -483,13 +445,11 @@ header {
                     box-shadow: 0 0 0 1px white, 0 0 10px 3px $illuminating !important;
                 }
             }
-
             &:hover {
                 border: 1 solid rgba(0, 0, 0, 0.041);
                 box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(48, 48, 48, 0.185);
             }
         }
-
         td {
             height: 8vw;
         }
@@ -532,7 +492,6 @@ header {
             }
         }
     }
-
     @media (max-width: 767px) {
         .calendar {
             &_head {
