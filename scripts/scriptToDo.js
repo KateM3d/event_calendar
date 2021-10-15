@@ -4,12 +4,15 @@ let todo = document.querySelector('#out');
 
 let todoList = [];
 
-if (localStorage.getItem('todo')) {
-    todoList = JSON.parse(localStorage.getItem(`todo${i}`));
+if (localStorage.getItem('todo0')) {
+    for (let i = 0; i < localStorage.length; i++) {
+        if (localStorage.getItem(`todo${i}`) != null) {
+            todoList.push(JSON.parse(localStorage.getItem(`todo${i}`)));
+        }
+    }
+
     displayMessages();
 }
-
-
 
 addButton.addEventListener('click', function() {
     if (!addMessage.value) return;
@@ -43,13 +46,13 @@ function displayMessages() {
 
 }
 
-function deleteTask(i) {
+// function deleteTask(i) {
 
-    todoList = JSON.parse(localStorage.getItem(`todo${i}`));
-    todoList.splice(i, 1);
-    localStorage.setItem(`todo${i}`, JSON.stringify(todoList[i]));
-    displayMessages();
-};
+//     todoList = JSON.parse(localStorage.getItem(`todo${i}`));
+//     todoList.splice(i, 1);
+//     localStorage.setItem(`todo${i}`, JSON.stringify(todoList[i]));
+//     displayMessages();
+// };
 
 
 todo.addEventListener('click', function(event) {
