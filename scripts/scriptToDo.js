@@ -46,13 +46,20 @@ function displayMessages() {
 
 }
 
-// function deleteTask(i) {
+function deleteTask(i) {
+   
+    todoList.splice(i, 1);
+    for (let i = 0; i < localStorage.length; i++) {
+        if (localStorage.getItem(`todo${i}`) != null) {
+            localStorage.removeItem(`todo${i}`);
+        }
+    }
+    for (let i = 0; i < todoList.length; i++) {
+        localStorage.setItem(`todo${i}`, JSON.stringify(todoList[i]));
+    }
+ displayMessages();
+}
 
-//     todoList = JSON.parse(localStorage.getItem(`todo${i}`));
-//     todoList.splice(i, 1);
-//     localStorage.setItem(`todo${i}`, JSON.stringify(todoList[i]));
-//     displayMessages();
-// };
 
 
 todo.addEventListener('click', function(event) {
