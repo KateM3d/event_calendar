@@ -9,13 +9,89 @@ $lightGray: #e6e7e2bd;
 $dirtyWhite: #F0F1EC;
 $darkGray: rgb(44, 44, 44);;
 
-body, html {
-    font-family: $fontText !important;
+body {
+    font-family: $fontText;
     margin: 0;
     padding: 0;
     font-weight: 300;
     letter-spacing: 0.02vw;
     font-size: 1vw;
+    width: 99.9%;
+}
+
+.card {
+    border: none !important;
+    display: block !important;
+    border-radius: 1.5rem !important;
+}
+
+.popup {
+    background: $ultimateGray;
+    color: $darkGray;
+    margin: 10vw 0;
+    padding: 3vw 2vw 2vw 2vw;
+    border-radius: 20px;
+    box-shadow:  5px 5px 10px #7d7f80,
+                 5px 5px 10px #a9abae;
+    &_greeting {
+        font-family: $fontHeading;
+        font-size: 2vw;
+        text-transform: uppercase;
+        letter-spacing: 0.3vw;
+        font-weight: 900;
+        margin-bottom: 0;
+        color: $illuminating;
+    }
+    &_text {
+        font-weight: 300;
+        font-size: 0.8vw;
+        margin-bottom: 1.5vw;
+    }
+    &_form {
+        font-size: 0.9vw;
+        font-weight: 300;
+        letter-spacing: 0.05vw;
+        &_name {
+            &_input {
+                outline: 0;
+                border: none;
+                box-shadow: none;
+            }
+        }
+    }
+
+    .form-control {
+        background-color: $lightGray;
+    }
+
+    .form-control:active, 
+    .form-control:focus {
+        outline: 0;
+        box-shadow: none;
+        border: 1px solid $illuminating;
+        background-color: $lightGray;
+    }
+
+    &_submit {
+        &_btn {
+            width: 100%;
+            padding: 0.5vw;
+            margin: 0.6vw 0 1.8vw 0;
+            text-transform: uppercase;
+            font-family: $fontHeading;
+            font-weight: 900;
+            letter-spacing: 0.2vw;
+            border: none;
+            border-radius: 4px;
+            background-color: $darkGray;
+            color: $illuminating;
+            &:hover {
+                background-color: $illuminating;
+                color: $darkGray;
+                box-shadow: 0px 0px 20px 4px rgba(228, 214, 17, 0.589) inset;
+            }
+        }
+    }
 }
 
 header {
@@ -25,7 +101,7 @@ header {
 }
 
 .app {
-    // padding: 10px;
+    background-color: $lightGray;
     .form-card {
         width: 25vw;
         .userName,
@@ -41,11 +117,12 @@ header {
         }
     }
     .header {
-        background-color: $ultimateGray;
+        position: relative;
+        background: $ultimateGray;
         display: grid;
         grid-template-columns: 1.2fr 1.5fr 1.2fr;
         gap: 10px;
-        padding: 3vw 1.5vw;
+        padding: 3vw 1.5vw 6vw 1.5vw;
         // height: 10vh;
         .user{
             display: flex;
@@ -74,7 +151,7 @@ header {
             background: $lightGray;
             box-shadow:  26px 26px 47px #868889,
                         -26px -26px 47px #a0a2a5;
-            height: 12vw;
+            //height: 12vw;
             font-weight: 300;
             font-size: 1vw;
             > figure {
@@ -155,12 +232,14 @@ header {
         }
     }
     .main {
-        margin-top: -4.14vw;
-        background-color: $dirtyWhite;
+        position: absolute;
+        z-index: 1;
+        top: 20.2vw;
         &_menu {
-            background-color: $ultimateGray;
             padding: 0 2.5vw;
-            margin-bottom: 2vw;
+            background-color: rgba(255, 255, 255, 0);
+            margin-bottom: 4vw;
+            border: none;
             &_li {
                 color: $lightGray;
                 letter-spacing: 0.2vw;
@@ -181,7 +260,8 @@ header {
         }
 
         &_planner {
-            padding: 0 4vw 3vw 4vw;
+            // background-color: $dirtyWhite;
+            padding: 0vw 4vw 3vw 4vw;
             &_notions {
                 margin-top: 6vw;
                 width: 23vw;
@@ -211,6 +291,7 @@ header {
             }
         }
 
+        // изменение стилей bootstrap на инпуте 
         .form-control.active, 
         .form-control:focus {
             outline: none;
@@ -233,23 +314,13 @@ header {
             display: grid;
             grid-template-columns: 3fr 1fr;
             gap: 2vw
-            //height: 75vh;
-
-            // .calendar,
-            // .select {
-            //     padding: 10px;
-            // }
-
-            // .btn-outline-primary {
-            //     width: 100%;
-            // }
         }
         .counter-wrapper {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 75vh;
+            //height: 75vh;
             .counter-header {
                 position: absolute;
                 top: 30px;
@@ -268,26 +339,36 @@ header {
             }
         }
         .game {
-            height: 75vh;
+            //height: 75vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 1000px;
+            width: 40vw;
+            //perspective: 1000px;
             .game-wrapper {
-                position: relative;
-                width: 640px;
-                height: 60vh;
+                position: absolute;
+                z-index: 1;
+                top: 10vw;
+                left: 28vw;
+                padding-bottom: 4vw;
+                //width: 640px;
+                //height: 60vh;
+                margin: 0 auto;
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 grid-template-rows: repeat(3, 1fr);
                 gap: 15px;
+
                 .memory-card {
+                    margin: 0 auto;
                     position: relative;
                     box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
                     border-radius: 5px;
                     transform-style: preserve-3d;
                     transition: transform .5s;
                     cursor: pointer;
+                    width: 10vw;
+                    height: 190px;
                 }
                 .memory-card:active {
                     transform: scale(0.97);
@@ -296,11 +377,11 @@ header {
                 .front-face,
                 .back-face {
                     width: 100%;
-                    height: 100%;
+                    //height: 100%;
                     padding: 20px;
                     position: absolute;
                     border-radius: 5px;
-                    background: #0d6efd;
+                    background: $illuminating;
                     backface-visibility: hidden;
                 }
                 .front-face {
@@ -331,7 +412,7 @@ header {
         .header {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(3, 1fr);
-            height: 26vh;
+            //height: 26vh;
             .weather,
             .quote-wrapper,
             .greeting {
@@ -347,7 +428,7 @@ header {
                 padding-top: 10px;
                 .game-wrapper {
                     width: 100%;
-                    height: 100%;
+                    //height: 100%;
                     display: grid;
                     grid-template-columns: repeat(4, 1fr);
                     grid-template-rows: repeat(3, 1fr);
@@ -372,6 +453,7 @@ header {
         font-weight: 300;
         text-transform: uppercase;
         letter-spacing: 1vw;
+        background-color: rgba(255, 255, 255, 0);
         &_prev,
         &_next {
             border: none;
@@ -380,10 +462,10 @@ header {
             outline: 0;
             cursor: pointer;
             width: 2rem;
-            height: 2.2rem;
+            //height: 2.2rem;
             &_svg {
                 width: 2rem;
-                height: 3rem;
+                //height: 3rem;
             }
         }
         &_prev:hover polyline,
@@ -415,6 +497,7 @@ header {
             stroke-linejoin: round;
         }
         &_date {
+            background-color: rgba(255, 255, 255, 0);
             display: flex;
             font-size: 2vw;
             &_month {
@@ -452,7 +535,7 @@ header {
             }
         }
         td {
-            height: 8vw;
+            //height: 8vw;
         }
         .btn-lg {
             width: 100%;
