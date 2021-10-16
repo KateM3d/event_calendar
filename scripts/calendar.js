@@ -136,7 +136,7 @@ const createCalendar = (cld, year, month, day) => {
     )
 
     // drag and drop goes here!!!
-    // function dragAndDrop() {
+
 
     const tasks = document.querySelectorAll('#liLabel');
     let dragItem = null;
@@ -171,6 +171,7 @@ const createCalendar = (cld, year, month, day) => {
 
     function dragOver(e) {
         e.preventDefault();
+        this.style.border = "2px solid #fde910";
     }
 
     function dragEnter(e) {
@@ -178,101 +179,8 @@ const createCalendar = (cld, year, month, day) => {
     }
 
     function dragLeave() {
-
+        this.style.border = "none";
     }
-
-
-    // btns.forEach(btn => {
-    //     btn.ondragover = allowDrop;
-    //     btn.ondrop = drop;
-
-    // })
-
-
-    // function allowDrop(event) {
-    //     event.preventDefault();
-    // }
-
-    // tasks.forEach(task => {
-    //     task.ondragstart = drag;
-
-
-    // })
-
-    // function drag(event) {
-    //     event.dataTransfer.setData('id', event.target.id);
-    // }
-
-
-    // function drop(event) {
-    //     let itemId = event.dataTransfer.getData('id');
-    //     console.log(itemId)
-    //     event.target.append(document.getElementById(itemId))
-    // }
-
-
-
-
-
-
-    //     const dragStart = function() {
-    //         setTimeout(() => {
-    //             this.classList.add('hide');
-    //         }, 0);
-    //         console.log('start')
-
-    //     };
-
-    //     const dragEnd = function() {
-    //         this.classList.remove('hide');
-    //         console.log('end ')
-    //     };
-
-    //     const dragOver = function(e) {
-    //         e.preventDefault();
-    //         console.log('over ')
-
-
-    //     };
-    //     const dragEnter = function(e) {
-    //         e.preventDefault();
-    //         console.log('enter')
-    //         this.classList.add('hovered');
-    //         console.log('enter ')
-
-    //     };
-    //     const dragLeave = function() {
-    //         this.classList.remove('hovered');
-    //         console.log('leave ')
-    //     };
-    //     const dragDrop = function() {
-    //         console.log('drop ')
-
-    //         for (let i = 0; i < tasks.length; i++) {
-    //             this.append(tasks[i]);
-
-    //             this.classList.remove('hovered');
-    //             this.classList.remove('li');
-    //         }
-    //     };
-
-    //     btns.forEach((cell) => {
-    //         cell.addEventListener('dragover', dragOver);
-    //         cell.addEventListener('dragenter', dragEnter);
-    //         cell.addEventListener('dragleave', dragLeave);
-    //         cell.addEventListener('drop', dragDrop);
-
-    //     })
-
-    //     tasks.forEach((task) => {
-    //         task.addEventListener('dragstart', dragStart);
-    //         task.addEventListener('dragend', dragEnd);
-
-    //     })
-
-    // }
-
-    // dragAndDrop()
 
 
 }
