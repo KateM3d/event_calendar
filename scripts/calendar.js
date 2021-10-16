@@ -169,6 +169,8 @@ const createCalendar = (cld, year, month, day) => {
     function Drop() {
         this.append(dragItem);
         todoList.splice(this, 1);
+
+
     }
 
     function dragOver(e) {
