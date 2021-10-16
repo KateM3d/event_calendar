@@ -141,9 +141,10 @@ const createCalendar = (cld, year, month, day) => {
     const tasks = document.querySelectorAll('#liLabel');
     let dragItem = null;
 
-    for (let i of tasks) {
-        i.addEventListener('dragstart', dragStart);
-        i.addEventListener('dragend', dragEnd);
+
+    for (let f of tasks) {
+        f.addEventListener('dragstart', dragStart);
+        f.addEventListener('dragend', dragEnd);
     }
 
     function dragStart() {
@@ -167,6 +168,7 @@ const createCalendar = (cld, year, month, day) => {
 
     function Drop() {
         this.append(dragItem);
+        todoList.splice(this, 1);
     }
 
     function dragOver(e) {
