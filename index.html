@@ -14,30 +14,30 @@
 <body class="app">
 
     <div class="card form-card" hidden>
-        <div class="card-body popup">
+        <div class="popup">
             <h5 class="text-center popup_greeting">Hello, friend!</h5>
             <h6 class="text-center popup_text">Fill in the fields below to get started</h6>
 
             <form class="needs-validation popup_form" novalidate>
                 <div class=" position-relative popup_form_name">
-                    <label for="validationTooltip01" class="form-label">What is your name?</label>
-                    <input type="text" class="form-control userName" id="validationTooltip01" pattern="[^\s]+" required>
+                    <label for="validationTooltip01" class="form-label popup_form_name_label">What is your name?</label>
+                    <input type="text" class="form-control userName popup_form_name_input" id="validationTooltip01" pattern="^(?=.{1,15}$)[a-zA-Zа-яА-ЯёЁ][a-zA-Zа-яА-ЯёЁ0-9]*(?: [a-zA-Z0-9]+)*$" required>
 
                     <div class="invalid-tooltip">
-                        Please provide your name without any gaps
+                        Please provide a valid name
                     </div>
                 </div>
 
                 <div class=" position-relative">
                     <label for="validationTooltip03" class="form-label">Where do you live?</label>
-                    <input type="text" class="form-control userCity" id="validationTooltip03" pattern="[^\s]+" required>
+                    <input type="text" class="form-control userCity" id="validationTooltip03" pattern="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" required>
                     <div class="invalid-tooltip">
-                        Please provide a valid city without any gaps
+                        Please provide a valid city
                     </div>
                 </div>
 
-                <div class="btn-wrapper ">
-                    <button class="btn btn-primary form-btn" type="submit">Submit</button>
+                <div class="btn-wrapper popup_submit">
+                    <button class="form-btn popup_submit_btn" type="submit">Submit</button>
                 </div>
             </form>
         </div>
