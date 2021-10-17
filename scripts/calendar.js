@@ -135,12 +135,20 @@ const createCalendar = (cld, year, month, day) => {
         }
     )
 
+
     // drag and drop goes here!!!
+    let tasks = document.querySelectorAll('.liLabel'),
+        dragItem;
 
-
-    const tasks = document.querySelectorAll('#liLabel');
-    let dragItem = null;
-
+    let addBtn = document.querySelector('#add');
+    addBtn.addEventListener('click', () => {
+        tasks = document.querySelectorAll('.liLabel');
+        console.log(tasks)
+        for (let f of tasks) {
+            f.addEventListener('dragstart', dragStart);
+            f.addEventListener('dragend', dragEnd);
+        }
+    })
 
     for (let f of tasks) {
         f.addEventListener('dragstart', dragStart);
@@ -148,14 +156,13 @@ const createCalendar = (cld, year, month, day) => {
     }
 
     function dragStart() {
-        dragItem = this;
         setTimeout(() => this.style.display = "none", 0);
+        return dragItem = this;
     }
 
     function dragEnd() {
-
         setTimeout(() => this.style.display = "block", 0);
-        dragItem = this;
+        return dragItem = this;
     }
 
     for (let j of btns) {
@@ -163,12 +170,24 @@ const createCalendar = (cld, year, month, day) => {
         j.addEventListener('dragenter', dragEnter);
         j.addEventListener('dragleave', dragLeave);
         j.addEventListener('drop', Drop);
-
     }
 
-    function Drop() {
+    function Drop(e) {
+        e.preventDefault();
+        console.log(`тама`)
         this.append(dragItem);
         todoList.splice(this, 1);
+        for (let i = 0; i < localStorage.length; i++) {
+            if (localStorage.getItem(`todo`) != null) {
+                localStorage.removeItem(`todo`);
+            }
+        }
+        console.log(this.dataset.bscontent)
+        if (this.dataset.bscontent === undefined) {
+            this.dataset.bscontent = `${dragItem.textContent.trim()}`;
+        } else {
+            this.dataset.bscontent = `${this.dataset.bscontent}, ${dragItem.textContent.trim()}`;
+        }
     }
 
     function dragOver(e) {
@@ -254,7 +273,7 @@ const addPopover = () => {
 const hidePopover = () => {
     let btns = document.querySelectorAll('.calendar_table_day_btn');
     btns.forEach(btn => {
-        $(btns).popover('dispose');
+        $(btn).popover('dispose');
     })
 }
 
