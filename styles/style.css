@@ -220,6 +220,7 @@ header {
 .app .main_menu_li {
   color: #e6e7e2bd;
   letter-spacing: 0.2vw;
+  cursor: pointer;
 }
 .app .main_menu_li:active, .app .main_menu_li:focus {
   background-color: #e6e7e2bd;
@@ -285,13 +286,19 @@ header {
 }
 .app .main .counter-wrapper {
   position: relative;
+  height: 400px;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 .app .main .counter-wrapper .counter-header {
   position: absolute;
-  top: 30px;
+  top: 20px;
+}
+.app .main .counter-wrapper .counter-header .dateForCounter:active,
+.app .main .counter-wrapper .counter-header .dateForCounter:focus {
+  outline: none;
+  box-shadow: none;
+  border: 2px solid #fde910;
 }
 .app .main .counter-wrapper .counter-body {
   display: grid;
@@ -301,7 +308,7 @@ header {
        column-gap: 20px;
 }
 .app .main .counter-wrapper .counter-body .alert-danger,
-.app .main .counter-wrapper .counter-body .alert-primary {
+.app .main .counter-wrapper .counter-body .alert-dark {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -359,6 +366,23 @@ header {
   margin-right: -50%;
   transform: translate(-50%, -50%);
   width: 18rem;
+}
+.app .main .game .game-wrapper .game-modal .btn-start-again {
+  width: 100%;
+  padding: 0.5vw;
+  margin: 0.6vw 0 1.8vw 0;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.1vw;
+  background-color: #939597;
+  border: none;
+  color: #2c2c2c;
+  border-radius: 5px;
+}
+.app .main .game .game-wrapper .game-modal .btn-start-again:hover {
+  background-color: #fde910;
+  color: #2c2c2c;
+  box-shadow: 0px 0px 20px 4px rgba(228, 214, 17, 0.589) inset;
 }
 .app .flip {
   transform: rotateY(180deg);
