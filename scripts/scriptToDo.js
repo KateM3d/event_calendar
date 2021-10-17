@@ -59,7 +59,7 @@ function displayMessages() {
     if (todoList.length === 0) todo.innerHTML = '';
     todoList.forEach((item) => {
         displayMessages += `
-            <li class='liLabel'>
+            <li class='liLabel' id="${+item.id}">
             <div id="labelForItem" draggable="true" class="${item.important ? 'important': ''}" class="bg-secondary text-white"  ondblclick="deleteTask">${item.todo}</div>
             </li>
             `;

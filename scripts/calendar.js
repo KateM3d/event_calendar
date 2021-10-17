@@ -138,12 +138,12 @@ const createCalendar = (cld, year, month, day) => {
 
     // drag and drop goes here!!!
     let tasks = document.querySelectorAll('.liLabel'),
-        dragItem;
+        dragItem,
+        id;
 
     let addBtn = document.querySelector('#add');
     addBtn.addEventListener('click', () => {
         tasks = document.querySelectorAll('.liLabel');
-        console.log(tasks)
         for (let f of tasks) {
             f.addEventListener('dragstart', dragStart);
             f.addEventListener('dragend', dragEnd);
@@ -173,10 +173,27 @@ const createCalendar = (cld, year, month, day) => {
     }
 
     function Drop() {
-        console.log(`тама`)
         this.append(dragItem);
-        todoList.splice(this, 1);
-        console.log(this.dataset.bscontent)
+        let todoo = JSON.parse(localStorage.getItem(`todo`));
+        todoo.forEach((item, index) => {
+            if(dragItem.id == item.id) {
+                todoo.splice(index, 1);
+                let count = 0;
+                todoo.forEach((item, index) => {
+                    if (count === 0) {
+                        item.id = count;
+                        count++;
+                    } else {
+                        item.id = count;
+                        count++;
+                    }
+                })
+                
+                localStorage.setItem(`todo`, JSON.stringify(todoo));
+            }
+        })
+        
+        // console.log(this.dataset.bscontent)
         if(this.dataset.bscontent === undefined) {
             this.dataset.bscontent = `${dragItem.textContent.trim()}`;
         } else {
