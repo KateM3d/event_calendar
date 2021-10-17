@@ -388,7 +388,6 @@ header {
     padding-top: 10px;
   }
   .app .main .game .game-wrapper {
-    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);

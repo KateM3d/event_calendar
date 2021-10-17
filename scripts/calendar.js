@@ -135,11 +135,11 @@ const createCalendar = (cld, year, month, day) => {
         }
     )
 
+
     // drag and drop goes here!!!
 
-
     const tasks = document.querySelectorAll('#liLabel');
-    let dragItem = null;
+    let dragItem;
 
 
     for (let f of tasks) {
@@ -163,12 +163,17 @@ const createCalendar = (cld, year, month, day) => {
         j.addEventListener('dragenter', dragEnter);
         j.addEventListener('dragleave', dragLeave);
         j.addEventListener('drop', Drop);
-
     }
 
     function Drop() {
         this.append(dragItem);
         todoList.splice(this, 1);
+        console.log(this.dataset.bscontent)
+        if(this.dataset.bscontent === undefined) {
+            this.dataset.bscontent = `${dragItem.textContent.trim()}`;
+        } else {
+            this.dataset.bscontent = `${this.dataset.bscontent}, ${dragItem.textContent.trim()}`;
+        }
     }
 
     function dragOver(e) {
@@ -254,7 +259,7 @@ const addPopover = () => {
 const hidePopover = () => {
     let btns = document.querySelectorAll('.calendar_table_day_btn');
     btns.forEach(btn => {
-        $(btns).popover('dispose');
+        $(btn).popover('dispose');
     })
 }
 
