@@ -1,4 +1,22 @@
 'use strict';
+//////////////////////////// алена
+document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem('todoInCalendar') && localStorage.getItem('todoInCalendar') != []) {
+
+        let todoInCalendar = JSON.parse(localStorage.getItem('todoInCalendar'));
+        const tableCells = document.querySelector('.table-striped').querySelectorAll('button');
+
+        for (let i = 0; i < tableCells.length; i++) {
+            tableCells[i].innerHTML = todoInCalendar[i];
+            if (tableCells[i].children[0]) {
+                for (let j = 0; j < tableCells[i].children.length; j++) {
+                    tableCells[i].children[j].style.display = "block";
+                }
+            }
+        }
+    }
+})
+///////////////////////////
 
 let calendar = document.querySelector('.calendar_body'),
     headingCalendar = document.querySelector('.calendar_head');
@@ -61,7 +79,7 @@ const createCalendar = (cld, year, month, day) => {
             table = `${table}<td class="card-body calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-" >${date.getDate()}</button></td>`;
         }
 
-        $(function() {
+        $(function () {
             $('[data-toggle="popover"]').popover();
         })
 
@@ -176,12 +194,18 @@ const createCalendar = (cld, year, month, day) => {
         e.preventDefault();
         console.log(`тама`)
         this.append(dragItem);
-        todoList.splice(this, 1);
-        for (let i = 0; i < localStorage.length; i++) {
-            if (localStorage.getItem(`todo`) != null) {
-                localStorage.removeItem(`todo`);
+
+        ////////////////////////алена
+        for (let i = 0; i < todoList.length; i++) {
+            if (dragItem.querySelector('div').textContent == todoList[i].todo) {
+                todoList.splice(i, 1);
+                break;
             }
         }
+        localStorage.setItem('todo', JSON.stringify(todoList));
+        updateCalendarInStor();
+        //////////////////////////
+
         console.log(this.dataset.bscontent)
         if (this.dataset.bscontent === undefined) {
             this.dataset.bscontent = `${dragItem.textContent.trim()}`;
@@ -190,9 +214,23 @@ const createCalendar = (cld, year, month, day) => {
         }
     }
 
+    ////////////////////////алена
+    const updateCalendarInStor = () => {
+        let todoInCalendar = [];
+        const tableCells = document.querySelector('.table-striped').querySelectorAll('button');
+
+        for (let i = 0; i < tableCells.length; i++) {
+            todoInCalendar.push(tableCells[i].innerHTML);
+        }
+
+        localStorage.setItem('todoInCalendar', JSON.stringify(todoInCalendar));
+    }
+    //////////////////////////
+
     function dragOver(e) {
         e.preventDefault();
         this.style.border = "2px solid #fde910";
+        console.log('запрашиваемое ', this.id);
     }
 
     function dragEnter(e) {
@@ -240,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         createCalendar(calendar, year, month, new Date().getDate());
-        $(function() {
+        $(function () {
             $('[data-toggle="popover"]').popover();
             $('[title = "To-do list"]');
         })
