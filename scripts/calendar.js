@@ -1,4 +1,22 @@
 'use strict';
+//////////////////////////// алена
+document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem('todoInCalendar') && localStorage.getItem('todoInCalendar') != []) {
+
+        let todoInCalendar = JSON.parse(localStorage.getItem('todoInCalendar'));
+        const tableCells = document.querySelector('.table-striped').querySelectorAll('button');
+
+        for (let i = 0; i < tableCells.length; i++) {
+            tableCells[i].innerHTML = todoInCalendar[i];
+            if (tableCells[i].children[0]) {
+                for (let j = 0; j < tableCells[i].children.length; j++) {
+                    tableCells[i].children[j].style.display = "block";
+                }
+            }
+        }
+    }
+})
+///////////////////////////
 
 let calendar = document.querySelector('.calendar_body'),
     headingCalendar = document.querySelector('.calendar_head');
@@ -61,7 +79,7 @@ const createCalendar = (cld, year, month, day) => {
             table = `${table}<td class="card-body calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-" >${date.getDate()}</button></td>`;
         }
 
-        $(function() {
+        $(function () {
             $('[data-toggle="popover"]').popover();
         })
 
@@ -138,12 +156,12 @@ const createCalendar = (cld, year, month, day) => {
 
     // drag and drop goes here!!!
     let tasks = document.querySelectorAll('.liLabel'),
-        dragItem,
-        id;
+        dragItem;
 
     let addBtn = document.querySelector('#add');
     addBtn.addEventListener('click', () => {
         tasks = document.querySelectorAll('.liLabel');
+        console.log(tasks)
         for (let f of tasks) {
             f.addEventListener('dragstart', dragStart);
             f.addEventListener('dragend', dragEnd);
@@ -172,38 +190,47 @@ const createCalendar = (cld, year, month, day) => {
         j.addEventListener('drop', Drop);
     }
 
-    function Drop() {
+    function Drop(e) {
+        e.preventDefault();
+        console.log(`тама`)
         this.append(dragItem);
-        let todoo = JSON.parse(localStorage.getItem(`todo`));
-        todoo.forEach((item, index) => {
-            if(dragItem.id == item.id) {
-                todoo.splice(index, 1);
-                let count = 0;
-                todoo.forEach((item, index) => {
-                    if (count === 0) {
-                        item.id = count;
-                        count++;
-                    } else {
-                        item.id = count;
-                        count++;
-                    }
-                })
-                
-                localStorage.setItem(`todo`, JSON.stringify(todoo));
+
+        ////////////////////////алена
+        for (let i = 0; i < todoList.length; i++) {
+            if (dragItem.querySelector('div').textContent == todoList[i].todo) {
+                todoList.splice(i, 1);
+                break;
             }
-        })
-        
-        // console.log(this.dataset.bscontent)
-        if(this.dataset.bscontent === undefined) {
+        }
+        localStorage.setItem('todo', JSON.stringify(todoList));
+        updateCalendarInStor();
+        //////////////////////////
+
+        console.log(this.dataset.bscontent)
+        if (this.dataset.bscontent === undefined) {
             this.dataset.bscontent = `${dragItem.textContent.trim()}`;
         } else {
             this.dataset.bscontent = `${this.dataset.bscontent}, ${dragItem.textContent.trim()}`;
         }
     }
 
+    ////////////////////////алена
+    const updateCalendarInStor = () => {
+        let todoInCalendar = [];
+        const tableCells = document.querySelector('.table-striped').querySelectorAll('button');
+
+        for (let i = 0; i < tableCells.length; i++) {
+            todoInCalendar.push(tableCells[i].innerHTML);
+        }
+
+        localStorage.setItem('todoInCalendar', JSON.stringify(todoInCalendar));
+    }
+    //////////////////////////
+
     function dragOver(e) {
         e.preventDefault();
         this.style.border = "2px solid #fde910";
+        console.log('запрашиваемое ', this.id);
     }
 
     function dragEnter(e) {
@@ -213,8 +240,6 @@ const createCalendar = (cld, year, month, day) => {
     function dragLeave() {
         this.style.border = "none";
     }
-
-
 }
 
 
@@ -254,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         createCalendar(calendar, year, month, new Date().getDate());
-        $(function() {
+        $(function () {
             $('[data-toggle="popover"]').popover();
             $('[title = "To-do list"]');
         })
