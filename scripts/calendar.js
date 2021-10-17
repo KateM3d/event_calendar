@@ -202,10 +202,7 @@ const createCalendar = (cld, year, month, day) => {
     function dragLeave() {
         this.style.border = "none";
     }
-
-
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
 
