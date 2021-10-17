@@ -172,12 +172,18 @@ const createCalendar = (cld, year, month, day) => {
         j.addEventListener('drop', Drop);
     }
 
-    function Drop() {
+    function Drop(e) {
+        e.preventDefault();
         console.log(`тама`)
         this.append(dragItem);
         todoList.splice(this, 1);
+        for (let i = 0; i < localStorage.length; i++) {
+            if (localStorage.getItem(`todo`) != null) {
+                localStorage.removeItem(`todo`);
+            }
+        }
         console.log(this.dataset.bscontent)
-        if(this.dataset.bscontent === undefined) {
+        if (this.dataset.bscontent === undefined) {
             this.dataset.bscontent = `${dragItem.textContent.trim()}`;
         } else {
             this.dataset.bscontent = `${this.dataset.bscontent}, ${dragItem.textContent.trim()}`;
