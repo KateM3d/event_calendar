@@ -523,8 +523,7 @@ body {
   padding: 20px;
   position: absolute;
   border-radius: 20px;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   background: linear-gradient(145deg, #fff911, #e4d20e);
 }
 .main_game .game-wrapper .front-face {
@@ -614,8 +613,6 @@ body {
     grid-area: nav;
     margin: 0 auto;
     font-size: 1.2vw;
-    width: -webkit-max-content;
-    width: -moz-max-content;
     width: max-content;
     margin-top: 2vw;
   }
@@ -699,8 +696,6 @@ body {
     grid-area: nav;
     margin: 0 auto;
     font-size: 1.8vw;
-    width: -webkit-max-content;
-    width: -moz-max-content;
     width: max-content;
     margin-top: 3vw;
   }
@@ -799,9 +794,7 @@ body {
     margin-bottom: 4vw;
   }
   .header .quote-wrapper {
-    width: 75%;
     font-size: 2.4vw;
-    margin: 0 auto;
   }
   .header .quote-wrapper_blockquote {
     font-size: 2.7vw;
@@ -812,59 +805,32 @@ body {
     margin-right: 4vw;
     margin-top: 5vw;
   }
-  .header .chooseCity {
-    float: left;
-    text-align: left;
-    margin-left: 3vw;
-    margin-top: 4vw;
-  }
-  .header_menu {
-    margin: 0 auto;
-    font-size: 3vw;
-    font-weight: 400;
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
-    margin-top: 3vw;
-  }
-  .header_menu_li {
-    padding: 1.6vw 6vw !important;
-  }
 
   .main_planner {
-    margin-top: 120vw;
+    margin-top: 25vw;
     display: flex;
     flex-direction: column-reverse;
-    font-size: 3vw;
+    font-size: 2vw;
     font-weight: 300;
-    padding: 10vw 7vw;
-  }
-  .main_planner_calendar {
-    font-size: 4vw;
-  }
-  .main_planner_calendar_head_date {
-    font-size: 4vw;
-  }
-  .main_planner_calendar_table {
-    font-size: 4vw;
+    padding: 10vw 12vw;
   }
   .main_planner_notions {
-    width: 70vw;
+    width: 50vw;
     margin: 0 auto;
   }
   .main_planner_notions_form {
     width: 100%;
   }
   .main_planner_notions_form_input {
-    width: 70vw;
-    padding: 4vw;
+    width: 50vw;
+    padding: 1.2vw;
   }
   .main_planner_notions_form_btn {
-    padding: 4vw;
+    padding: 2vw;
   }
   .main_planner_notions_note_li {
-    width: 70vw;
-    padding: 5vw;
+    width: 50vw;
+    padding: 3vw;
   }
   .main_counter {
     padding: 0;
@@ -872,25 +838,22 @@ body {
     width: 50%;
   }
   .main_counter_form {
-    margin-top: 120vw;
-    font-size: 3.5vw;
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
-    padding: 3vw 5vw;
-    margin-left: 3.5vw;
+    padding: 0;
+    margin: 0;
   }
-  .main_counter_result {
-    width: 100%;
+  .main_counter_form_result {
+    padding: 0;
+    margin: 0;
   }
-  .main_counter_result_num {
-    font-size: 8vw;
+  .main_counter_form_result_num {
+    padding: 0;
+    margin: 0;
   }
-  .main_counter_result_text {
-    font-size: 1.5vw;
+  .main_counter_form_result_text {
+    padding: 0;
+    margin: 0;
   }
   .main .game {
-    margin-top: 120vw;
     padding-top: 10px;
   }
   .main .game .game-wrapper {
@@ -899,15 +862,12 @@ body {
     grid-template-rows: repeat(3, 1fr);
     gap: 15px;
   }
-  .main .game .game-wrapper .memory-card {
-    width: 20vw;
-    margin-bottom: 20vw;
-  }
   .main .game .game-wrapper .front-face,
 .main .game .game-wrapper .back-face {
     padding: 3px;
   }
+
+  .calendar_head_date {
+    font-size: 3.5vw;
+  }
 }
-.calendar_head_date {
-  font-size: 3.5vw;
-}/*# sourceMappingURL=style.css.map */

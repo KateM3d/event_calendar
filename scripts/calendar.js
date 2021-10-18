@@ -1,7 +1,24 @@
 'use strict';
 
-let calendar = document.querySelector('.calendar_body'),
-    headingCalendar = document.querySelector('.calendar_head');
+document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem('todoInCalendar') && localStorage.getItem('todoInCalendar') != []) {
+
+        let todoInCalendar = JSON.parse(localStorage.getItem('todoInCalendar'));
+        const tableCells = document.querySelector('.table-striped').querySelectorAll('button');
+
+        for (let i = 0; i < tableCells.length; i++) {
+            tableCells[i].innerHTML = todoInCalendar[i];
+            if (tableCells[i].children[0]) {
+                for (let j = 0; j < tableCells[i].children.length; j++) {
+                    tableCells[i].children[j].style.display = "block";
+                }
+            }
+        }
+    }
+})
+
+let calendar = document.querySelector('.main_planner_calendar_body'),
+    headingCalendar = document.querySelector('.main_planner_calendar_head');
 
 let prev = document.createElement('button'),
     next = document.createElement('button'),
@@ -9,11 +26,12 @@ let prev = document.createElement('button'),
     addMonth = document.createElement('div'),
     addYear = document.createElement('div');
 
-prev.className = `calendar_head_prev`;
-next.className = `calendar_head_next`;
-dateHeading.className = `calendar_head_date`;
-addMonth.className = `calendar_head_date_month`;
-addYear.className = `calendar_head_date_year`;
+prev.className = `main_planner_calendar_head_prev`;
+next.className = `main_planner_calendar_head_next`;
+dateHeading.className = `main_planner_calendar_head_date`;
+addMonth.className = `main_planner_calendar_head_date_month`;
+addYear.className = `main_planner_calendar_head_date_year`;
+
 
 const getDay = (d) => {
     let day = d.getDay();
@@ -28,19 +46,19 @@ const createCalendar = (cld, year, month, day) => {
             'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',
         ],
         table = `
-            <table class="calendar_table card table">
-                <thead>
+            <table class="main_planner_calendar_table card table">
+                <thead class="main_planner_calendar_table_thead">
                     <tr>
-                        <th class="card-body calendar_table_week">mon</th>
-                        <th class="card-body calendar_table_week">tue</th>
-                        <th class="card-body calendar_table_week">wed</th>
-                        <th class="card-body calendar_table_week">thu</th>
-                        <th class="card-body calendar_table_week">fri</th>
-                        <th class="card-body calendar_table_week">sat</th>
-                        <th class="card-body calendar_table_week">sun</th>
+                        <th class="card-body main_planner_calendar_table_week">mon</th>
+                        <th class="card-body main_planner_calendar_table_week">tue</th>
+                        <th class="card-body main_planner_calendar_table_week">wed</th>
+                        <th class="card-body main_planner_calendar_table_week">thu</th>
+                        <th class="card-body main_planner_calendar_table_week">fri</th>
+                        <th class="card-body main_planner_calendar_table_week">sat</th>
+                        <th class="card-body main_planner_calendar_table_week">sun</th>
                     </tr>
                 </thead>
-                <tbody  class="table-striped">
+                <tbody  class="table-striped main_planner_calendar_table_tbody">
                     <tr>
         `;
 
@@ -56,9 +74,9 @@ const createCalendar = (cld, year, month, day) => {
     while (date.getMonth() === month) {
 
         if (month === new Date().getMonth() && day === date.getDate()) {
-            table = `${table}<td class="card-body calendar_table_day calendar_table_day_today"><button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-">${date.getDate()}</button></td>`;
+            table = `${table}<td class="card-body main_planner_calendar_table_day main_planner_calendar_table_day_today"><button id = "${i++}" type="button" class="btn btn-lg main_planner_calendar_table_day_btn" data-bs-toggle="popover">${date.getDate()}</button></td>`;
         } else {
-            table = `${table}<td class="card-body calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-" >${date.getDate()}</button></td>`;
+            table = `${table}<td class="card-body main_planner_calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg main_planner_calendar_table_day_btn" data-bs-toggle="popover">${date.getDate()}</button></td>`;
         }
 
         $(function() {
@@ -83,12 +101,12 @@ const createCalendar = (cld, year, month, day) => {
     table = `${table}</tr></tbody></table>`;
 
     prev.innerHTML = `
-        <svg class='calendar_head_prev_svg' viewBox="0 0 50 80" xml:space="preserve">
+        <svg class='main_planner_calendar_head_prev_svg' viewBox="0 0 50 80" xml:space="preserve">
             <polyline points="45.63,75.8 0.375,38.087 45.63,0.375 "/>
         </svg>  
     `;
     next.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class='calendar_head_next_svg' viewBox="0 0 50 80" xml:space="preserve">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class='main_planner_calendar_head_next_svg' viewBox="0 0 50 80" xml:space="preserve">
             <polyline points="0.375,0.375 45.63,38.087 0.375,75.8"/>
         </svg>
     `;
@@ -96,10 +114,10 @@ const createCalendar = (cld, year, month, day) => {
     let getYear = checkMonth(year, month, date);
 
     dateHeading.innerHTML = `
-            <div class="calendar_head_date_month">
+            <div class="main_planner_calendar_head_date_month">
                 ${months[month]}
             </div>
-            <div class="calendar_head_date_year">
+            <div class="main_planner_calendar_head_date_year">
                 ${getYear}
             </div>`;
 
@@ -108,8 +126,8 @@ const createCalendar = (cld, year, month, day) => {
     headingCalendar.appendChild(dateHeading);
     headingCalendar.appendChild(next);
 
-    document.querySelector('.calendar_head_date_month').dataset.month = date.getMonth();
-    document.querySelector('.calendar_head_date_year').dataset.year = date.getFullYear();
+    document.querySelector('.main_planner_calendar_head_date_month').dataset.month = date.getMonth();
+    document.querySelector('.main_planner_calendar_head_date_year').dataset.year = date.getFullYear();
 
     let btns = document.querySelectorAll('.calendar_table_day_btn')
 
@@ -127,7 +145,7 @@ const createCalendar = (cld, year, month, day) => {
         })
     )
 
-    document.querySelectorAll(".calendar_table_day_btn").forEach(
+    document.querySelectorAll(".main_planner_calendar_table_day_btn").forEach(
         day => {
             day.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -138,12 +156,12 @@ const createCalendar = (cld, year, month, day) => {
 
     // drag and drop goes here!!!
     let tasks = document.querySelectorAll('.liLabel'),
-        dragItem,
-        id;
+        dragItem;
 
     let addBtn = document.querySelector('#add');
     addBtn.addEventListener('click', () => {
         tasks = document.querySelectorAll('.liLabel');
+        console.log(`здесь`)
         for (let f of tasks) {
             f.addEventListener('dragstart', dragStart);
             f.addEventListener('dragend', dragEnd);
@@ -172,38 +190,41 @@ const createCalendar = (cld, year, month, day) => {
         j.addEventListener('drop', Drop);
     }
 
-    function Drop() {
+    function Drop(e) {
+        e.preventDefault();
         this.append(dragItem);
-        let todoo = JSON.parse(localStorage.getItem(`todo`));
-        todoo.forEach((item, index) => {
-            if(dragItem.id == item.id) {
-                todoo.splice(index, 1);
-                let count = 0;
-                todoo.forEach((item, index) => {
-                    if (count === 0) {
-                        item.id = count;
-                        count++;
-                    } else {
-                        item.id = count;
-                        count++;
-                    }
-                })
-                
-                localStorage.setItem(`todo`, JSON.stringify(todoo));
+
+        for (let i = 0; i < todoList.length; i++) {
+            if (dragItem.querySelector('div').textContent == todoList[i].todo) {
+                todoList.splice(i, 1);
+                break;
             }
-        })
-        
-        // console.log(this.dataset.bscontent)
-        if(this.dataset.bscontent === undefined) {
+        }
+        localStorage.setItem('todo', JSON.stringify(todoList));
+        updateCalendarInStor();
+
+        console.log(this.dataset.bscontent)
+        if (this.dataset.bscontent === undefined) {
             this.dataset.bscontent = `${dragItem.textContent.trim()}`;
         } else {
             this.dataset.bscontent = `${this.dataset.bscontent}, ${dragItem.textContent.trim()}`;
         }
     }
 
+    const updateCalendarInStor = () => {
+            let todoInCalendar = [];
+            const tableCells = document.querySelector('.table-striped').querySelectorAll('button');
+
+            for (let i = 0; i < tableCells.length; i++) {
+                todoInCalendar.push(tableCells[i].innerHTML);
+            }
+
+            localStorage.setItem('todoInCalendar', JSON.stringify(todoInCalendar));
+        }
+
     function dragOver(e) {
         e.preventDefault();
-        this.style.border = "2px solid #fde910";
+        console.log('запрашиваемое ', this.id);
     }
 
     function dragEnter(e) {
@@ -213,23 +234,21 @@ const createCalendar = (cld, year, month, day) => {
     function dragLeave() {
         this.style.border = "none";
     }
-
-
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    let prevBtn = document.querySelector('.calendar_head_prev'),
-        nextBtn = document.querySelector('.calendar_head_next'),
-        btns = document.querySelectorAll('.calendar_table_day_btn');
+    let prevBtn = document.querySelector('.main_planner_calendar_head_prev'),
+        nextBtn = document.querySelector('.main_planner_calendar_head_next'),
+        btns = document.querySelectorAll('.main_planner_calendar_table_day_btn');
 
 
     nextBtn.addEventListener('click', () => {
 
-        let month = +document.querySelector(`.calendar_head_date_month`).dataset.month,
-            year = +document.querySelector('.calendar_head_date_year').dataset.year,
-            btns = document.querySelectorAll('.calendar_table_day_btn');
+        let month = +document.querySelector(`.main_planner_calendar_head_date_month`).dataset.month,
+            year = +document.querySelector('.main_planner_calendar_head_date_year').dataset.year,
+            btns = document.querySelectorAll('.main_planner_calendar_table_day_btn');
 
         hidePopover(btns);
         calendar.innerHTML = ``;
@@ -238,9 +257,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     prevBtn.addEventListener('click', () => {
-        let month = +document.querySelector(`.calendar_head_date_month`).dataset.month,
-            year = +document.querySelector('.calendar_head_date_year').dataset.year,
-            btns = document.querySelectorAll('.calendar_table_day_btn');
+        let month = +document.querySelector(`.main_planner_calendar_head_date_month`).dataset.month,
+            year = +document.querySelector('.main_planner_calendar_head_date_year').dataset.year,
+            btns = document.querySelectorAll('.main_planner_calendar_table_day_btn');
         hidePopover(btns);
 
         if (month == 1) {
@@ -269,7 +288,7 @@ const checkMonth = (year, month, date) => {
 }
 
 const addPopover = () => {
-    let btns = document.querySelectorAll('.calendar_table_day_btn');
+    let btns = document.querySelectorAll('.main_planner_calendar_table_day_btn');
     btns.forEach(btn =>
         btn.addEventListener('click', (e) => {
             for (let i = 0; i < btns.length; i++) {
@@ -282,7 +301,7 @@ const addPopover = () => {
 }
 
 const hidePopover = () => {
-    let btns = document.querySelectorAll('.calendar_table_day_btn');
+    let btns = document.querySelectorAll('.main_planner_calendar_table_day_btn');
     btns.forEach(btn => {
         $(btn).popover('dispose');
     })
@@ -302,5 +321,6 @@ const onClickClose = (elem, arr) => { // вызвать в момент пока
 const isVisible = (elem) => { //открыто ли условное окно
     return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 }
+
 
 createCalendar(calendar, new Date().getFullYear(), new Date().getMonth(), new Date().getDate())

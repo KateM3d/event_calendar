@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My planner</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/todo.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 </head>
 
@@ -44,14 +43,11 @@
     </div>
 
     <header class="header mb-4" hidden>
-
-
+        <!-- ПРИВЕТСТВИЕ ПОЛЬЗОВАТЕЛЯ -->
         <div class="user">
             <p class="greeting user_greeting"></p>
 
             <p class="date user_date"></p>
-
-            <!-- ПРИВЕТСТВИЕ ПОЛЬЗОВАТЕЛЯ -->
         </div>
         <div class="quote-wrapper">
             <figure>
@@ -77,26 +73,27 @@
                 </div>
             </div>
         </div>
+        <!-- МЕНЮ -->
+        <ul class="nav nav-tabs header_menu">
+            <li class="nav-item nav-link planner-link active text-center header_menu_li">PLANNER</li>
+            <li class="nav-item nav-link counter-link text-center header_menu_li">COUNTER</li>
+            <li class="nav-item nav-link game-link text-center header_menu_li">GAME</li>
+        </ul>
     </header>
 
     <div class="main" hidden>
-        <ul class="nav nav-tabs main_menu">
-            <li class="nav-item nav-link planner-link active text-center main_menu_li">PLANNER</li>
-            <li class="nav-item nav-link counter-link text-center main_menu_li">COUNTER</li>
-            <li class="nav-item nav-link game-link text-center main_menu_li">GAME</li>
-        </ul>
 
-        <div class="planner-wrapper main_planner">
+        <div class="planner-wrapper main_planner main_screen">
             <div class="calendar main_planner_calendar">
                 <!-- МЕСТО ПОД КАЛЕНДАРЬ -->
-                <div class="calendar_head"></div>
-                <div class="calendar_body"></div>
+                <div class="main_planner_calendar_head"></div>
+                <div class="main_planner_calendar_body"></div>
             </div>
-            <div class="select main_planner_notions">
-                <div class="select-wrapper main_planner_notions_form" id="container">
-                    <input class="form-control main_planner_notions_form_input" id="in" type="text" placeholder="note">
+            <div class="main_planner_notions">
+                <div class="main_planner_notions_form" id="container">
+                    <input class="main_planner_notions_form_input" id="in" type="text" placeholder="write your note...">
 
-                    <button type="button" id="add" class="btn btn-outline-primary main_planner_notions_form_btn">Add</button>
+                    <button type="button" id="add" class="main_planner_notions_form_btn">Add</button>
                     <!-- КНОПКА ДОБАВИТЬ -->
                 </div>
                 <ul class="todoList main_planner_notions_note" id="out" class="badge badge-info"></ul>
@@ -105,15 +102,16 @@
         </div>
         <!-- TO DO -->
 
-        <div class="counter-wrapper" hidden>
-            <div class="counter-header text-center">
-                How much time is left until <input class="dateForCounter text-center" type="date"> ?
+        <div class="counter-wrapper main_counter main_screen" hidden>
+            <div class="counter-header text-center main_counter_form">
+                How much time is left until <input class="dateForCounter text-center main_counter_form_input" type="date"> ?
             </div>
 
-            <div class="counter-body text-center"></div>
+            <div class="counter-body text-center main_counter_result"></div>
         </div>
 
-        <div class="game" hidden>
+
+        <div class="game main_game main_screen" hidden>
             <div class="game-wrapper">
                 <div class="memory-card">
                     <img class="front-face" src="images/item01.png" alt="cat">
@@ -175,10 +173,10 @@
                     <img class="back-face" src="images/item07.png" alt="Memory Card">
                 </div>
 
-                <div class="text-center game-modal" hidden>
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">You WON!</h5>
-                        <button class="btn-start-again">Tap here to play again</button>
+                <div class="text-center game-modal main_game_modal" hidden>
+                    <div class="card-body main_game_modal_div">
+                        <h5 class="card-title mb-3 main_game_modal_div_text">You WON!</h5>
+                        <button class="btn-start-again main_game_modal_div_btn">Tap here to play again</button>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Raleway:wght@200;300;400;500;600;700&display=swap');
 
-$fontHeading: 'Gruppo',
-cursive;
+$fontHeading: 'Gruppo', cursive;
 $fontText: 'Raleway',
 sans-serif;
 $ultimateGray: #939597;
@@ -10,9 +9,9 @@ $illuminating: #fde910;
 $lightGray: #e6e7e2bd;
 $dirtyWhite: #F0F1EC;
 $darkGray: rgb(44, 44, 44);
-;
 
 body {
+    background: $dirtyWhite;
     font-family: $fontText;
     margin: 0;
     padding: 0;
@@ -96,15 +95,10 @@ body {
         }
     }
 }
-
-header {
-    border-radius: 0 0 20px 20px;
-    box-shadow: 20px 20px 60px #bebebe,
-        -20px -20px 60px #ffffff;
-}
+   
 
 .app {
-    background-color: $lightGray;
+    background: $lightGray;
     .form-card {
         width: 25vw;
 
@@ -122,15 +116,20 @@ header {
             width: 100%;
         }
     }
+}
 
-    .header {
-        position: relative;
+.header {
+        position: absolute;
+        z-index: 2;
+        top: 0;
         background: $ultimateGray;
         display: grid;
         grid-template-columns: 1.2fr 1.5fr 1.2fr;
         gap: 10px;
-        padding: 3vw 1.5vw 6vw 1.5vw;
-        // height: 10vh;
+        padding: 4vw 1.5vw 0 1.5vw;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 20px 20px 60px #bebebe,
+                   -20px -20px 60px #ffffff;
         .user {
             display: flex;
             flex-direction: column;
@@ -148,6 +147,8 @@ header {
             }
 
             &_date {
+                font-family: $fontText;
+                letter-spacing: 0.2vw;
                 font-weight: 300;
                 margin-top: -0.5vw;
                 margin-left: 0.15vw;
@@ -161,9 +162,9 @@ header {
             background: $lightGray;
             box-shadow:  26px 26px 47px #868889,
                         -26px -26px 47px #a0a2a5;
-            //height: 12vw;
             font-weight: 300;
             font-size: 1vw;
+            font-family: $fontText;
 
             >figure {
                 height: 100%;
@@ -181,6 +182,8 @@ header {
             &_author {
                 border-top: 1px solid rgba(128, 128, 128, 0.507);
                 padding-top: 0.2vw;
+                font-family: $fontText;
+                font-weight: 500;
             }
         }
 
@@ -254,66 +257,212 @@ header {
                 margin-right: 0.5vw;
             }
         }
-    }
-
-    .main {
-        position: absolute;
-        z-index: 1;
-        top: 20.2vw;
         &_menu {
-            padding: 0 2.5vw;
             background-color: rgba(255, 255, 255, 0);
-            margin-bottom: 4vw;
-            border: none;
+            padding-left: 1vw;
+            margin-top: 3vw;
+            margin-bottom: -1vw;
+            border: none !important;
+            width: 27vw;
+            font-size: 0.9vw;
+            font-family: $fontText;
+            font-weight: 600;
             &_li {
-                color: $lightGray;
+                color: $lightGray !important;
                 letter-spacing: 0.2vw;
                 cursor: pointer;
-
-                &:active,
+                &.active,
                 &:focus {
-                    background-color: $lightGray;
+                    color: $darkGray !important;
+                    font-weight: 400;
+                    border: none;
+                }
+
+                &:hover {
+                    color: $illuminating !important;
                 }
             }
         }
+    }
 
-        // изменение стилей bootstrap на пунктах меню
-        .nav-link.active {
-            background-color: $lightGray;
-            font-weight: 400;
-            border: none;
+.main {
+    position: absolute;
+    z-index: 1;
+    top: 22vw;
+    &_planner {
+            background: $dirtyWhite;
+            padding: 6vw 4vw 3vw 4vw;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2vw;
+            &_calendar {
+                background-color: $dirtyWhite;
+                &_head {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 1.5rem 2rem;
+                    font-size: 1vw;
+                    font-weight: 300;
+                    text-transform: uppercase;
+                    letter-spacing: 1vw;
+                    background: rgba(255, 255, 255, 0) !important;
+                    &_prev,
+                    &_next {
+                        border: none;
+                        background: transparent;
+                        border: 0;
+                        outline: 0;
+                        cursor: pointer;
+                        width: 2rem;
+                        &_svg {
+                            width: 2rem;
+                        }
+                    }
+            
+                    &_prev:hover polyline,
+                    &_prev:focus polyline {
+                        stroke-width: 3;
+                        stroke: $illuminating;
+                    }
+            
+                    &_prev:active polyline {
+                        stroke-width: 6;
+                        transition: all 100ms ease-in-out;
+                        stroke: $illuminating;
+                    }
+            
+                    &_next:hover polyline,
+                    &_next:focus polyline {
+                        stroke-width: 3;
+                        stroke: $illuminating;
+                    }
+            
+                    &_prev:active polyline {
+                        stroke-width: 6;
+                        transition: all 100ms ease-in-out;
+                        stroke: $illuminating;
+                    }
+            
+                    polyline {
+                        transition: all 250ms ease-in-out;
+                        fill: none;
+                        stroke: $ultimateGray;
+                        stroke-width: 1;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                    }
+            
+                    &_date {
+                        background: $dirtyWhite;
+                        display: flex;
+                        font-size: 2vw;
+            
+                        &_month {
+                            margin-right: 3vw;
+                        }
+                    }
+                }
+            
+                &_table {
+                    background: $dirtyWhite;
+                    width: 98%;
+                    &_thead {
+                        background-color: $dirtyWhite;
+                    }
+            
+                    &_tbody {
+                        background-color: $dirtyWhite;
+                    }
+            
+                    ;
+            
+                    th,
+                    td {
+                        text-transform: uppercase;
+                        font-size: 1.2vw;
+                        font-weight: 400;
+                        letter-spacing: 0.4vw;
+                        width: 12vw;
+                    }
+            
+                    th {
+                        text-align: center;
+                        font-size: 1vw;
+                        font-weight: 700;
+                    }
+            
+                    &_day {
+                        &_today {
+                            box-shadow: 0 0  3px 6px $illuminating inset !important;
+            
+                            &:hover {
+                                box-shadow: 0 0 0 1px white, 0 0 10px 3px $illuminating !important;
+                            }
+                        }
+            
+                        &:hover {
+                            border: 1 solid rgba(0, 0, 0, 0.041);
+                            box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(48, 48, 48, 0.185);
+                        }
+                    }
+            
+                    .btn-lg {
+                        width: 100%;
+                        height: 100%;
+                        text-align: start;
+                        padding-bottom: 5vw;
+                        background-color: none;
+                        border: none;
+                    }
+            
+                    .btn.active,
+                    .btn:focus,
+                    .btn-lg.active,
+                    .btn-lg:focus {
+                        outline: 0;
+                        box-shadow: none;
+                        border: none;
+                        border-color: none;
+                    }
+            
+                    .btn::-moz-focus-inner,
+                    .btn-lg::-moz-focus-inner {
+                        border: none;
+                        outline: none;
+                        box-shadow: none;
+                        border: none;
+                    }
+                }
         }
-
-        .nav-link:hover {
-            color: $darkGray;
-        }
-
-        &_planner {
-            // background-color: $dirtyWhite;
-            padding: 0vw 4vw 3vw 4vw;
             &_notions {
                 margin-top: 6vw;
                 width: 23vw;
-
                 &_form {
                     width: 23vw;
-
                     &_input {
-                        width: 100%;
+                        width: 23vw;
                         padding: 0.5vw;
+                        border: 1px solid $lightGray;
+                        border-radius: 4px;
+                        &:active,
+                        &:focus {
+                            outline: none;
+                            box-shadow: none;
+                            border: 2px solid $illuminating;
+                        }
                     }
-
                     &_btn {
                         width: 100%;
-                        padding: 0.5vw;
-                        margin: 0.6vw 0 1.8vw 0;
+                        padding: 0.6vw;
+                        margin: 0.6vw 0 1.2vw 0;
+                        border-radius: 4px;
                         text-transform: uppercase;
                         font-weight: 900;
                         letter-spacing: 0.1vw;
                         background-color: $ultimateGray;
                         border: none;
                         color: $darkGray;
-
                         &:hover {
                             background-color: $illuminating;
                             color: $darkGray;
@@ -321,365 +470,186 @@ header {
                         }
                     }
                 }
-            }
+                &_note {
+                    margin-left: 0;
+                    padding-left: 0;
+                    &_li {
+                        list-style-type: none;
+                        background-color: $lightGray;
+                        width: 23vw;
+                        padding: 1vw 2vw;
+                        cursor: pointer;
+                        text-align: center;
+                        line-height: 1.5vw;
+                        border-radius: 4px;
+                        margin-bottom: 0.8vw;
+                        &_div {
+                            color: rgb(13, 14, 13);
+                            font-size: 1em;
+                            padding: 0;
+                        }
+                    }
+                }
+                .important {
+                    color: #f2f2f2;
+                    background: #f5b4b5;
+                    border-radius: 3px;
+                }
         }
-
-        // изменение стилей bootstrap на инпуте 
-        .form-control.active, 
-        .form-control:focus {
-            outline: none;
-            box-shadow: none;
-            border: 2px solid $illuminating;
-        }
-
-        .todoList li {
-            list-style-type: none;
-            background-color: $lightGray;
-            padding: 1vw 2vw;
-            cursor: pointer;
-            text-align: center;
-            line-height: 1.5vw;
-            border-radius: 4px;
-            margin-bottom: 0.8vw;
-            //overflow: hidden;
-        }
-
-        .planner-wrapper {
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 2vw
-        }
-
-        .counter-wrapper {
-            position: relative;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            //height: 75vh;
-            .counter-header {
-                position: absolute;
-                top: 20px;
-
-                .dateForCounter:active,
-                .dateForCounter:focus {
+    }
+    &_counter {
+        margin-top:7vw;
+        font-family: $fontText;
+        font-size: 1.3vw;
+        text-transform: uppercase;
+        letter-spacing: 0.1vw;
+        font-weight: 300;
+        &_form {
+            margin: 4vw 33.5vw;
+            border-radius: 20px;
+            background: $dirtyWhite;
+            box-shadow:  12px 12px 24px #cccdc9,
+                        -12px -12px 24px #ffffff;
+            width: 34vw;
+            padding: 2vw 3vw;
+            &_input {
+                border: none;
+                border-bottom: 1px solid rgba(128, 128, 128, 0.315);
+                background: none;
+                font-weight: 300;
+                padding-left: 1vw;
+                margin: 0.5vw 0.8vw;
+                letter-spacing: 0.08vw;
+                cursor: pointer;
+                &:active,
+                &:focus {
                     outline: none;
                     box-shadow: none;
-                    border: 2px solid $illuminating;
-                }
-            }
-
-            .counter-body {
-                display: grid;
-                grid-template-columns: repeat(4, 5vw);
-                grid-template-rows: repeat(2, 11vh);
-                column-gap: 20px;
-
-                .alert-danger,
-                .alert-dark {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+                    background: none;
+                    border: none;
+                    border-bottom: 2px solid $darkGray;
                 }
             }
         }
-
-        .game {
-            //height: 75vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40vw;
-            //perspective: 1000px;
-            .game-wrapper {
-                position: absolute;
-                z-index: 1;
-                top: 10vw;
-                left: 28vw;
-                padding-bottom: 4vw;
-                //width: 640px;
-                //height: 60vh;
-                margin: 0 auto;
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                grid-template-rows: repeat(3, 1fr);
-                gap: 15px;
-
-                .memory-card {
-                    margin: 0 auto;
-                    position: relative;
-                    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
-                    border-radius: 5px;
-                    transform-style: preserve-3d;
-                    transition: transform .5s;
-                    cursor: pointer;
-                    width: 10vw;
-                    height: 190px;
-                }
-
-                .memory-card:active {
-                    transform: scale(0.97);
-                    transition: transform .2s;
-                }
-                .front-face,
-                .back-face {
-                    width: 100%;
-                    //height: 100%;
-                    padding: 20px;
-                    position: absolute;
-                    border-radius: 5px;
-                    background: $illuminating;
-                    backface-visibility: hidden;
-                }
-                .front-face {
-                    transform: rotateY(180deg);
-                }
-                .game-modal {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    margin-right: -50%;
-                    transform: translate(-50%, -50%);
-                    width: 18rem;
-
-                    .btn-start-again {
-                        width: 100%;
-                        padding: 0.5vw;
-                        margin: 0.6vw 0 1.8vw 0;
-                        text-transform: uppercase;
-                        font-weight: 900;
-                        letter-spacing: 0.1vw;
-                        background-color: $ultimateGray;
-                        border: none;
-                        color: $darkGray;
-                        border-radius: 5px;
-                    }
-
-                    .btn-start-again:hover {
-                        background-color: $illuminating;
-                        color: $darkGray;
-                        box-shadow: 0px 0px 20px 4px rgba(228, 214, 17, 0.589) inset;
-                    }
-                }
+        &_result {
+            display: grid;
+            grid-template-columns: repeat(4, 7vw);
+            grid-template-rows: repeat(2, auto);
+            gap: 1vw;
+            margin-left: 35.4vw;
+            &_num {
+                background: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: $fontHeading;
+                font-size: 3vw;
+                background: none;
+                border: none;
+                margin: 0;
             }
-        }
-    }
+            .alert-danger {
+                background: none;
 
-    .flip {
-        transform: rotateY(180deg);
-    }
-
-    @media (max-width: 767px) {
-        .form-card {
-            width: 100%;
-
-            .userName,
-            .userCity {
-                margin-bottom: 45px;
             }
-        }
-
-        .header {
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(3, 1fr);
-            //height: 26vh;
-            .weather,
-            .quote-wrapper,
-            .greeting {
+            &_text {
+                font-family: $fontText;
+                font-size: 0.9vw;
+                text-transform: none;
+                margin-top: -0.5vw;
+                font-weight: 300;
+                letter-spacing: 0.2vw;
                 text-align: center;
             }
         }
+    }
 
-        .main {
-            .planner-wrapper {
-                grid-template-columns: 1fr;
-                grid-template-rows: 4fr 1fr;
+    &_game {
+        width: 100vw;
+        margin-top: 3vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .game-wrapper {
+            padding-bottom: 4vw;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 4vw;
+            .memory-card {
+                position: relative;
+                border-radius: 5px;
+                transform-style: preserve-3d;
+                transition: transform .5s;
+                cursor: pointer;
+                width: 10vw;
+                height: 0;
+                margin-bottom: 10vw;
             }
 
-            .game {
-                padding-top: 10px;
+            .memory-card:active {
+                transform: scale(0.97);
+                transition: transform .2s;
+            }
+            .front-face,
+            .back-face {
+                width: 100%;
+                padding: 20px;
+                position: absolute;
+                border-radius: 20px;
+                backface-visibility: hidden;
+                background: linear-gradient(145deg, #fff911, #e4d20e);
+            }
+            .front-face {
+                transform: rotateY(180deg);
+            }
+            .front-face:hover,
+            .back-face:hover {
+                box-shadow:  5px 5px 10px #b9aa0c,
+                            -5px -5px 10px #ffff14;
+            } 
 
-                .game-wrapper {
-                    // width: 100%;
-                    // height: 100%;
-                    display: grid;
-                    grid-template-columns: repeat(4, 1fr);
-                    grid-template-rows: repeat(3, 1fr);
-                    gap: 15px;
-
-                    .front-face,
-                    .back-face {
-                        padding: 3px;
+            
+        }
+        &_modal {
+            margin: 0 44vw;
+            width: 30vw;
+            box-shadow: 12px 12px 24px #cccdc9, 
+                        -12px -12px 24px #ffffff;
+            border-radius: 30px;
+            &_div {
+                &_text {
+                    font-family: $fontHeading;
+                    font-size: 2vw;
+                    text-transform: uppercase;
+                    letter-spacing: 0.4vw;
+                }
+                &_btn {
+                    padding: 1vw 4vw;
+                    margin: 0.6vw 0 1.8vw 0;
+                    text-transform: uppercase;
+                    font-size: 0.9vw;
+                    font-weight: 900;
+                    letter-spacing: 0.3vw;
+                    background-color: $ultimateGray;
+                    border: none;
+                    color: $lightGray;
+                    border-radius: 5px;
+                    font-family: $fontText;
+                    &:hover {
+                        background-color: $illuminating;
+                        color: $darkGray;
                     }
                 }
             }
         }
-    }
-}
-
-.calendar {
-    &_head {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.5rem 2rem;
-        font-size: 1.5vw;
-        font-weight: 300;
-        text-transform: uppercase;
-        letter-spacing: 1vw;
-        background-color: rgba(255, 255, 255, 0);
-        &_prev,
-        &_next {
-            border: none;
-            background: transparent;
-            border: 0;
-            outline: 0;
-            cursor: pointer;
-            width: 2rem;
-            //height: 2.2rem;
-            &_svg {
-                width: 2rem;
-                //height: 3rem;
-            }
-        }
-
-        &_prev:hover polyline,
-        &_prev:focus polyline {
-            stroke-width: 3;
-            stroke: $illuminating;
-        }
-
-        &_prev:active polyline {
-            stroke-width: 6;
-            transition: all 100ms ease-in-out;
-            stroke: $illuminating;
-        }
-
-        &_next:hover polyline,
-        &_next:focus polyline {
-            stroke-width: 3;
-            stroke: $illuminating;
-        }
-
-        &_prev:active polyline {
-            stroke-width: 6;
-            transition: all 100ms ease-in-out;
-            stroke: $illuminating;
-        }
-
-        polyline {
-            transition: all 250ms ease-in-out;
-            fill: none;
-            stroke: $ultimateGray;
-            stroke-width: 1;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        &_date {
-            background-color: rgba(255, 255, 255, 0);
-            display: flex;
-            font-size: 2vw;
-
-            &_month {
-                margin-right: 3vw;
-            }
+        .flip {
+            transform: rotateY(180deg);
         }
     }
 
-    &_table {
-        width: 98%;
-
-        &>thead {
-            background-color: $lightGray
-        }
-
-        &>tbody {
-            background-color: $lightGray
-        }
-
-        ;
-
-        th,
-        td {
-            text-transform: uppercase;
-            font-size: 1.2vw;
-            font-weight: 400;
-            letter-spacing: 0.4vw;
-            width: 12vw;
-        }
-
-        th {
-            text-align: center;
-        }
-
-        &_day {
-            &_today {
-                box-shadow: 0px 0px 20px 3px $illuminating inset !important;
-
-                &:hover {
-                    box-shadow: 0 0 0 1px white, 0 0 10px 3px $illuminating !important;
-                }
-            }
-
-            &:hover {
-                border: 1 solid rgba(0, 0, 0, 0.041);
-                box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(48, 48, 48, 0.185);
-            }
-        }
-
-        td {
-            //height: 8vw;
-        }
-
-        .btn-lg {
-            width: 100%;
-            height: 100%;
-            text-align: start;
-            padding-bottom: 5vw;
-            background-color: none;
-            border: none;
-        }
-
-        .btn.active,
-        .btn:focus,
-        .btn-lg.active,
-        .btn-lg:focus {
-            outline: 0;
-            box-shadow: none;
-            border: none;
-            border-color: none;
-        }
-
-        .btn::-moz-focus-inner,
-        .btn-lg::-moz-focus-inner {
-            border: none;
-            outline: none;
-            box-shadow: none;
-            border: none;
-        }
-    }
-
-
-
-    @media (max-width: 900px) {
-        .calendar {
-            &_head {
-                &_date {
-                    font-size: 2.5vw;
-                }
-            }
-        }
-    }
-
-    @media (max-width: 767px) {
-        .calendar {
-            &_head {
-                &_date {
-                    font-size: 3.5vw;
-                }
-            }
-        }
-    }
+    
 }
 
 .hide {
@@ -689,3 +659,429 @@ header {
 .hovered {
     background-color: aqua;
 }
+
+@media (min-width: 1052px) and (max-width: 1400px) {
+    .body {
+        background-color: $dirtyWhite;
+    }
+    .header {
+        grid-template-areas: 'user logo'
+                            'quote logo'
+                            'nav nav';
+
+        .user, .quote-wrapper {
+            grid-area: user;
+            width: 35vw;
+        }
+        .quote-wrapper {
+            grid-area: quote;
+            font-size: 1.5vw;
+            margin: 0 auto;
+            margin-top: -12vw;
+            &_blockquote {
+                font-size: 1.4vw;
+            }
+        }
+        .logo, .chooseCity {
+            grid-area: logo;
+            width: 53vw;
+            float: right;
+        }
+        .chooseCity {
+            margin-right: 0;
+            margin-top: 8vw;
+
+        }
+        .weather {
+            &_result {
+                font-family: $fontHeading;
+                font-size: 2vw;
+                margin-right: 0.5vw;
+            }
+        }
+        &_menu {
+            grid-area: nav;
+            margin: 0 auto;
+            font-size: 1.2vw;
+            width: max-content;
+            margin-top: 2vw;
+            &_li {
+                padding: 1.2vw 3vw !important;
+            }
+        }
+
+    }
+
+    .main {
+        background-color: $dirtyWhite;
+        padding: 0 5vw;
+
+        &_planner {
+            margin-top: 15vw;
+            width: 90vw;
+            font-size: 1.5vw;
+            font-weight: 300;
+            &_calendar {
+                margin-right: 2vw;
+            }
+        }
+        
+        &_counter {
+            margin-top: 28vw;
+            font-size: 2vw;
+            width: 100%;
+            margin: 28vw 0 0 0;
+            padding: 0;
+            padding-bottom: 33vw;
+            &_form {
+                margin: 0 20vw 3vw 20vw;
+                width: 50vw;
+            }
+            &_result {
+                width: 28vw;
+                margin: 0 auto;
+                &_num {
+                    font-size: 5vw;
+                }
+                &_text {
+                    font-size: 1.4vw;
+                }
+            }
+        }
+        .game {
+            width: 100%;
+            padding-right: 10.5vw;
+            .game-wrapper {
+                margin-top: 30vw;
+                margin-left: 12vw;
+                .memory-card {
+                    width: 16vw;
+                    margin-bottom: 16vw;
+                }
+            }
+
+        }
+        
+    }
+    
+}
+
+@media (min-width: 769px) and (max-width: 1050px) {
+    .header {
+        width: 100%;
+        grid-template-areas: 'logo logo'
+                            'user quote'
+                            'nav nav' ;
+        .logo {
+            grid-area: logo;
+            margin-left: 45vw ;
+            width: 50vw;
+        }
+        .user {
+            grid-area: user;
+        }
+        .chooseCity, .weather {
+            grid-area: weather;
+        }
+        .quote-wrapper {
+            grid-area: quote;
+            margin-left: -50vw;
+            font-size: 2vw;
+            &_blockquote {
+                font-size: 2vw;
+            }
+        }
+        &_menu {
+            grid-area: nav;
+            margin: 0 auto;
+            font-size: 1.8vw;
+            width: max-content;
+            margin-top: 3vw;
+            &_li {
+                padding: 1.6vw 3.5vw !important;
+            }
+        }
+        
+    }
+    .main {
+        &_planner {
+            margin-top: 25vw;
+            width: 99vw;
+            display: flex;
+            flex-direction: column-reverse;
+            font-size: 2vw;
+            font-weight: 300;
+            padding: 10vw 12vw;
+            &_notions {
+                width: 50vw;
+                margin: 0 auto;
+                &_form {
+                    width: 100%;
+                    &_input {
+                        width: 50vw;
+                        padding: 1.2vw;
+                    }
+                    &_btn {
+                        padding: 2vw;
+                    }
+                }
+                &_note {
+                    &_li {
+                        width: 50vw;
+                        padding: 3vw;
+                    }
+                }
+            }
+        }
+        &_counter {
+            margin-top: 40vw;
+            font-size: 2.2vw;
+            &_form {
+                width: 50vw;
+                margin: 0 26vw;
+            }
+            &_result {
+                margin-top: 5vw;
+                &_num {
+                    font-size: 6vw;
+                }
+                &_text {
+                    font-size: 1.4vw;
+                }
+            }
+        }
+        .game {
+            margin-top: 30vw;
+            .memory-card {
+                width: 20vw;
+                margin-bottom: 20vw;
+            }
+            .front-face,
+            .back-face {
+                border-radius: 30px;
+            }
+        }
+    }
+    .calendar {
+        &_head {
+            &_date {
+                font-size: 2.5vw;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .form-card {
+        width: 100%;
+
+        .userName,
+        .userCity {
+            margin-bottom: 45px;
+        }
+    }
+
+    .header {
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        .weather,
+        .quote-wrapper,
+        .greeting,
+        .header_menu,
+        .date {
+            text-align: center;
+        }
+
+        .user {
+            font-size: 3vw;
+            margin-bottom: 0;
+            padding-top: 5vw;
+        }
+        .greeting {
+            font-size: 5vw;
+            margin-bottom: 4vw;
+        }
+
+        .quote-wrapper {
+            width: 75%;
+            font-size: 2.4vw;
+            margin: 0 auto;
+            &_blockquote {
+                font-size: 2.7vw;
+            }
+        }
+
+        .logo {
+            float: right;
+            width: 45vw;
+            margin-right: 4vw;
+            margin-top: 5vw;
+        }
+
+        .chooseCity {
+            float: left;
+            text-align: left;
+            margin-left: 3vw;
+            margin-top: 4vw;
+        }
+
+        &_menu {
+            margin: 0 auto;
+            font-size: 3vw;
+            font-weight: 400;
+            width: max-content;
+            margin-top: 3vw;
+            &_li {
+                padding: 1.6vw 6vw !important;
+            }
+        }
+
+    }
+
+    .main {
+        //margin-top: 65vw;
+        &_planner {
+            margin-top: 120vw;
+            display: flex;
+            flex-direction: column-reverse;
+            font-size: 3vw;
+            font-weight: 300;
+            padding: 10vw 7vw;
+            &_calendar {
+                font-size: 4vw;
+                &_head {
+                    &_date {
+                        font-size: 4vw;
+                    }
+                }
+                &_table {
+                    font-size: 4vw;
+                }
+                    
+            }
+            &_notions {
+                width: 70vw;
+                margin: 0 auto;
+                &_form {
+                    width: 100%;
+                    &_input {
+                        width: 70vw;
+                        padding: 4vw;
+                    }
+                    &_btn {
+                        padding: 4vw;
+                    }
+                }
+                &_note {
+                    &_li {
+                        width: 70vw;
+                        padding: 5vw;
+                    }
+                }
+            }
+        }
+        
+        &_counter {
+            padding: 0;
+            margin: 0;
+            width: 50%;
+            &_form {
+                margin-top: 120vw;
+                font-size: 3.5vw;
+                width: max-content;
+                padding: 3vw 5vw;
+                margin-left: 3.5vw;
+            }
+            &_result {
+                width: 100%;
+                &_num {
+                    font-size: 8vw;
+                }
+                &_text {
+                    font-size: 1.5vw;
+                }
+            } 
+        }
+    
+            .game {
+                margin-top: 120vw;
+                padding-top: 10px;
+    
+                .game-wrapper {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    grid-template-rows: repeat(3, 1fr);
+                    gap: 15px;
+
+                    .memory-card {
+                        width: 20vw;
+                        margin-bottom: 20vw;
+                    }
+    
+                    .front-face,
+                    .back-face {
+                        padding: 3px;
+                    }
+                }
+            }
+    }
+    }
+
+.calendar {
+    &_head {
+        &_date {
+            font-size: 3.5vw;
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 576px) {
+    
+}
+
+
+
+// @media (min-width: 740px) and (max-width: 1050px) {
+//     .header {
+//         width: 100%;
+//         grid-template-areas: 'logo logo'
+//                             'user quote'
+//                             'nav nav' ;
+//         .logo {
+//             grid-area: logo;
+//             margin-left: 45vw ;
+//             width: 50vw;
+//         }
+//         .user {
+//             grid-area: user;
+//         }
+//         .chooseCity, .weather {
+//             grid-area: weather;
+//         }
+//         .quote-wrapper {
+//             grid-area: quote;
+//             margin-left: -50vw;
+//             font-size: 2vw;
+//             &_blockquote {
+//                 font-size: 2vw;
+//             }
+//         }
+//         &_menu {
+//             grid-area: nav;
+//         }
+        
+//     }
+//     .calendar {
+//         &_head {
+//             &_date {
+//                 font-size: 2.5vw;
+//             }
+//         }
+//     }
+// }
+
+
+

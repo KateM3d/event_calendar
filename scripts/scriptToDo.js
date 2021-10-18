@@ -41,15 +41,7 @@ addButton.addEventListener('click', function() {
         localStorage.setItem(`todo`, JSON.stringify(todoList));
         todoList = JSON.parse(localStorage.getItem(`todo`));
     }
-
-    // todoList.push(newTodo);
-
     displayMessages();
-
-    // for (let i in todoList) {
-    //     localStorage.setItem(`todo`, JSON.stringify(todoList[count]));
-    // }
-
     addMessage.value = '';
 
 });
@@ -59,8 +51,8 @@ function displayMessages() {
     if (todoList.length === 0) todo.innerHTML = '';
     todoList.forEach((item) => {
         displayMessages += `
-            <li class='liLabel' id="${+item.id}">
-            <div id="labelForItem" draggable="true" class="${item.important ? 'important': ''}" class="bg-secondary text-white"  ondblclick="deleteTask">${item.todo}</div>
+            <li id="${+item.id}" class=" liLabel main_planner_notions_note_li ${item.important ? 'important': ''}">
+            <div id="labelForItem" draggable="true" class="main_planner_notions_note_li_div ${item.important ? 'important': ''}" ondblclick="deleteTask">${item.todo}</div>
             </li>
             `;
         todo.innerHTML = displayMessages;
