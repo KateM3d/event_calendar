@@ -169,6 +169,7 @@ const createCalendar = (cld, year, month, day) => {
         for (let task of tasks) {
             task.addEventListener('dragstart', dragStart);
             task.addEventListener('dragend', dragEnd);
+            task.addEventListener('dblclick', clearDay);
 
         }
     })
@@ -200,7 +201,7 @@ const createCalendar = (cld, year, month, day) => {
     function clearDay(e) {
         e.preventDefault();
         this.remove(dragItem);
-
+        updateCalendarInStor();
     }
 
     function Drop(e) {
