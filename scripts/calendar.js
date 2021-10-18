@@ -1,22 +1,5 @@
 'use strict';
 
-document.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.getItem('todoInCalendar') && localStorage.getItem('todoInCalendar') != []) {
-
-        let todoInCalendar = JSON.parse(localStorage.getItem('todoInCalendar'));
-        const tableCells = document.querySelector('.table-striped').querySelectorAll('button');
-
-        for (let i = 0; i < tableCells.length; i++) {
-            tableCells[i].innerHTML = todoInCalendar[i];
-            if (tableCells[i].children[0]) {
-                for (let j = 0; j < tableCells[i].children.length; j++) {
-                    tableCells[i].children[j].style.display = "block";
-                }
-            }
-        }
-    }
-})
-
 let calendar = document.querySelector('.main_planner_calendar_body'),
     headingCalendar = document.querySelector('.main_planner_calendar_head');
 
@@ -31,7 +14,6 @@ next.className = `main_planner_calendar_head_next`;
 dateHeading.className = `main_planner_calendar_head_date`;
 addMonth.className = `main_planner_calendar_head_date_month`;
 addYear.className = `main_planner_calendar_head_date_year`;
-
 
 const getDay = (d) => {
     let day = d.getDay();
@@ -68,7 +50,7 @@ const createCalendar = (cld, year, month, day) => {
         ],
         table = `
             <table class="main_planner_calendar_table card table">
-                <thead class="main_planner_calendar_table_thead">
+                <thead>
                     <tr>
                         <th class="card-body main_planner_calendar_table_week">mon</th>
                         <th class="card-body main_planner_calendar_table_week">tue</th>
@@ -79,7 +61,7 @@ const createCalendar = (cld, year, month, day) => {
                         <th class="card-body main_planner_calendar_table_week">sun</th>
                     </tr>
                 </thead>
-                <tbody  class="table-striped main_planner_calendar_table_tbody">
+                <tbody  class="table-striped">
                     <tr>
         `;
 
@@ -95,7 +77,7 @@ const createCalendar = (cld, year, month, day) => {
     while (date.getMonth() === month) {
 
         if (month === new Date().getMonth() && day === date.getDate()) {
-            table = `${table}<td class="card-body main_planner_calendar_table_day main_planner_calendar_table_day_today"><button id = "${i++}" type="button" class="btn btn-lg main_planner_calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-" >${date.getDate()}</button></td>`;
+            table = `${table}<td class="card-body main_planner_calendar_table_day main_planner_calendar_table_day_today"><button id = "${i++}" type="button" class="btn btn-lg main_planner_calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-">${date.getDate()}</button></td>`;
         } else {
             table = `${table}<td class="card-body main_planner_calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg main_planner_calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-" >${date.getDate()}</button></td>`;
         }
@@ -150,7 +132,7 @@ const createCalendar = (cld, year, month, day) => {
     document.querySelector('.main_planner_calendar_head_date_month').dataset.month = date.getMonth();
     document.querySelector('.main_planner_calendar_head_date_year').dataset.year = date.getFullYear();
 
-    let btns = document.querySelectorAll('.calendar_table_day_btn');
+    let btns = document.querySelectorAll('.main_planner_calendar_table_day_btn');
 
     btns.forEach(btn =>
         btn.addEventListener('click', (e) => {
@@ -239,22 +221,11 @@ const createCalendar = (cld, year, month, day) => {
             todoInCalendar.push(tableCells[i].innerHTML);
         }
 
-        let currentMonth = document.querySelector('.calendar_head_date_month').innerText.toLowerCase().trim();
-        let currentYear = document.querySelector('.calendar_head_date_year').innerText.toLowerCase().trim();
+        let currentMonth = document.querySelector('.main_planner_calendar_head_date_month').innerText.toLowerCase().trim();
+        let currentYear = document.querySelector('.main_planner_calendar_head_date_year').innerText.toLowerCase().trim();
 
         localStorage.setItem(`${currentMonth}${currentYear}`, JSON.stringify(todoInCalendar));
     }
-
-    const updateCalendarInStor = () => {
-            let todoInCalendar = [];
-            const tableCells = document.querySelector('.table-striped').querySelectorAll('button');
-
-            for (let i = 0; i < tableCells.length; i++) {
-                todoInCalendar.push(tableCells[i].innerHTML);
-            }
-
-            localStorage.setItem('todoInCalendar', JSON.stringify(todoInCalendar));
-        }
 
     function dragOver(e) {
         e.preventDefault();
