@@ -82,7 +82,7 @@ const createCalendar = (cld, year, month, day) => {
             table = `${table}<td class="card-body calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-" >${date.getDate()}</button></td>`;
         }
 
-        $(function () {
+        $(function() {
             $('[data-toggle="popover"]').popover();
         })
 
@@ -169,12 +169,15 @@ const createCalendar = (cld, year, month, day) => {
         for (let task of tasks) {
             task.addEventListener('dragstart', dragStart);
             task.addEventListener('dragend', dragEnd);
+            task.addEventListener('dblclick', clearDay);
+
         }
     })
 
     for (let task of document.querySelectorAll('.liLabel')) {
         task.addEventListener('dragstart', dragStart);
         task.addEventListener('dragend', dragEnd);
+        task.addEventListener('dblclick', clearDay);
     }
 
     function dragStart() {
@@ -192,12 +195,18 @@ const createCalendar = (cld, year, month, day) => {
         btn.addEventListener('dragenter', dragEnter);
         btn.addEventListener('dragleave', dragLeave);
         btn.addEventListener('drop', Drop);
+
+    }
+
+    function clearDay(e) {
+        e.preventDefault();
+        this.remove(dragItem);
+        updateCalendarInStor();
     }
 
     function Drop(e) {
         e.preventDefault();
         this.append(dragItem);
-
         updateTodoList(dragItem);
     }
 
@@ -275,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         createCalendar(calendar, year, month, new Date().getDate());
-        $(function () {
+        $(function() {
             $('[data-toggle="popover"]').popover();
             $('[title = "To-do list"]');
         })
