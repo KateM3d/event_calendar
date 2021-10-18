@@ -60,20 +60,27 @@ function displayMessages() {
     todoList.forEach((item) => {
         displayMessages += `
             <li class='liLabel' id="${+item.id}">
-            <div id="labelForItem" draggable="true" class="${item.important ? 'important': ''}" class="bg-secondary text-white"  ondblclick="deleteTask()">${item.todo}</div>
+            <div id="labelForItem" draggable="true" class="${item.important ? 'important': ''}" class="bg-secondary text-white"  ondblclick="deleteTask">${item.todo}</div>
             </li>
             `;
         todo.innerHTML = displayMessages;
     });
 
 }
-function deleteTask(i) {
 
-    todoList = JSON.parse(localStorage.getItem(`todo`));
+function deleteTask(i) {
+   
     todoList.splice(i, 1);
-    localStorage.setItem(`todo`, JSON.stringify(todoList));
-    displayMessages();
-};
+    for (let i = 0; i < localStorage.length; i++) {
+        if (localStorage.getItem(`todo`) != null) {
+            localStorage.removeItem(`todo`);
+        }
+    }
+    for (let i = 0; i < todoList.length; i++) {
+        localStorage.setItem(`todo`, JSON.stringify(todoList));
+    }
+ displayMessages();
+}
 
 
 
