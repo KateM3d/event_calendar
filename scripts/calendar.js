@@ -39,6 +39,27 @@ const getDay = (d) => {
     return day - 1;
 }
 
+//достаем данные для календаря из ls
+const getDataForCurrentMonth = () => {
+    let currentMonth = document.querySelector('.calendar_head_date_month').innerText.toLowerCase().trim();
+    let currentYear = document.querySelector('.calendar_head_date_year').innerText.toLowerCase().trim();
+
+    if (localStorage.getItem(`${currentMonth}${currentYear}`) && localStorage.getItem(`${currentMonth}${currentYear}`) != []) {
+
+        let todoInCalendar = JSON.parse(localStorage.getItem(`${currentMonth}${currentYear}`));
+        const tableCells = document.querySelector('.table-striped').querySelectorAll('button');
+
+        for (let i = 0; i < tableCells.length; i++) {
+            tableCells[i].innerHTML = todoInCalendar[i];
+            if (tableCells[i].children[0]) {
+                for (let j = 0; j < tableCells[i].children.length; j++) {
+                    tableCells[i].children[j].style.display = "block";
+                }
+            }
+        }
+    }
+}
+
 const createCalendar = (cld, year, month, day) => {
 
     let date = new Date(year, month),
@@ -79,7 +100,7 @@ const createCalendar = (cld, year, month, day) => {
             table = `${table}<td class="card-body main_planner_calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg main_planner_calendar_table_day_btn" data-bs-toggle="popover">${date.getDate()}</button></td>`;
         }
 
-        $(function() {
+        $(function () {
             $('[data-toggle="popover"]').popover();
         })
 
@@ -129,7 +150,7 @@ const createCalendar = (cld, year, month, day) => {
     document.querySelector('.main_planner_calendar_head_date_month').dataset.month = date.getMonth();
     document.querySelector('.main_planner_calendar_head_date_year').dataset.year = date.getFullYear();
 
-    let btns = document.querySelectorAll('.calendar_table_day_btn')
+    let btns = document.querySelectorAll('.calendar_table_day_btn');
 
     btns.forEach(btn =>
         btn.addEventListener('click', (e) => {
@@ -145,7 +166,7 @@ const createCalendar = (cld, year, month, day) => {
         })
     )
 
-    document.querySelectorAll(".main_planner_calendar_table_day_btn").forEach(
+    btns.forEach(
         day => {
             day.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -153,6 +174,7 @@ const createCalendar = (cld, year, month, day) => {
         }
     )
 
+    getDataForCurrentMonth();
 
     // drag and drop goes here!!!
     let tasks = document.querySelectorAll('.liLabel'),
@@ -161,16 +183,16 @@ const createCalendar = (cld, year, month, day) => {
     let addBtn = document.querySelector('#add');
     addBtn.addEventListener('click', () => {
         tasks = document.querySelectorAll('.liLabel');
-        console.log(`здесь`)
-        for (let f of tasks) {
-            f.addEventListener('dragstart', dragStart);
-            f.addEventListener('dragend', dragEnd);
+
+        for (let task of tasks) {
+            task.addEventListener('dragstart', dragStart);
+            task.addEventListener('dragend', dragEnd);
         }
     })
 
-    for (let f of tasks) {
-        f.addEventListener('dragstart', dragStart);
-        f.addEventListener('dragend', dragEnd);
+    for (let task of document.querySelectorAll('.liLabel')) {
+        task.addEventListener('dragstart', dragStart);
+        task.addEventListener('dragend', dragEnd);
     }
 
     function dragStart() {
@@ -183,32 +205,44 @@ const createCalendar = (cld, year, month, day) => {
         return dragItem = this;
     }
 
-    for (let j of btns) {
-        j.addEventListener('dragover', dragOver);
-        j.addEventListener('dragenter', dragEnter);
-        j.addEventListener('dragleave', dragLeave);
-        j.addEventListener('drop', Drop);
+    for (let btn of btns) {
+        btn.addEventListener('dragover', dragOver);
+        btn.addEventListener('dragenter', dragEnter);
+        btn.addEventListener('dragleave', dragLeave);
+        btn.addEventListener('drop', Drop);
     }
 
     function Drop(e) {
         e.preventDefault();
         this.append(dragItem);
 
+        updateTodoList(dragItem);
+    }
+
+    const updateTodoList = (dragItem) => {
         for (let i = 0; i < todoList.length; i++) {
             if (dragItem.querySelector('div').textContent == todoList[i].todo) {
                 todoList.splice(i, 1);
                 break;
             }
         }
+
         localStorage.setItem('todo', JSON.stringify(todoList));
         updateCalendarInStor();
+    }
 
-        console.log(this.dataset.bscontent)
-        if (this.dataset.bscontent === undefined) {
-            this.dataset.bscontent = `${dragItem.textContent.trim()}`;
-        } else {
-            this.dataset.bscontent = `${this.dataset.bscontent}, ${dragItem.textContent.trim()}`;
+    const updateCalendarInStor = () => {
+        let todoInCalendar = [];
+        const tableCells = document.querySelector('.table-striped').querySelectorAll('button');
+
+        for (let i = 0; i < tableCells.length; i++) {
+            todoInCalendar.push(tableCells[i].innerHTML);
         }
+
+        let currentMonth = document.querySelector('.calendar_head_date_month').innerText.toLowerCase().trim();
+        let currentYear = document.querySelector('.calendar_head_date_year').innerText.toLowerCase().trim();
+
+        localStorage.setItem(`${currentMonth}${currentYear}`, JSON.stringify(todoInCalendar));
     }
 
     const updateCalendarInStor = () => {
@@ -224,7 +258,6 @@ const createCalendar = (cld, year, month, day) => {
 
     function dragOver(e) {
         e.preventDefault();
-        console.log('запрашиваемое ', this.id);
     }
 
     function dragEnter(e) {
@@ -236,13 +269,11 @@ const createCalendar = (cld, year, month, day) => {
     }
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
 
     let prevBtn = document.querySelector('.main_planner_calendar_head_prev'),
         nextBtn = document.querySelector('.main_planner_calendar_head_next'),
         btns = document.querySelectorAll('.main_planner_calendar_table_day_btn');
-
 
     nextBtn.addEventListener('click', () => {
 
@@ -273,11 +304,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         createCalendar(calendar, year, month, new Date().getDate());
-        $(function() {
+        $(function () {
             $('[data-toggle="popover"]').popover();
             $('[title = "To-do list"]');
         })
-
     });
 });
 
@@ -322,5 +352,4 @@ const isVisible = (elem) => { //открыто ли условное окно
     return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 }
 
-
-createCalendar(calendar, new Date().getFullYear(), new Date().getMonth(), new Date().getDate())
+createCalendar(calendar, new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
