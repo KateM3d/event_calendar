@@ -95,9 +95,9 @@ const createCalendar = (cld, year, month, day) => {
     while (date.getMonth() === month) {
 
         if (month === new Date().getMonth() && day === date.getDate()) {
-            table = `${table}<td class="card-body main_planner_calendar_table_day main_planner_calendar_table_day_today"><button id = "${i++}" type="button" class="btn btn-lg main_planner_calendar_table_day_btn" data-bs-toggle="popover">${date.getDate()}</button></td>`;
+            table = `${table}<td class="card-body main_planner_calendar_table_day main_planner_calendar_table_day_today"><button id = "${i++}" type="button" class="btn btn-lg main_planner_calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-" >${date.getDate()}</button></td>`;
         } else {
-            table = `${table}<td class="card-body main_planner_calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg main_planner_calendar_table_day_btn" data-bs-toggle="popover">${date.getDate()}</button></td>`;
+            table = `${table}<td class="card-body main_planner_calendar_table_day"> <button id = "${i++}" type="button" class="btn btn-lg main_planner_calendar_table_day_btn" data-bs-toggle="popover" title="To-do list" data-bs-content="-" >${date.getDate()}</button></td>`;
         }
 
         $(function () {
