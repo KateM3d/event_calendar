@@ -289,6 +289,7 @@ body {
     position: absolute;
     z-index: 1;
     top: 22vw;
+    margin-bottom: 4vw;
     &_planner {
             background: $dirtyWhite;
             padding: 6vw 4vw 3vw 4vw;
@@ -487,6 +488,13 @@ body {
                         line-height: 1.5vw;
                         border-radius: 4px;
                         margin-bottom: 0.8vw;
+                        &_inBtn {
+                            width: max-content;
+                            background: none;
+                            text-align: left;
+                            margin: 0.2vw;
+                            padding: 0.2vw;
+                        }
                         &_div {
                             color: rgb(13, 14, 13);
                             font-size: 1em;
@@ -852,7 +860,7 @@ body {
         }
 
         .chooseCity {
-            width: 66vw;
+            width: 68vw;
             margin: 0 auto;
             font-size: 4vw;
         }
@@ -967,7 +975,8 @@ body {
     }
 
 @media screen and (max-width: 576px) {
-    &_planner {
+    .main {
+        &_planner {
         margin-top: 90vw;
         display: flex;
         flex-direction: column-reverse;
@@ -1038,25 +1047,27 @@ body {
         } 
     }
 
-        .game {
-            margin-top: 90vw;
-            padding-top: 10px;
+    .game {
+        margin-top: 90vw;
+        padding-top: 10px;
 
-            .game-wrapper {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                grid-template-rows: repeat(3, 1fr);
-                gap: 15px;
+        .game-wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 15px;
 
-                .memory-card {
-                    width: 22vw;
-                    margin-bottom: 22vw;
-                }
+            .memory-card {
+                width: 22vw;
+                margin-bottom: 22vw;
+            }
 
-                .front-face,
-                .back-face {
-                    padding: 3px;
-                }
+            .front-face,
+            .back-face {
+                padding: 3px;
             }
         }
+    }
+    }
+    
 }

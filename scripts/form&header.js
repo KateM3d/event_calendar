@@ -32,6 +32,7 @@ const getGreeting = () => {
 
 const updateLocal = () => {
     localStorage.setItem('userName', userName);
+    localStorage.setItem(`userCity`, userCity)
 }
 
 const showForm = () => {

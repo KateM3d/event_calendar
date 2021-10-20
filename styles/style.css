@@ -241,6 +241,7 @@ body {
   position: absolute;
   z-index: 1;
   top: 22vw;
+  margin-bottom: 4vw;
 }
 .main_planner {
   background: #F0F1EC;
@@ -418,6 +419,15 @@ body {
   line-height: 1.5vw;
   border-radius: 4px;
   margin-bottom: 0.8vw;
+}
+.main_planner_notions_note_li_inBtn {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  background: none;
+  text-align: left;
+  margin: 0.2vw;
+  padding: 0.2vw;
 }
 .main_planner_notions_note_li_div {
   color: #0d0e0d;
@@ -751,7 +761,7 @@ body {
     display: none;
   }
   .header .chooseCity {
-    width: 66vw;
+    width: 68vw;
     margin: 0 auto;
     font-size: 4vw;
   }
@@ -775,6 +785,94 @@ body {
     font-size: 3vw;
     font-weight: 300;
     padding: 10vw 7vw;
+  }
+  .main_planner_calendar {
+    font-size: 4vw;
+  }
+  .main_planner_calendar_head_date {
+    font-size: 4vw;
+  }
+  .main_planner_calendar_table {
+    font-size: 4vw;
+  }
+  .main_planner_notions {
+    width: 70vw;
+    margin: 0 auto;
+  }
+  .main_planner_notions_form {
+    width: 100%;
+  }
+  .main_planner_notions_form_input {
+    width: 70vw;
+    padding: 4vw;
+  }
+  .main_planner_notions_form_btn {
+    width: 70vw;
+    padding: 4vw;
+    margin-left: 0.4vw;
+  }
+  .main_planner_notions_note_li {
+    width: 70vw;
+    padding: 5vw;
+    font-size: 3.5vw;
+    font-weight: 300;
+  }
+  .main_counter {
+    padding: 0;
+    margin: 0;
+    width: 50%;
+  }
+  .main_counter_form {
+    font-size: 3.5vw;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    padding: 3vw 5vw;
+    margin: 0;
+    margin-left: 3vw;
+    margin-top: 90vw;
+  }
+  .main_counter_result {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    gap: 50px;
+    margin-left: 25vw;
+    margin-top: 10vw;
+  }
+  .main_counter_result_num {
+    font-size: 8vw;
+  }
+  .main_counter_result_text {
+    font-size: 2.7vw;
+  }
+  .main .game {
+    margin-top: 90vw;
+    padding-top: 10px;
+  }
+  .main .game .game-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 15px;
+  }
+  .main .game .game-wrapper .memory-card {
+    width: 22vw;
+    margin-bottom: 22vw;
+  }
+  .main .game .game-wrapper .front-face,
+.main .game .game-wrapper .back-face {
+    padding: 3px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .main_planner {
+    margin-top: 90vw;
+    display: flex;
+    flex-direction: column-reverse;
+    font-size: 4vw;
+    font-weight: 300;
+    padding: 0;
   }
   .main_planner_calendar {
     font-size: 4vw;
