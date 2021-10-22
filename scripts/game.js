@@ -1,53 +1,76 @@
-const showContent = (event) => {
-
-    for (let li of document.querySelector('.nav').querySelectorAll('li')) {
-        li.classList.remove('active');
-    }
-
-    event.target.classList.add('active');
-
-    for (let i = 1; i < document.querySelector('.main').children.length; i++) {
-        document.querySelector('.main').children[i].setAttribute('hidden', 'hidden');
-    }
-
-    for (let i = 0; i < document.querySelector('.nav').querySelectorAll('li').length; i++) {
-        if (document.querySelector('.nav').querySelectorAll('li')[i] == event.target) {
-            document.querySelector('.main').children[i + 1].removeAttribute('hidden');
-
-            break;
-        }
-    }
-}
-
-for (let li of document.querySelector('.nav').querySelectorAll('li')) {
-    li.addEventListener('click', showContent);
-}
-
-// game
-
-const cards = document.querySelectorAll('.memory-card');
-
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard;
 let secondCard;
 let matches = 0;
 
-document.addEventListener("DOMContentLoaded", startGame = () => {
-    document.querySelector('.game-modal').setAttribute('hidden', 'hidden');
+const cardsList = {
+    front: [{
+            src: 'images/cat.png',
+            alt: "cat"
+        },
+        {
+            src: 'images/dog.png',
+            alt: "dog"
+        },
+        {
+            src: 'images/girl.png',
+            alt: "girl"
+        },
+        {
+            src: 'images/car.png',
+            alt: "car"
+        },
+        {
+            src: 'images/apple.png',
+            alt: "apple"
+        },
+        {
+            src: 'images/fish.png',
+            alt: "fish"
+        }
+    ],
+    back: {
+        src: 'images/question.png',
+        alt: "question"
+    }
+};
 
-    cards.forEach(card => {
+const startGame = () => {
+    document.querySelector('.game-wrapper').innerHTML = `
+                <div class="text-center game-modal" hidden>
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">You WON!</h5>
+                        <button class="btn-start-again">Tap here to play again</button>
+                    </div>
+                </div>`;
+
+    for (let i = 0; i < cardsList.front.length; i++) {
+        document.querySelector('.game-wrapper').innerHTML += `
+                <div class="memory-card">
+                    <img class="front-face" src=${cardsList.front[i].src} alt=${cardsList.front[i].alt}>
+                    <img class="back-face" src=${cardsList.back.src} alt=${cardsList.back.alt}>
+                </div>
+
+                <div class="memory-card">
+                    <img class="front-face" src=${cardsList.front[i].src} alt=${cardsList.front[i].alt}>
+                    <img class="back-face" src=${cardsList.back.src} alt=${cardsList.back.alt}>
+                </div>
+    `;
+    }
+
+    document.querySelectorAll('.memory-card').forEach(card => {
         card.addEventListener('click', flipCard);
         card.classList.remove('flip');
         card.removeAttribute('hidden', 'hidden');
 
-        let ramdomPos = Math.floor(Math.random() * cards.length);
+        let ramdomPos = Math.floor(Math.random() * document.querySelectorAll('.memory-card').length);
         card.style.order = ramdomPos;
     })
 
-    matches = 0
+    matches = 0;
     resetBoard();
-})
+}
 
 const flipCard = event => {
     if (lockBoard) return;
@@ -70,12 +93,14 @@ const checkForMatch = () => {
     if (firstCard.querySelector('img').alt === secondCard.querySelector('img').alt) {
         matches += 2;
 
-        if (matches === cards.length) {
+        if (matches === document.querySelectorAll('.memory-card').length) {
             setTimeout(() =>
-                cards.forEach(card =>
+                document.querySelectorAll('.memory-card').forEach(card =>
                     card.setAttribute('hidden', 'hidden')), 2000);
-            setTimeout(() =>
-                document.querySelector('.game-modal').removeAttribute('hidden', 'hidden'), 2500);
+            setTimeout(() => {
+                document.querySelector('.game-modal').removeAttribute('hidden', 'hidden');
+                document.querySelector('.btn-start-again').addEventListener('click', startGame);
+            }, 2500);
 
         } else {
             disableCards();
@@ -108,4 +133,4 @@ const resetBoard = () => {
     [firstCard, secondCard] = [null, null];
 }
 
-document.querySelector('.btn-start-again').addEventListener('click', startGame);
+document.addEventListener('DOMContentLoaded', startGame);

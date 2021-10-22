@@ -1,4 +1,7 @@
-document.addEventListener('DOMContentLoaded', checkUserInfo = () => {
+let userName;
+let userCity;
+
+const checkUserInfo = () => {
     if (!localStorage.getItem('userName')) {
         showForm();
     } else {
@@ -7,7 +10,7 @@ document.addEventListener('DOMContentLoaded', checkUserInfo = () => {
         showQuote();
         showGreeting();
     }
-})
+}
 
 const showGreeting = () => {
     let greeting = getGreeting();
@@ -35,13 +38,9 @@ const updateLocal = () => {
 }
 
 const showForm = () => {
-    document.querySelector('.card').style.margin = 'auto';
-
+    document.querySelector('.card').style.margin = 'auto'; 
     document.querySelector('.card').removeAttribute('hidden', 'hidden');
 }
-
-let userName;
-let city;
 
 const checkForm = () => {
     'use strict'
@@ -60,13 +59,13 @@ const checkForm = () => {
                 event.preventDefault();
                 event.stopPropagation();
 
-                userName = document.getElementById('validationTooltip01').value;
+                userName = document.getElementById('user-name').value;
                 userName = userName[0].toUpperCase() + userName.slice(1).toLowerCase();
-                city = document.getElementById('validationTooltip03').value;
+                userCity = document.getElementById('user-city').value;
 
                 form.classList.add('was-validated');
                 showInterface();
-                showQuote(); 
+                showQuote();
                 showGreeting();
                 updateLocal();
             }, false)
@@ -93,4 +92,5 @@ const showQuote = () => {
         });
 }
 
-document.querySelector('.form-btn').addEventListener('click', checkForm)
+document.querySelector('.form-btn').addEventListener('click', checkForm);
+document.addEventListener('DOMContentLoaded', checkUserInfo);
