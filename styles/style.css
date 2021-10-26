@@ -123,7 +123,6 @@ header {
   display: grid;
   -ms-grid-columns: 1.2fr 1.5fr 1.2fr;
       grid-template-columns: 1.2fr 1.5fr 1.2fr;
-  gap: 10px;
   padding: 3vw 1.5vw 6vw 1.5vw;
 }
 
@@ -535,12 +534,8 @@ header {
 }
 
 @media (max-width: 767px) {
-  .app .header {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-    -ms-grid-rows: (1fr)[3];
-        grid-template-rows: repeat(3, 1fr);
-    height: 26vh;
+  .app .calendar {
+    width: 80vw;
   }
   .app .header .weather,
   .app .header .quote-wrapper,
@@ -555,10 +550,13 @@ header {
     display: none;
   }
   .app .main .planner-wrapper {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-    -ms-grid-rows: 4fr 1fr;
-        grid-template-rows: 4fr 1fr;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .app .main .game {
     padding-top: 10px;
@@ -576,6 +574,10 @@ header {
   .app .main .game .game-wrapper .back-face {
     padding: 3px;
   }
+}
+
+.calendar {
+  width: 60vw;
 }
 
 .calendar_head {
@@ -735,12 +737,6 @@ header {
 @media (max-width: 767px) {
   .calendar .calendar_head_date {
     font-size: 3.5vw;
-  }
-}
-
-@media (max-width: 500px) {
-  .calendar .calendar {
-    width: 100vw;
   }
 }
 
