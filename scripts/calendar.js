@@ -261,17 +261,17 @@ document.addEventListener('DOMContentLoaded', () => {
             year = +document.querySelector('.calendar_head_date_year').dataset.year,
             btns = document.querySelectorAll('.calendar_table_day_btn');
 
-        hidePopover(btns);
+        // hidePopover(btns);
         calendar.innerHTML = ``;
         createCalendar(calendar, year, month, new Date().getDate());
-        addPopover(btns);
+        // addPopover(btns);
     });
 
     prevBtn.addEventListener('click', () => {
         let month = +document.querySelector(`.calendar_head_date_month`).dataset.month,
             year = +document.querySelector('.calendar_head_date_year').dataset.year,
             btns = document.querySelectorAll('.calendar_table_day_btn');
-        hidePopover(btns);
+        // hidePopover(btns);
 
         if (month == 1) {
             month = 11;
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         createCalendar(calendar, year, month, new Date().getDate());
         $(function() {
-            $('[data-toggle="popover"]').popover();
+            // $('[data-toggle="popover"]').popover();
             $('[title = "To-do list"]');
         })
     });
@@ -297,36 +297,36 @@ const checkMonth = (year, month, date) => {
     } else return date.getFullYear()
 }
 
-const addPopover = () => {
-    let btns = document.querySelectorAll('.calendar_table_day_btn');
-    btns.forEach(btn =>
-        btn.addEventListener('click', (e) => {
-            for (let i = 0; i < btns.length; i++) {
-                if (e.target !== btns[i].id) {
-                    $(btns[i]).popover('hide');
-                }
-            }
-        })
-    )
-}
+// const addPopover = () => {
+//     let btns = document.querySelectorAll('.calendar_table_day_btn');
+//     btns.forEach(btn =>
+//         btn.addEventListener('click', (e) => {
+//             for (let i = 0; i < btns.length; i++) {
+//                 if (e.target !== btns[i].id) {
+//                     $(btns[i]).popover('hide');
+//                 }
+//             }
+//         })
+//     )
+// }
 
-const hidePopover = () => {
-    let btns = document.querySelectorAll('.calendar_table_day_btn');
-    btns.forEach(btn => {
-        $(btn).popover('dispose');
-    })
-}
+// const hidePopover = () => {
+//     let btns = document.querySelectorAll('.calendar_table_day_btn');
+//     btns.forEach(btn => {
+//         $(btn).popover('dispose');
+//     })
+// }
 
-const onClickClose = (elem, arr) => { // вызвать в момент показа списка заметок, где elem - заметки
-    const outsideClickListener = (e) => {
-        if (!elem.contains(e.target) && isVisible(elem)) { // проверяем, что клик не по элементу и элемент виден
+// const onClickClose = (elem, arr) => { // вызвать в момент показа списка заметок, где elem - заметки
+//     const outsideClickListener = (e) => {
+//         if (!elem.contains(e.target) && isVisible(elem)) { // проверяем, что клик не по элементу и элемент виден
 
-            $(arr).popover('hide');
-            document.removeEventListener('click', outsideClickListener);
-        }
-    };
-    document.addEventListener('click', outsideClickListener);
-}
+//             $(arr).popover('hide');
+//             document.removeEventListener('click', outsideClickListener);
+//         }
+//     };
+//     document.addEventListener('click', outsideClickListener);
+// }
 
 const isVisible = (elem) => { //открыто ли условное окно
     return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
