@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Raleway:wght@200;300;400;500;600;700&display=swap');
-
 $fontHeading: 'Gruppo',
 cursive;
 $fontText: 'Raleway',
@@ -9,9 +8,10 @@ $ultimateGray: #939597;
 $illuminating: #fde910;
 $lightGray: #e6e7e2bd;
 $dirtyWhite: #F0F1EC;
-$darkGray: rgb(44, 44, 44);
+$darkGray: rgb(44,
+44,
+44);
 ;
-
 body {
     font-family: $fontText;
     margin: 0;
@@ -34,8 +34,7 @@ body {
     margin: 10vw 0;
     padding: 3vw 2vw 2vw 2vw;
     border-radius: 20px;
-    box-shadow:  5px 5px 10px #7d7f80,
-                 5px 5px 10px #a9abae;
+    box-shadow: 5px 5px 10px #7d7f80, 5px 5px 10px #a9abae;
     &_greeting {
         font-family: $fontHeading;
         font-size: 2vw;
@@ -62,19 +61,16 @@ body {
             }
         }
     }
-
     .form-control {
         background-color: $lightGray;
     }
-
-    .form-control:active, 
+    .form-control:active,
     .form-control:focus {
         outline: 0;
         box-shadow: none;
         border: 1px solid $illuminating;
         background-color: $lightGray;
     }
-
     &_submit {
         &_btn {
             width: 100%;
@@ -99,30 +95,25 @@ body {
 
 header {
     border-radius: 0 0 20px 20px;
-    box-shadow: 20px 20px 60px #bebebe,
-        -20px -20px 60px #ffffff;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
 }
 
 .app {
     background-color: $lightGray;
     .form-card {
         width: 25vw;
-
         .userName,
         .userCity {
             margin-bottom: 30px;
         }
-
         .btn-wrapper {
             margin-top: 45px;
             margin-bottom: 15px;
         }
-
         .form-btn {
             width: 100%;
         }
     }
-
     .header {
         position: relative;
         background: $ultimateGray;
@@ -137,7 +128,6 @@ header {
             text-align: left;
             justify-content: start;
             text-transform: uppercase;
-
             &_greeting {
                 font-family: $fontHeading;
                 color: $illuminating;
@@ -146,7 +136,6 @@ header {
                 font-weight: 300;
                 line-height: 3vw;
             }
-
             &_date {
                 font-weight: 300;
                 margin-top: -0.5vw;
@@ -154,17 +143,14 @@ header {
                 line-height: 3vw;
             }
         }
-
         .quote-wrapper {
             text-align: center;
             border-radius: 20px;
             background: $lightGray;
-            box-shadow:  26px 26px 47px #868889,
-                        -26px -26px 47px #a0a2a5;
+            box-shadow: 26px 26px 47px #868889, -26px -26px 47px #a0a2a5;
             //height: 12vw;
             font-weight: 300;
             font-size: 1vw;
-
             >figure {
                 height: 100%;
                 display: flex;
@@ -172,28 +158,23 @@ header {
                 justify-content: center;
                 padding: 1vw 4vw;
             }
-
             &_blockquote {
                 padding-bottom: 0.2vw;
                 font-size: 1vw;
             }
-
             &_author {
                 border-top: 1px solid rgba(128, 128, 128, 0.507);
                 padding-top: 0.2vw;
             }
         }
-
         .logo {
             margin-left: 5.3vw;
             margin-top: 0.8vw;
             width: 22vw;
-
             &_img {
                 width: 100%;
             }
         }
-
         .chooseCity {
             display: flex;
             flex-direction: column;
@@ -202,7 +183,6 @@ header {
             margin-top: 2.2vw;
             font-weight: 300;
             letter-spacing: 0.1vw;
-
             &_par {
                 &_form {
                     &_input {
@@ -213,14 +193,12 @@ header {
                         border-radius: 4px;
                         outline: none;
                         background-color: $lightGray;
-
                         &:focus,
                         &:active {
                             outline: none;
                             border: none;
                         }
                     }
-
                     &_btn {
                         font-weight: 600;
                         padding: 0.2vw 1vw;
@@ -231,12 +209,10 @@ header {
                         font-weight: 700;
                         text-transform: uppercase;
                         letter-spacing: 0.06vw;
-
                         &_:focus,
                         &_:active {
                             outline: none;
                         }
-
                         &:hover {
                             box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.18);
                         }
@@ -244,10 +220,8 @@ header {
                 }
             }
         }
-
         .weather {
             text-align: right;
-
             &_result {
                 font-family: $fontHeading;
                 font-size: 1.2vw;
@@ -255,7 +229,6 @@ header {
             }
         }
     }
-
     .main {
         position: absolute;
         z-index: 1;
@@ -269,40 +242,33 @@ header {
                 color: $lightGray;
                 letter-spacing: 0.2vw;
                 cursor: pointer;
-
                 &:active,
                 &:focus {
                     background-color: $lightGray;
                 }
             }
         }
-
         // изменение стилей bootstrap на пунктах меню
         .nav-link.active {
             background-color: $lightGray;
             font-weight: 400;
             border: none;
         }
-
         .nav-link:hover {
             color: $darkGray;
         }
-
         &_planner {
             // background-color: $dirtyWhite;
             padding: 0vw 4vw 3vw 4vw;
             &_notions {
                 margin-top: 6vw;
                 width: 23vw;
-
                 &_form {
                     width: 23vw;
-
                     &_input {
                         width: 100%;
                         padding: 0.5vw;
                     }
-
                     &_btn {
                         width: 100%;
                         padding: 0.5vw;
@@ -313,7 +279,6 @@ header {
                         background-color: $ultimateGray;
                         border: none;
                         color: $darkGray;
-
                         &:hover {
                             background-color: $illuminating;
                             color: $darkGray;
@@ -323,15 +288,13 @@ header {
                 }
             }
         }
-
         // изменение стилей bootstrap на инпуте 
-        .form-control.active, 
+        .form-control.active,
         .form-control:focus {
             outline: none;
             box-shadow: none;
             border: 2px solid $illuminating;
         }
-
         .todoList li {
             list-style-type: none;
             background-color: $lightGray;
@@ -343,46 +306,52 @@ header {
             margin-bottom: 0.8vw;
             //overflow: hidden;
         }
-
         .planner-wrapper {
             display: grid;
             grid-template-columns: 3fr 1fr;
             gap: 2vw
         }
-
         .counter-wrapper {
-            position: relative;
-            height: 400px;
             display: flex;
-            justify-content: center;
-            //height: 75vh;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+            width: 100vw;
             .counter-header {
-                position: absolute;
                 top: 20px;
-
+                align-items: center;
+                color: #5c4f69;
+                font-family: $fontHeading;
+                font-size: 20px;
                 .dateForCounter:active,
                 .dateForCounter:focus {
                     outline: none;
-                    box-shadow: none;
+                    color: $illuminating;
+                    font-family: $fontHeading;
+                    box-shadow: #fde910;
                     border: 2px solid $illuminating;
                 }
             }
-
             .counter-body {
+                margin-top: 50px;
                 display: grid;
-                grid-template-columns: repeat(4, 5vw);
-                grid-template-rows: repeat(2, 11vh);
+                grid-template-columns: repeat(4, 8vw);
+                grid-template-rows: repeat(2, 9vh);
                 column-gap: 20px;
-
+                align-items: center;
+                font-family: $fontHeading;
+                font-size: 20px;
                 .alert-danger,
                 .alert-dark {
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    background-color: #fde910;
+                    font-family: $fontHeading;
+                    border: none;
                 }
             }
         }
-
         .game {
             //height: 75vh;
             display: flex;
@@ -403,7 +372,6 @@ header {
                 grid-template-columns: repeat(4, 1fr);
                 grid-template-rows: repeat(3, 1fr);
                 gap: 15px;
-
                 .memory-card {
                     margin: 0 auto;
                     position: relative;
@@ -415,7 +383,6 @@ header {
                     width: 10vw;
                     height: 190px;
                 }
-
                 .memory-card:active {
                     transform: scale(0.97);
                     transition: transform .2s;
@@ -440,7 +407,6 @@ header {
                     margin-right: -50%;
                     transform: translate(-50%, -50%);
                     width: 18rem;
-
                     .btn-start-again {
                         width: 100%;
                         padding: 0.5vw;
@@ -453,7 +419,6 @@ header {
                         color: $darkGray;
                         border-radius: 5px;
                     }
-
                     .btn-start-again:hover {
                         background-color: $illuminating;
                         color: $darkGray;
@@ -463,21 +428,17 @@ header {
             }
         }
     }
-
     .flip {
         transform: rotateY(180deg);
     }
-
     @media (max-width: 767px) {
         .form-card {
             width: 100%;
-
             .userName,
             .userCity {
                 margin-bottom: 45px;
             }
         }
-
         .header {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(3, 1fr);
@@ -488,16 +449,13 @@ header {
                 text-align: center;
             }
         }
-
         .main {
             .planner-wrapper {
                 grid-template-columns: 1fr;
                 grid-template-rows: 4fr 1fr;
             }
-
             .game {
                 padding-top: 10px;
-
                 .game-wrapper {
                     // width: 100%;
                     // height: 100%;
@@ -505,7 +463,6 @@ header {
                     grid-template-columns: repeat(4, 1fr);
                     grid-template-rows: repeat(3, 1fr);
                     gap: 15px;
-
                     .front-face,
                     .back-face {
                         padding: 3px;
@@ -541,31 +498,26 @@ header {
                 //height: 3rem;
             }
         }
-
         &_prev:hover polyline,
         &_prev:focus polyline {
             stroke-width: 3;
             stroke: $illuminating;
         }
-
         &_prev:active polyline {
             stroke-width: 6;
             transition: all 100ms ease-in-out;
             stroke: $illuminating;
         }
-
         &_next:hover polyline,
         &_next:focus polyline {
             stroke-width: 3;
             stroke: $illuminating;
         }
-
         &_prev:active polyline {
             stroke-width: 6;
             transition: all 100ms ease-in-out;
             stroke: $illuminating;
         }
-
         polyline {
             transition: all 250ms ease-in-out;
             fill: none;
@@ -574,31 +526,24 @@ header {
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-
         &_date {
             background-color: rgba(255, 255, 255, 0);
             display: flex;
             font-size: 2vw;
-
             &_month {
                 margin-right: 3vw;
             }
         }
     }
-
     &_table {
         width: 98%;
-
         &>thead {
             background-color: $lightGray
         }
-
         &>tbody {
             background-color: $lightGray
         }
-
         ;
-
         th,
         td {
             text-transform: uppercase;
@@ -607,30 +552,24 @@ header {
             letter-spacing: 0.4vw;
             width: 12vw;
         }
-
         th {
             text-align: center;
         }
-
         &_day {
             &_today {
                 box-shadow: 0px 0px 20px 3px $illuminating inset !important;
-
                 &:hover {
                     box-shadow: 0 0 0 1px white, 0 0 10px 3px $illuminating !important;
                 }
             }
-
             &:hover {
                 border: 1 solid rgba(0, 0, 0, 0.041);
                 box-shadow: 0 0 0 1px white, 0 0 5px 5px rgba(48, 48, 48, 0.185);
             }
         }
-
         td {
             //height: 8vw;
         }
-
         .btn-lg {
             width: 100%;
             height: 100%;
@@ -639,7 +578,6 @@ header {
             background-color: none;
             border: none;
         }
-
         .btn.active,
         .btn:focus,
         .btn-lg.active,
@@ -649,7 +587,6 @@ header {
             border: none;
             border-color: none;
         }
-
         .btn::-moz-focus-inner,
         .btn-lg::-moz-focus-inner {
             border: none;
@@ -658,9 +595,6 @@ header {
             border: none;
         }
     }
-
-
-
     @media (max-width: 900px) {
         .calendar {
             &_head {
@@ -670,7 +604,6 @@ header {
             }
         }
     }
-
     @media (max-width: 767px) {
         .calendar {
             &_head {
