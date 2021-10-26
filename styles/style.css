@@ -118,7 +118,6 @@ header {
 }
 
 .app .header {
-  position: relative;
   background: #939597;
   display: -ms-grid;
   display: grid;
@@ -266,9 +265,9 @@ header {
 }
 
 .app .main {
-  position: absolute;
   z-index: 1;
   top: 20.2vw;
+  width: 100vw;
 }
 
 .app .main_menu {
@@ -286,6 +285,11 @@ header {
 
 .app .main_menu_li:active, .app .main_menu_li:focus {
   background-color: #e6e7e2bd;
+}
+
+.app .main .nav-link {
+  margin-top: -64px;
+  height: 40px;
 }
 
 .app .main .nav-link.active {
@@ -445,11 +449,8 @@ header {
 
 .app .main .game .game-wrapper {
   position: absolute;
-  z-index: 1;
-  top: 10vw;
+  margin-top: 50vh;
   left: 28vw;
-  padding-bottom: 4vw;
-  margin: 0 auto;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[4];
@@ -461,7 +462,6 @@ header {
 
 .app .main .game .game-wrapper .memory-card {
   margin: 0 auto;
-  position: relative;
   -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
           box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
@@ -473,7 +473,7 @@ header {
   transition: transform .5s, -webkit-transform .5s;
   cursor: pointer;
   width: 10vw;
-  height: 190px;
+  height: 15vh;
 }
 
 .app .main .game .game-wrapper .memory-card:active {
@@ -488,6 +488,7 @@ header {
 .app .main .game .game-wrapper .front-face,
 .app .main .game .game-wrapper .back-face {
   width: 100%;
+  height: 100%;
   padding: 20px;
   position: absolute;
   border-radius: 5px;
@@ -502,10 +503,7 @@ header {
 }
 
 .app .main .game .game-wrapper .game-modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
+  margin: auto;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   width: 18rem;
@@ -537,23 +535,24 @@ header {
 }
 
 @media (max-width: 767px) {
-  .app .form-card {
-    width: 100%;
-  }
-  .app .form-card .userName,
-  .app .form-card .userCity {
-    margin-bottom: 45px;
-  }
   .app .header {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
     -ms-grid-rows: (1fr)[3];
         grid-template-rows: repeat(3, 1fr);
+    height: 26vh;
   }
   .app .header .weather,
   .app .header .quote-wrapper,
   .app .header .greeting {
     text-align: center;
+  }
+  .app .quote-wrapper {
+    display: none;
+  }
+  .app .choose_par_form,
+  .app .chooseCity_par {
+    display: none;
   }
   .app .main .planner-wrapper {
     -ms-grid-columns: 1fr;
@@ -736,6 +735,12 @@ header {
 @media (max-width: 767px) {
   .calendar .calendar_head_date {
     font-size: 3.5vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .calendar .calendar {
+    width: 100vw;
   }
 }
 
