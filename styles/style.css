@@ -557,6 +557,7 @@ header {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    max-width: 80vw;
   }
   .app .main .game {
     padding-top: 10px;
@@ -740,11 +741,15 @@ header {
   }
 }
 
-.hide {
-  display: none;
-}
-
-.hovered {
-  background-color: aqua;
+@media all and (max-width: 550px) {
+  .header {
+    width: 500px;
+  }
+  .calendar_body {
+    width: 400px;
+  }
+  .main_planner_notions {
+    margin: auto;
+  }
 }
 /*# sourceMappingURL=style.css.map */

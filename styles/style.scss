@@ -470,6 +470,7 @@ header {
             .planner-wrapper {
                 display: flex;
                 flex-direction: column;
+                max-width: 80vw;
             }
             .game {
                 padding-top: 10px;
@@ -631,17 +632,16 @@ header {
             }
         }
     }
-    // @media (max-width: 500px) {
-    //     .calendar {
-    //         width: 100vw;
-    //     }
-    // }
 }
 
-.hide {
-    display: none;
-}
-
-.hovered {
-    background-color: aqua;
+@media all and(max-width: 550px) {
+    .header {
+        width: 500px;
+    }
+    .calendar_body {
+        width: 400px;
+    }
+    .main_planner_notions {
+        margin: auto;
+    }
 }
